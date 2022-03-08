@@ -14,3 +14,10 @@
 # de juros por dia de atraso.
 
 
+
+prestacao_valor = 0
+dias = 0
+while prestacao_valor == 0 or dias == 0:
+    prestacao_valor = float(input('Valor da \033[33mprestação\033[m: '))
+    dias = int(input('Dias de \033[33matraso\033[m'))
+    ValorPagamento(prestacao=prestacao_valor, dias= dias)
