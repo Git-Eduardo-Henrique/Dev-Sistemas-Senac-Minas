@@ -7,7 +7,8 @@ class CLiente:
 
     def Imprimir(self):
         # imprime as informações
-        print(f'Nome: {self.nome} Cpf: {self.cpf} Nascimento: {self.datanasc}')
+        print(f'Nome: \033[34m{self.nome}\033[m | Cpf: \033[34m{self.cpf}\033[m'
+              f' | Nascimento: \033[34m{self.datanasc}\033[m')
 
 
 
