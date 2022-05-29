@@ -1,2 +1,2 @@
-# Py-Senac-Atv
- Meus exercicios de python no Senac
+# Senac-Atv's
+ Meus exercicios no Senac
