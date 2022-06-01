@@ -1,14 +1,17 @@
 from tkinter import *
 
 
-def Escrever():
-    print()
-
+def Escrever_1():
+    conta['text'] = '1'
 
 
 
 window = Tk()
+window.geometry('350x300')
+window.minsize(200, 150)
+window.maxsize(600, 550)
 window.config(bg='gray')
+
 for linha1 in range(5):
     window.grid_rowconfigure(linha1, weight=1)
 for linha in range(4):
@@ -28,26 +31,28 @@ botao1 = Button(window, text='+', font='Arial 30')
 botao2 = Button(window, text='-', font='Arial 30')
 botao3 = Button(window, text='x', font='Arial 30')
 botao4 = Button(window, text='%', font='Arial 30')
-num1 = Label(window, text='num1', font='Arial 30', bg='gray')
-num2 = Label(window, text='num2', font='Arial 30', bg='gray')
-resul = Label(window, text='', font='Arial 30', bg='gray')
+botao5 = Button(window, text='=', font='Arial 30')
+botao6 = Button(window, text=',', font='Arial 30')
+conta = Label(window, text='conta:', font='Arial 30', bg='gray')
+resul = Label(window, text='Resultado:', font='Arial 30', bg='gray')
 
-zero.grid(row=4, column=1, sticky=NSEW)
-um.grid(row=1, column=0, sticky=NSEW)
-dois.grid(row=1, column=1, sticky=NSEW)
-tres.grid(row=1, column=2, sticky=NSEW)
-quatro.grid(row=2, column=0, sticky=NSEW)
-cinco.grid(row=2, column=1, sticky=NSEW)
-seis.grid(row=2, column=2, sticky=NSEW)
-sete.grid(row=3, column=0, sticky=NSEW)
-oito.grid(row=3, column=1, sticky=NSEW)
-nove.grid(row=3, column=2, sticky=NSEW)
-num1.grid(row=1, column=3, sticky=NSEW)
-num2.grid(row=2, column=3, sticky=NSEW)
-resul.grid(row=3, column=3, sticky=NSEW)
-botao1.grid(row=5, column=0, sticky=NSEW)
-botao2.grid(row=5, column=1, sticky=NSEW)
-botao3.grid(row=5, column=2, sticky=NSEW)
+conta.grid(row=0, column=0, sticky=NSEW)
+resul.grid(row=1, column=0, sticky=NSEW)
+zero.grid(row=5, column=1, sticky=NSEW)
+um.grid(row=2, column=0, sticky=NSEW)
+dois.grid(row=2, column=1, sticky=NSEW)
+tres.grid(row=2, column=2, sticky=NSEW)
+quatro.grid(row=3, column=0, sticky=NSEW)
+cinco.grid(row=3, column=1, sticky=NSEW)
+seis.grid(row=3, column=2, sticky=NSEW)
+sete.grid(row=4, column=0, sticky=NSEW)
+oito.grid(row=4, column=1, sticky=NSEW)
+nove.grid(row=4, column=2, sticky=NSEW)
+botao1.grid(row=2, column=3, sticky=NSEW)
+botao2.grid(row=3, column=3, sticky=NSEW)
+botao3.grid(row=4, column=3, sticky=NSEW)
 botao4.grid(row=5, column=3, sticky=NSEW)
+botao5.grid(row=5, column=2, sticky=NSEW)
+botao6.grid(row=5, column=0, sticky=NSEW)
 
 window.mainloop()
