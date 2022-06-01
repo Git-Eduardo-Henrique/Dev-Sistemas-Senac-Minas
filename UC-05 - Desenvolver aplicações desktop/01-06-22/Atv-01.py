@@ -44,6 +44,7 @@ def Calcular():  # efetua o calculo de imc
 # configurações da tela
 window = Tk()
 window.config(bg='gray')
+window.bind('<Return>', lambda event: Calcular())
 # ==============================================================================================
 # faz com que cada linha e coluna seja esticavel
 for linha in range(4):
