@@ -75,7 +75,7 @@ virgula = Button(window, text='.', font='Arial 30', bg='#484848', command=lambda
 DelTudo = Button(window, text='CE', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='CE'))
 igual = Button(window, text='=', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='='))
 Del = Button(window, text='del', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='del'))
-elevado = Button(window, text='x²', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='^'))
+elevado = Button(window, text='x²', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='**'))
 DelC = Button(window, text='C', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='C'))
 conta = Label(window, text='', font='Arial 30', bg='black', foreground='green')
 
