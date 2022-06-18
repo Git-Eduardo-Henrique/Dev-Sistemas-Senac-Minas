@@ -1,23 +1,12 @@
-import mysql.connector as ms
 from tkinter import *
+from tkinter.messagebox import showwarning
 
 
 class Backend:
     def __init__(self, teste):
         self.teste = teste
 
-    '''def Conexao(self):
-        conexao = ms.connect(host='localhost', user='root', password='q1w2e3', database='Banco')
-        cursor = conexao.cursor()
-        cursor.close()
-        conexao.close()'''
-
-    def Func_Senha(self, entry_senha, button, entry_func):
-        if button['state'] == NORMAL:
-            if entry_func.get() == '022.121.656-17' and entry_senha.get() == 'q1w2e3':
-                button['state'] = DISABLED
-        else:
-            button['state'] = NORMAL
-
-
-
+    def Formatacao(self, senha_func):
+        senha_f = senha_func.get()[:8]
+        senha_func.delete(0, 'end')
+        senha_func.insert(0, senha_f)
