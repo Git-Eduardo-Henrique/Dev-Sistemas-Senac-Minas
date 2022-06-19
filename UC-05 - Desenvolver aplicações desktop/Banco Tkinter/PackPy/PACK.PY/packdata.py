@@ -9,10 +9,10 @@ class pack_data:
         self.func = ''
         self.cli = ''
 
-    def Cadastrar(self, nome, cpf, data, genero, email, senha):
+    def Cadastrar(self, nome, cpf, data, genero, email, senha,saldo):
         # realiza o cadastro no banco de dados
-        self.cursor.execute(f'INSERT INTO cliente (cpf, nome, dataNasc, genero, email, senha) VALUES'
-                            f'("{cpf}","{nome}","{data}","{genero}","{email}","{senha}")')
+        self.cursor.execute(f'INSERT INTO cliente (cpf, nome, dataNasc, genero, email, senha, saldo) VALUES'
+                            f'("{cpf}","{nome}","{data}","{genero}","{email}","{senha}","{saldo}")')
         self.conectar.commit()
 
     def Check_func(self, entry_id, entry_senha):

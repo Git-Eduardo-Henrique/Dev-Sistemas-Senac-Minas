@@ -14,7 +14,7 @@ class Backend:
 
     def Cadastrar(self, cpf, nome, datanasc, email, senha, conf, c_m, c_f, c_a, c_e, frame_func, frame_cadas):
         if messagebox.askyesno('confirmar', 'salvar dados?'):
-            self.Data.Cadastrar(cpf.get(), nome.get(), datanasc.get(), 'M', email.get(), senha.get())
+            self.Data.Cadastrar(cpf.get(), nome.get(), datanasc.get(), 'M', email.get(), senha.get(), 0)
             nome.delete(0, 'end')
             cpf.delete(0, 'end')
             datanasc.delete(0, 'end')
@@ -44,3 +44,4 @@ class Backend:
             frame_cli.forget()
         else:
             messagebox.showerror('Acesso Negado', 'conta desconhecida, tente novamente')
+

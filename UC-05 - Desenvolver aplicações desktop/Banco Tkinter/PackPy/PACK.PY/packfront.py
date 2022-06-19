@@ -127,6 +127,8 @@ user = PhotoImage(file='Foto/conta cliente.png')
 on_image = PhotoImage(file='Foto/olho aberto.png')
 off_image = PhotoImage(file='Foto/olho fechado.png')
 cliente = PhotoImage(file='Foto/user.png')
+depo = PhotoImage(file='Foto/Bt_Depósito.png')
+extra = PhotoImage(file='Foto/Bt_Extrato.png')
 # ==============================================================================================================
 # primeira tela (mostra a logo)
 lb_inicio = Label(frame_i, image=inicio, border=0)
@@ -207,15 +209,23 @@ check_email.place(width=8, height=9, x=263, y=265)
 # tela conta
 # labels
 lb_user = Label(frame_conta, image=user, border=0)
+lb_nome_user = Label(frame_conta, text='sus', font='Arial 15 bold', bg=azul_esc, fg=branco, bd=0)
+lb_saldo = Label(frame_conta, text='0', font='Arial 10 bold', bg=azul_esc, fg=branco, bd=0)
 # botoes
 bt_voltar_conta = Button(frame_conta, image=seta_voltar, bg='#1E90FF', bd=0, activebackground=azul_esc,
                          command=lambda: [frame_cliente.pack(), frame_conta.forget()])
+bt_deposito = Button(frame_conta, image=depo, bd=0, activebackground=azul_esc)
+bt_extrato = Button(frame_conta, image=extra, bd=0, activebackground=azul_esc)
 # check_buttons
 check_saldo = Checkbutton(frame_conta, bg=azul_esc, image=on_image, selectimage=off_image, indicatoron=False, bd=0)
 # posionamento na tela
 lb_user.pack()
 bt_voltar_conta.place(width=38, height=36, x=2, y=9)
+bt_deposito.place(width=155, height=68, x=183, y=204)
+bt_extrato.place(width=144, height=37, x=297, y=93)
 check_saldo.place(width=30, height=22, x=175, y=130)
+lb_nome_user.place(width=60, height=18, x=111, y=65)
+lb_saldo.place(width=25, height=11, x=74, y=129)
 # ==============================================================================================================
 # tela cliente login
 # labels
@@ -227,9 +237,8 @@ en_cliente_senha = Entry(frame_cliente, font='arial 12 bold', bg=branco, border=
 bt_voltar_cliente = Button(frame_cliente, image=seta_voltar, bg=azul_esc, bd=0, activebackground=azul_esc,
                            command=lambda: [frame_entrar.pack(), frame_cliente.forget()])
 bt_entrar_cliente = Button(frame_cliente, text='Entrar', bg=azul_esc, font='arial 19 bold', bd=0, fg=branco,
-                           command=lambda: Back.Entrar_cli(en_cliente_user.get(), en_cliente_senha.get(), frame_conta,
-                                                           frame_entrar, frame_cliente))
-# [frame_conta.pack(), frame_entrar.forget(), frame_cliente.forget()]
+                           command=lambda: [Back.Entrar_cli(en_cliente_user.get(), en_cliente_senha.get(), frame_conta,
+                                                            frame_entrar, frame_cliente)])
 # checks
 check_senha_us = Checkbutton(frame_cliente, bg=branco, image=on_image, selectimage=off_image, indicatoron=False, bd=0,
                              command=lambda: Back.Mostrar_senha(en_cliente_senha))
