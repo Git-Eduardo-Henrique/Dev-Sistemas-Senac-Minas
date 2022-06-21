@@ -4,7 +4,8 @@ from packdata import *
 
 class Backend:
     def __init__(self):
-        self.Data = pack_data()
+        self.Data = Data_Verificar()
+        self.conta = Conta()
 
     def Mostrar_senha(self, senha):
         if senha.cget('show') == '*':
@@ -15,8 +16,8 @@ class Backend:
     def Cadastrar(self, cpf, nome, datanasc, email, senha, conf, c_m, c_f, c_a, c_e, frame_func, frame_cadas):
         if messagebox.askyesno('confirmar', 'salvar dados?'):
             self.Data.Cadastrar(cpf.get(), nome.get(), datanasc.get(), 'M', email.get(), senha.get(), 0)
-            nome.delete(0, 'end')
             cpf.delete(0, 'end')
+            nome.delete(0, 'end')
             datanasc.delete(0, 'end')
             email.delete(0, 'end')
             senha.delete(0, 'end')
@@ -45,3 +46,22 @@ class Backend:
         else:
             messagebox.showerror('Acesso Negado', 'conta desconhecida, tente novamente')
 
+    def Saque(self, cpf, saldo, frame1, frame2, en_saque):
+        if self.conta.verifica(cpf, saldo):
+            self.conta.saque(cpf, saldo)
+            messagebox.showinfo('Saque Aceito', f'O valor de R${saldo} foi retirado da sua conta!')
+            frame1.pack()
+            frame2.forget()
+            en_saque.delete(0, 'end')
+        else:
+            messagebox.showerror('Saque Negado', 'Saldo insuficiente!')
+            frame1.pack()
+            frame2.forget()
+            en_saque.delete(0, 'end')
+
+    def Depo(self, cpf, saldo, frame1, frame2, en_depo):
+        self.conta.deposito(cpf, saldo)
+        messagebox.showinfo('Depositar', f'O valor de R${saldo} foi adicionado na sua conta!')
+        frame1.pack()
+        frame2.forget()
+        en_depo.delete(0, 'end')

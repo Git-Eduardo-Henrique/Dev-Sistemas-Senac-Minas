@@ -1,9 +1,9 @@
-import posiciona
 from tkinter import *
 from packback import *
 
 Back = Backend()
-Data = pack_data()
+Data = Data_Verificar()
+con = Conta()
 
 
 def Formatar_func(event=None):
@@ -23,6 +23,12 @@ def Formatar_func(event=None):
     co_senha = en_confirma_cadas.get()[:8]
     nova_data = ''
     novo_cpf = ''
+    # frame deposito
+    quant = en_valor_depo.get()
+    quant_novo = ''
+    # frame saque
+    quant_saque = en_saque.get()
+    quant_novo_saque = ''
 
     if event.keysym.lower() == 'backspace':
         return
@@ -69,7 +75,18 @@ def Formatar_func(event=None):
             novo_cpf += cpf_cnpj[cpf_num] + '-'
         else:
             novo_cpf += cpf_cnpj[cpf_num]
-    # deletes
+
+    if not quant.isnumeric():
+        pass
+    else:
+        quant_novo += quant
+
+    if not quant_saque.isnumeric():
+        pass
+    else:
+        quant_novo_saque += quant_saque
+
+        # deletes
     en_senha.delete(0, 'end')
     en_func.delete(0, 'end')
     en_cliente_user.delete(0, 'end')
@@ -78,6 +95,8 @@ def Formatar_func(event=None):
     en_cpf_cadas.delete(0, 'end')
     en_senha_cadas.delete(0, 'end')
     en_confirma_cadas.delete(0, 'end')
+    en_valor_depo.delete(0, 'end')
+    en_saque.delete(0, 'end')
     # inserts
     en_senha.insert(0, nova_senha)
     en_func.insert(0, func_id)
@@ -87,31 +106,38 @@ def Formatar_func(event=None):
     en_cpf_cadas.insert(0, novo_cpf)
     en_senha_cadas.insert(0, senha)
     en_confirma_cadas.insert(0, co_senha)
+    en_valor_depo.insert(0, quant_novo)
+    en_saque.insert(0, quant_novo_saque)
 
 
 branco = '#ffffff'
 azul_esc = '#00357b'
 preto = '#0F0F10'
+nominho = ''
 # ==============================================================================================================
 # janela principal
 janela = Tk()
 janela.geometry('500x500')
 janela.resizable(False, False)
 janela.title('PackPy')
-
+janela.iconbitmap('Foto/logo.PNG.ico')
+'''
 janela.bind('<Button-1>', posiciona.inicio_place)
-janela.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg, janela))
-janela.bind('<Button-2>', lambda arg: posiciona.para_geometry(janela))
-
+janela.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg,janela))
+janela.bind('<Button-2>', lambda arg: posiciona.para_geometry(janela))'''
 janela.bind('<KeyRelease>', Formatar_func)
 # ==============================================================================================================
 # frames de cada tela
-frame_i = Frame()
+frame_i = Frame(janela)
 frame_entrar = Frame(janela)
 frame_func = Frame(janela)
 frame_cliente = Frame(janela)
 frame_conta = Frame(janela)
 frame_cadastro = Frame(janela)
+frame_depo = Frame(janela)
+frame_saque = Frame(janela)
+frame_transfer = Frame(janela)
+frame_extrato = Frame(janela)
 # ==============================================================================================================
 # carrega os primeiros frames
 frame_i.pack()
@@ -129,6 +155,12 @@ off_image = PhotoImage(file='Foto/olho fechado.png')
 cliente = PhotoImage(file='Foto/user.png')
 depo = PhotoImage(file='Foto/Bt_Depósito.png')
 extra = PhotoImage(file='Foto/Bt_Extrato.png')
+sq = PhotoImage(file='Foto/bt_saque.png')
+tranfer = PhotoImage(file='Foto/bt_transferencia.png')
+deposito = PhotoImage(file='Foto/Depósito.png')
+saque = PhotoImage(file='Foto/Saque.png')
+transferencia = PhotoImage(file='Foto/Transferencia.png')
+extrato = PhotoImage(file='Foto/Extrato.png')
 # ==============================================================================================================
 # primeira tela (mostra a logo)
 lb_inicio = Label(frame_i, image=inicio, border=0)
@@ -159,8 +191,8 @@ bt_voltar_func = Button(frame_func, image=seta_voltar, bg=azul_esc, bd=0, active
 bt_entrar_func = Button(frame_func, text='Entrar', font='arial 13 bold', bg=branco, bd=0)
 bt_entrar_func.config(command=lambda: Back.Entrar_func(en_func.get(), en_senha.get(), frame_cadastro, frame_func))
 # checks
-check_senha_func = Checkbutton(frame_func, bg=azul_esc, image=on_image, selectimage=off_image, indicatoron=False, bd=0,
-                               command=lambda: Back.Mostrar_senha(en_senha))
+check_senha_func = Checkbutton(frame_func, bg=azul_esc, image=off_image, selectimage=on_image, indicatoron=False, bd=0,
+                               command=lambda: Back.Mostrar_senha(en_senha), selectcolor=azul_esc)
 # posicionamento na tela
 lb_func.pack()
 bt_entrar_func.place(width=70, height=33, x=381, y=443)
@@ -209,15 +241,23 @@ check_email.place(width=8, height=9, x=263, y=265)
 # tela conta
 # labels
 lb_user = Label(frame_conta, image=user, border=0)
-lb_nome_user = Label(frame_conta, text='sus', font='Arial 15 bold', bg=azul_esc, fg=branco, bd=0)
+lb_nome_user = Label(frame_conta, text='', font='Arial 15 bold', bg=azul_esc, fg=branco, bd=0)
 lb_saldo = Label(frame_conta, text='0', font='Arial 10 bold', bg=azul_esc, fg=branco, bd=0)
 # botoes
-bt_voltar_conta = Button(frame_conta, image=seta_voltar, bg='#1E90FF', bd=0, activebackground=azul_esc,
+bt_voltar_conta = Button(frame_conta, image=seta_voltar, bg=azul_esc, bd=0, activebackground=azul_esc,
                          command=lambda: [frame_cliente.pack(), frame_conta.forget()])
-bt_deposito = Button(frame_conta, image=depo, bd=0, activebackground=azul_esc)
-bt_extrato = Button(frame_conta, image=extra, bd=0, activebackground=azul_esc)
+bt_deposito = Button(frame_conta, image=depo, bd=0, activebackground=azul_esc,
+                     command=lambda: [frame_depo.pack(), frame_conta.forget()])
+bt_extrato = Button(frame_conta, image=extra, bd=0, activebackground=azul_esc,
+                    command=lambda: [frame_extrato.pack(), frame_conta.forget()])
+bt_saque = Button(frame_conta, image=sq, bd=0, activebackground=azul_esc,
+                  command=lambda: [frame_saque.pack(), frame_conta.forget()])
+bt_transfer = Button(frame_conta, image=tranfer, bd=0, activebackground=azul_esc,
+                     command=lambda: [frame_transfer.pack(), frame_conta.forget()])
+
 # check_buttons
-check_saldo = Checkbutton(frame_conta, bg=azul_esc, image=on_image, selectimage=off_image, indicatoron=False, bd=0)
+check_saldo = Checkbutton(frame_conta, bg=azul_esc, image=off_image, selectimage=on_image, indicatoron=False, bd=0,
+                          selectcolor=azul_esc)
 # posionamento na tela
 lb_user.pack()
 bt_voltar_conta.place(width=38, height=36, x=2, y=9)
@@ -226,6 +266,8 @@ bt_extrato.place(width=144, height=37, x=297, y=93)
 check_saldo.place(width=30, height=22, x=175, y=130)
 lb_nome_user.place(width=60, height=18, x=111, y=65)
 lb_saldo.place(width=25, height=11, x=74, y=129)
+bt_saque.place(width=148, height=66, x=18, y=206)
+bt_transfer.place(width=316, height=49, x=19, y=287)
 # ==============================================================================================================
 # tela cliente login
 # labels
@@ -240,7 +282,7 @@ bt_entrar_cliente = Button(frame_cliente, text='Entrar', bg=azul_esc, font='aria
                            command=lambda: [Back.Entrar_cli(en_cliente_user.get(), en_cliente_senha.get(), frame_conta,
                                                             frame_entrar, frame_cliente)])
 # checks
-check_senha_us = Checkbutton(frame_cliente, bg=branco, image=on_image, selectimage=off_image, indicatoron=False, bd=0,
+check_senha_us = Checkbutton(frame_cliente, bg=branco, image=off_image, selectimage=on_image, indicatoron=False, bd=0,
                              command=lambda: Back.Mostrar_senha(en_cliente_senha))
 # posionamento na tela
 lb_cliente.pack()
@@ -250,7 +292,54 @@ bt_voltar_cliente.place(width=38, height=36, x=2, y=9)
 bt_entrar_cliente.place(width=215, height=46, x=141, y=337)
 check_senha_us.place(width=30, height=22, x=335, y=228)
 # ==============================================================================================================
+# tela deposito
+lb_depo = Label(frame_depo, image=deposito, border=0)
+lb_depo.pack()
+en_valor_depo = Entry(frame_depo, font='arial 12 bold', bd=0, fg=azul_esc, bg=branco)
+bt_confirma = Button(frame_depo, text='confirmar', bd=0, bg=azul_esc, fg=branco, font='arial 19 bold',
+                     command=lambda: Back.Depo(en_cliente_user.get(), en_valor_depo.get(), frame_conta, frame_depo,
+                                               en_valor_depo))
+bt_voltar_deposito = Button(frame_depo, image=seta_voltar, bg=azul_esc, bd=0, activebackground=azul_esc,
+                            command=lambda: [frame_conta.pack(), frame_depo.forget()])
+en_valor_depo.place(width=216, height=17, x=140, y=157)
+bt_confirma.place(width=208, height=39, x=143, y=281)
+bt_voltar_deposito.place(width=38, height=36, x=2, y=9)
+# ==============================================================================================================
+# tela saque
+lb_saque = Label(frame_saque, image=saque, border=0)
+lb_saque.pack()
+bt_voltar_saque = Button(frame_saque, image=seta_voltar, bg=azul_esc, bd=0, activebackground=azul_esc,
+                         command=lambda: [frame_conta.pack(), frame_saque.forget()])
+en_saque = Entry(frame_saque, font='arial 12 bold', bd=0, fg=azul_esc, bg=branco)
+
+bt_confirma_saque = Button(frame_saque, text='confirmar', bd=0, bg=azul_esc, fg=branco, font='arial 19 bold',
+                           command=lambda: Back.Saque(en_cliente_user.get(), en_saque.get(), frame_conta, frame_saque,
+                                                      en_saque))
+bt_voltar_saque.place(width=38, height=36, x=2, y=9)
+en_saque.place(width=217, height=16, x=138, y=160)
+bt_confirma_saque.place(width=212, height=43, x=141, y=277)
+# ==============================================================================================================
+# Tela Tranferencia
+lb_transfer = Label(frame_transfer, image=transferencia, bd=0)
+lb_transfer.pack()
+bt_voltar_transfer = Button(frame_transfer, image=seta_voltar, bg=azul_esc, bd=0, activebackground=azul_esc,
+                            command=lambda: [frame_conta.pack(), frame_transfer.forget()])
+bt_confirma_transfer = Button(frame_transfer, text='confirmar', bd=0, bg=azul_esc, fg=branco, font='arial 19 bold')
+
+bt_voltar_transfer.place(width=38, height=36, x=2, y=9)
+bt_confirma_transfer.place(width=208, height=38, x=148, y=351)
+# ==============================================================================================================
+# Tela Extrato
+lb_extrato = Label(frame_extrato, image=extrato, bd=0)
+lb_extrato.pack()
+bt_voltar_extrato = Button(frame_extrato, image=seta_voltar, bg=azul_esc, bd=0, activebackground=azul_esc,
+                           command=lambda: [frame_conta.pack(), frame_extrato.forget()])
+
+bt_voltar_extrato.place(width=38, height=36, x=2, y=9)
+# ==============================================================================================================
 # loop da janela e outros
-janela.after(500, frame_i.forget())  # Tempo de duração
+janela.after(3000, frame_i.forget)
+
 janela.mainloop()
 Data.Close()
+con.Close()
