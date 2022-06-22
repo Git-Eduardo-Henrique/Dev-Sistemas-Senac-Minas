@@ -2,10 +2,29 @@ from tkinter import messagebox
 from packdata import *
 
 
+class Format:
+    def __init__(self):
+        self.event = None
+        self.form = Format()
+
+    def evento(self):
+        if self.event.keysym.lower() == 'backspace':
+            return
+
+    def format_re(self, entry, carac, mudar, mudar2):
+        cap = entry.get().replace(f'{mudar}', '').replace(f'{mudar2}', '')[:carac]
+        novotext = ''
+
+        self.form.evento()
+
+        entry.delete(0, 'end')
+        entry.insert(0, novotext)
+
+        
 class Backend:
     def __init__(self):
-        self.Data = Data_Verificar()
-        self.conta = Conta()
+        self.Data = DataVerificar()  # objeto para acessar a classe do banco de dados
+        self.conta = Conta()  #
 
     def Mostrar_senha(self, senha):
         if senha.cget('show') == '*':

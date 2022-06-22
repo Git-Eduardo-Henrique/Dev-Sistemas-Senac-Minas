@@ -1,14 +1,13 @@
 import mysql.connector as ms
 
 
-class Data_Verificar:
+class DataVerificar:
     def __init__(self):
         # conecta com o banco de dados
         self.conectar = ms.connect(host='localhost', user='root', password='q1w2e3', database='Banco_Pack_Py')
         self.cursor = self.conectar.cursor()
         self.func = ''
         self.cli = ''
-        self.saq = ''
 
     def Cadastrar(self, cpf, nome, data, genero, email, senha, saldo):
         # realiza o cadastro no banco de dados
@@ -49,12 +48,7 @@ class Conta:
     def __init__(self):
         self.conectar = ms.connect(host='localhost', user='root', password='q1w2e3', database='Banco_Pack_Py')
         self.cursor = self.conectar.cursor()
-
-    '''def Mostrar(self, cpf, nome):
-        self.cursor.execute(f'SELECT nome FROM cliente WHERE cpf = "{cpf}"')
-        nominho = self.cursor.fetchall()
-        nome = nominho
-        return nome'''
+        self.saq = ''
 
     def deposito(self, cpf, saldo):
         self.cursor.execute(f'UPDATE cliente SET saldo = saldo + {float(saldo)} WHERE cpf = "{cpf}" ')
@@ -64,12 +58,12 @@ class Conta:
         self.cursor.execute(f'UPDATE cliente SET saldo = saldo - {float(saldo)} WHERE cpf = "{cpf}" ')
         self.conectar.commit()
 
-    def verifica(self, cpf, saq):
+    def verifica(self, cpf, saque):
         self.cursor.execute(f'SELECT saldo FROM cliente WHERE cpf = "{cpf}" ')
         self.saq = self.cursor.fetchall()
         verifica = False
         for dindin in self.saq:
-            if float(dindin[0]) < float(saq):
+            if float(dindin[0]) < float(saque):
                 verifica = True
         if verifica:
             return False

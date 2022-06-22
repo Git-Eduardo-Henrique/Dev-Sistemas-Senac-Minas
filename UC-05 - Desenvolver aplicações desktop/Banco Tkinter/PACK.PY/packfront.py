@@ -2,7 +2,8 @@ from tkinter import *
 from packback import *
 
 Back = Backend()
-Data = Data_Verificar()
+Form = Format()
+Data = DataVerificar()
 con = Conta()
 
 
@@ -113,7 +114,6 @@ def Formatar_func(event=None):
 branco = '#ffffff'
 azul_esc = '#00357b'
 preto = '#0F0F10'
-nominho = ''
 # ==============================================================================================================
 # janela principal
 janela = Tk()
@@ -121,8 +121,7 @@ janela.geometry('500x500')
 janela.resizable(False, False)
 janela.title('PackPy')
 janela.iconbitmap('Foto/logo.PNG.ico')
-'''
-janela.bind('<Button-1>', posiciona.inicio_place)
+'''janela.bind('<Button-1>', posiciona.inicio_place)
 janela.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg,janela))
 janela.bind('<Button-2>', lambda arg: posiciona.para_geometry(janela))'''
 janela.bind('<KeyRelease>', Formatar_func)
@@ -339,7 +338,6 @@ bt_voltar_extrato.place(width=38, height=36, x=2, y=9)
 # ==============================================================================================================
 # loop da janela e outros
 janela.after(3000, frame_i.forget)
-
 janela.mainloop()
 Data.Close()
 con.Close()
