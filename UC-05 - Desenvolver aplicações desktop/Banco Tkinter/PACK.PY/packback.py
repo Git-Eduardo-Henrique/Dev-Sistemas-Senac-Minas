@@ -16,11 +16,19 @@ class Format:
         novotext = ''
 
         self.form.evento()
-
+        for L in range(len(cap)):
+            if not cap[L].isnumeric():
+                continue
+            if L in [2, 5]:
+                novotext += cap[L] + f'{mudar}'
+            elif L == 8:
+                novotext += cap[L] + f'{mudar2}'
+            else:
+                novotext += cap[L]
         entry.delete(0, 'end')
         entry.insert(0, novotext)
 
-        
+
 class Backend:
     def __init__(self):
         self.Data = DataVerificar()  # objeto para acessar a classe do banco de dados

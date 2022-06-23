@@ -18,7 +18,7 @@ def Formatar_func(event=None):
     cliente_cpf = en_cliente_user.get().replace('.', '').replace('-', '')[:11]
     cpf_novo = ''
     # frame cadastro
-    cpf_cnpj = en_cpf_cadas.get().replace('.', '').replace('-', '')[:11]
+    # cpf_cnpj = en_cpf_cadas.get().replace('.', '').replace('-', '')[:11]
     data = en_datanasc_cadas.get().replace('/', '')[:8]
     senha = en_senha_cadas.get()[:8]
     co_senha = en_confirma_cadas.get()[:8]
@@ -67,7 +67,7 @@ def Formatar_func(event=None):
         else:
             nova_data += data[num]
 
-    for cpf_num in range(len(cpf_cnpj)):
+    '''for cpf_num in range(len(cpf_cnpj)):
         if not cpf_cnpj[cpf_num].isnumeric():
             continue
         if cpf_num in [2, 5]:
@@ -75,7 +75,7 @@ def Formatar_func(event=None):
         elif cpf_num == 8:
             novo_cpf += cpf_cnpj[cpf_num] + '-'
         else:
-            novo_cpf += cpf_cnpj[cpf_num]
+            novo_cpf += cpf_cnpj[cpf_num]'''
 
     if not quant.isnumeric():
         pass
@@ -87,13 +87,13 @@ def Formatar_func(event=None):
     else:
         quant_novo_saque += quant_saque
 
-        # deletes
+    # deletes
     en_senha.delete(0, 'end')
     en_func.delete(0, 'end')
     en_cliente_user.delete(0, 'end')
     en_cliente_senha.delete(0, 'end')
     en_datanasc_cadas.delete(0, 'end')
-    en_cpf_cadas.delete(0, 'end')
+    # en_cpf_cadas.delete(0, 'end')
     en_senha_cadas.delete(0, 'end')
     en_confirma_cadas.delete(0, 'end')
     en_valor_depo.delete(0, 'end')
@@ -104,7 +104,7 @@ def Formatar_func(event=None):
     en_cliente_user.insert(0, cpf_novo)
     en_cliente_senha.insert(0, usu_senha)
     en_datanasc_cadas.insert(0, nova_data)
-    en_cpf_cadas.insert(0, novo_cpf)
+    # en_cpf_cadas.insert(0, novo_cpf)
     en_senha_cadas.insert(0, senha)
     en_confirma_cadas.insert(0, co_senha)
     en_valor_depo.insert(0, quant_novo)
@@ -337,6 +337,7 @@ bt_voltar_extrato = Button(frame_extrato, image=seta_voltar, bg=azul_esc, bd=0, 
 bt_voltar_extrato.place(width=38, height=36, x=2, y=9)
 # ==============================================================================================================
 # loop da janela e outros
+janela.bind('<KeyRelease>', Form.format_re(en_cpf_cadas, 11, '.', '-'))
 janela.after(3000, frame_i.forget)
 janela.mainloop()
 Data.Close()
