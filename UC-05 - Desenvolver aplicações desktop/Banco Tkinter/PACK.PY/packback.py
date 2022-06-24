@@ -5,17 +5,12 @@ from packdata import *
 class Format:
     def __init__(self):
         self.event = None
-        self.form = Format()
-
-    def evento(self):
-        if self.event.keysym.lower() == 'backspace':
-            return
 
     def format_re(self, entry, carac, mudar, mudar2):
         cap = entry.get().replace(f'{mudar}', '').replace(f'{mudar2}', '')[:carac]
         novotext = ''
-
-        self.form.evento()
+        if self.event.keysym.lower() == 'backspace':
+            return
         for L in range(len(cap)):
             if not cap[L].isnumeric():
                 continue
