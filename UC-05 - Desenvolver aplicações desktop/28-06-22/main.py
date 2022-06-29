@@ -1,7 +1,11 @@
 from Controlar_CL import *
+from System_CL import *
+
 
 Loja = System()
-Control = ControlProd()
+contr = ControlProd()
+# contr.entrada = Loja
+
 while True:
     Loja.linha()
     Opt = input('selecione uma \033[34mopção: '
@@ -21,7 +25,7 @@ while True:
             Loja.alterar()
             Loja.pula()
         elif int(Opt) == 4:
-            Control.almenta_Quant()
+            contr.almenta_Quant()
         elif int(Opt) == 5:
             break
         else:
