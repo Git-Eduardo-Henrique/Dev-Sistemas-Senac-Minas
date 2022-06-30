@@ -245,8 +245,9 @@ class Frontend:
                                    command=lambda: [self.frame_conta.pack(), self.frame_ex.forget()])
 
         bt_voltar_extrato.place(width=38, height=36, x=2, y=9)
-
         # ==============================================================================================================
+        self.janela.after(3000, self.frame_ini.forget)
+
     def Formatar_func(event=None):
         # frame funcionario
         func_senha = en_senha.get().replace('.', '').replace('-', '')[:11]
@@ -349,5 +350,3 @@ class Frontend:
             en_confirma_cadas.insert(0, co_senha)
             en_valor_depo.insert(0, quant_novo)
             en_saque.insert(0, quant_novo_saque)
-
-# janela.after(3000, frame_i.forget)

@@ -7,14 +7,12 @@ class Format:
         self.event = None
 
     def format_re(self, entry, carac, mudar, mudar2):
-        cap = entry.get().replace(f'{mudar}', '').replace(f'{mudar2}', '')[:carac]
+        cap = entry.get()[:carac]
         novotext = ''
-        if self.event.keysym.lower() == 'backspace':
-            return
         for L in range(len(cap)):
             if not cap[L].isnumeric():
                 continue
-            if L in [2, 5]:
+            if not cap.find('.') in [2, 5]:
                 novotext += cap[L] + f'{mudar}'
             elif L == 8:
                 novotext += cap[L] + f'{mudar2}'

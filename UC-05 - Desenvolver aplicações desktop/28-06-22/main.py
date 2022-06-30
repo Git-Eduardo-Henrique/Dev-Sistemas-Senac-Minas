@@ -4,7 +4,7 @@ from System_CL import *
 
 Loja = System()
 contr = ControlProd()
-# contr.entrada = Loja
+contr.entrada = Loja
 
 while True:
     Loja.linha()
