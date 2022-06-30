@@ -1,32 +1,45 @@
 from Controlar_CL import *
 from System_CL import *
 
-
 Loja = System()
-contr = ControlProd()
-contr.entrada = Loja
+Fabi = System_Fabri()
+compra = CompraProd()
+Venda = VendaProd()
+compra.entrada = Loja
+Venda.entrada = Loja
+Loja.entrada = Fabi
 
 while True:
     Loja.linha()
-    Opt = input('selecione uma \033[34mopção: '
-                '\n 1 - Cadastrar'
-                '\n 2 - Listar'
-                '\n 3 - Alterar'
-                '\n 4 - Entrada de produtos'
-                '\n 5 - Sair'
-                '\n\033[mOpção: ')
+    print(20 * ' ', 'Lojão dos fabricantes')
+    Loja.linha()
+    print('selecione uma \033[34mopção:')
+    Loja.linha()
+    print('1 - Cadastrar Produto  4 - Entrada de produtos'
+          '\n2 - Cadastrar Fabri'
+          '      5 - Saida de produtos'
+          '\n3 - Alterar'
+          '     6 - Listar Produto'
+          '\n7 - Sair')
+    Loja.linha()
+    Opt = input('\033[mOpção: ')
+    Loja.linha()
     if Opt.isnumeric():
         if int(Opt) == 1:
             Loja.cadastro()
             Loja.pula()
         elif int(Opt) == 2:
-            Loja.listar()
+            Fabi.cadastro()
         elif int(Opt) == 3:
             Loja.alterar()
             Loja.pula()
         elif int(Opt) == 4:
-            contr.almenta_Quant()
+            compra.compra_quant()
         elif int(Opt) == 5:
+            Venda.venda_quant()
+        elif int(Opt) == 6:
+            Loja.listar()
+        elif int(Opt) == 7:
             break
         else:
             Loja.pula()

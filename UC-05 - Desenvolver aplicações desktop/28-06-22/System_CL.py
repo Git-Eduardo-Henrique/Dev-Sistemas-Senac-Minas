@@ -1,11 +1,11 @@
 from Salvar_CL import *
-from Controlar_CL import *
 
 
 class System:
     def __init__(self):
         self.cont = 0
         self.lista_prod = []
+        self.entrada = System_Fabri()
 
     def linha(self):
         print(70 * '\033[34m=', '\033[m')
@@ -21,8 +21,15 @@ class System:
         self.cont += 1
         nome = str(input('Nome do \033[34mProduto\033[m: '))
         quant = int(input('\033[34mQuantidade\033[m: '))
-        fra = str(input('Fabricante do \033[34mProduto\033[m: '))
-        self.lista_prod.append(SalvarProd(cod=self.cont, nome=nome, quant=quant, fra=fra))
+
+        fra = int(input('Codigo do Fabricante do \033[34mProduto\033[m: '))
+        for fabri in range(len(self.entrada.list_fabi)):
+            if fra == int(self.entrada.list_fabi[fabri].cod):
+                self.lista_prod.append(SalvarProd(cod=self.cont, nome=nome, quant=quant,
+                                                  fra=self.entrada.list_fabi[fabri].nome))
+            else:
+                print('Fabricante desconhecido')
+
         self.linha()
 
     def alterar(self):
@@ -64,3 +71,21 @@ class System:
             self.pula()
             self.linha()
             print('Digite um \033[31mNumero!!!!\033[m')
+
+
+class System_Fabri:
+    def __init__(self):
+        self.list_fabi = []
+        self.cont = 0
+
+    def linha(self):
+        print(70 * '\033[34m=', '\033[m')
+
+    def pula(self):
+        print(30 * '\n')
+
+    def cadastro(self):
+        print(f'Codigo do frabicante {self.cont + 1}')
+        self.cont += 1
+        nome = str(input('Nome da \033[34mFabricante\033[m: '))
+        self.list_fabi.append(SalvarFabri(cod=self.cont, nome=nome))
