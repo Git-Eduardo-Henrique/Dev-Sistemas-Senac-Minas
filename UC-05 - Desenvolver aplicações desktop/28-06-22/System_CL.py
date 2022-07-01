@@ -1,36 +1,42 @@
 from Salvar_CL import *
 
 
-class System:
-    def __init__(self):
+class System:  # Classe para cadastro de produtos, listagem e alteração
+    # ==============================================================================================
+    def __init__(self):  # objetos e listas
         self.cont = 0
         self.lista_prod = []
-        self.entrada = System_Fabri()
+        self.entrada = SystemFabri()
 
-    def linha(self):
+    def linha(self):  # cria uma linha no terminal
         print(70 * '\033[34m=', '\033[m')
 
-    def pula(self):
+    def pula(self):  # da um grande espaço entre as linhas do terminal
         print(30 * '\n')
 
-    def cadastro(self):
+    def cadastro(self):  # cadastra um produto
         self.pula()
         self.linha()
+        # ==============================================================================================
+        # gera um codigo automaticamente
         print(f'Codigo do produto {self.cont + 1}')
         self.linha()
         self.cont += 1
+        # ==============================================================================================
+        # area para digitar o nome e quantidade para o cadastro
         nome = str(input('Nome do \033[34mProduto\033[m: '))
         quant = int(input('\033[34mQuantidade\033[m: '))
-
+        # ==============================================================================================
+        # varifica o codigo da fabricante
         fra = int(input('Codigo do Fabricante do \033[34mProduto\033[m: '))
         for fabri in range(len(self.entrada.list_fabi)):
             if fra == int(self.entrada.list_fabi[fabri].cod):
                 self.lista_prod.append(SalvarProd(cod=self.cont, nome=nome, quant=quant,
                                                   fra=self.entrada.list_fabi[fabri].nome))
             else:
-                print('Fabricante desconhecido')
-
+                print('Fabricante desconhecida')
         self.linha()
+        # ==============================================================================================
 
     def alterar(self):
         self.linha()
@@ -71,21 +77,24 @@ class System:
             self.pula()
             self.linha()
             print('Digite um \033[31mNumero!!!!\033[m')
+    # ==============================================================================================
 
 
-class System_Fabri:
-    def __init__(self):
+class SystemFabri:
+    # ==============================================================================================
+    def __init__(self):  # lista e contador
         self.list_fabi = []
         self.cont = 0
 
-    def linha(self):
+    def linha(self):  # cria uma linha no terminal
         print(70 * '\033[34m=', '\033[m')
 
-    def pula(self):
+    def pula(self):  # da um grande espaço entre as linhas do terminal
         print(30 * '\n')
 
-    def cadastro(self):
-        print(f'Codigo do frabicante {self.cont + 1}')
+    def cadastro(self):  # efetua o cadastro da fabricante
+        print(f'Codigo do frabicante {self.cont + 1}')  # gera o codigo automaticamente
         self.cont += 1
         nome = str(input('Nome da \033[34mFabricante\033[m: '))
         self.list_fabi.append(SalvarFabri(cod=self.cont, nome=nome))
+    # ==============================================================================================
