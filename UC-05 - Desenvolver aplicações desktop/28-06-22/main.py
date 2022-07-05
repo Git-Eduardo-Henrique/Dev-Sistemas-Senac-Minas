@@ -24,7 +24,7 @@ while True:
           '              4 - Entrada de produtos'
           '\n5 - Saida de produtos'
           '    6 - Listar Produto'
-          '\n7 - Historico            8 - Stair')
+          '\n7 - Historico            8 - Sair')
     Loja.linha()
     Opt = input('\033[mOpção: ')
     Loja.linha()
