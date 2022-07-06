@@ -1,17 +1,18 @@
 from Data_CL import *
 
 
-class Menu:
+class Menu:  # cria o menu do programa principal
     def __init__(self):
+        # objeto para a classe banco
         self.data = Data()
 
-    def linha(self):
+    def linha(self):  # cria uma linha
         print(70 * '\033[34m=\033[m')
 
-    def pula(self):
+    def pula(self):  # da um grande espaço entre as linhas
         print(30 * '\n')
 
-    def rodar(self):
+    def rodar(self):  # roda o menu principal
         # ===========================================================================================================
         while True:
             # ===========================================================================================================
