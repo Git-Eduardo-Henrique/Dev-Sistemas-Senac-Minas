@@ -15,12 +15,12 @@ class Menu:
 
     def rodar(self):
         # objetos
-        Fabi = SystemFabri()
+        '''Fabi = SystemFabri()
         compra = CompraProd()
         Venda = VendaProd()
         compra.entrada = Loja
         Venda.entrada = Loja
-        Loja.entrada = Fabi
+        Loja.entrada = Fabi'''
 
         # loop principal
         # =====================================================================
@@ -44,10 +44,14 @@ class Menu:
             # =====================================================================
             if Opt.isnumeric():
                 if int(Opt) == 1:
-                    Loja.cadastro()
+                    nome = str(input('Nome do \033[34mProduto\033[m: '))
+                    quant = int(input('\033[34mQuantidade\033[m: '))
+                    fra = int(input('Codigo do Fabricante do \033[34mProduto\033[m: '))
+                    self.data.cadastro_produto(nome=nome, quant=quant, fabri=fra)
                     self.pula()
                 elif int(Opt) == 2:
-                    Fabi.cadastro()
+                    nome = str(input('Nome da \033[34mFabricante\033[m: '))
+                    self.data.cadastro_fabricante(nome)
                 elif int(Opt) == 3:
                     Loja.alterar()
                     Loja.pula()
