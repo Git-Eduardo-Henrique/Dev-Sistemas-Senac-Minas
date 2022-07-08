@@ -1,5 +1,3 @@
-from Controlar_CL import *
-from System_CL import *
 from Data_CL import Data
 
 
@@ -14,14 +12,6 @@ class Menu:
         print(30 * '\n')
 
     def rodar(self):
-        # objetos
-        '''Fabi = SystemFabri()
-        compra = CompraProd()
-        Venda = VendaProd()
-        compra.entrada = Loja
-        Venda.entrada = Loja
-        Loja.entrada = Fabi'''
-
         # loop principal
         # =====================================================================
         while True:
@@ -53,14 +43,15 @@ class Menu:
                     nome = str(input('Nome da \033[34mFabricante\033[m: '))
                     self.data.cadastro_fabricante(nome)
                 elif int(Opt) == 3:
-                    Loja.alterar()
-                    Loja.pula()
+                    cod = input('insira o codigo do produto: ')
+                    valor = input('novo nome do produto: ')
+                    self.data.altera_produtos(cod=cod, mudar='descricao', valor=valor)
                 elif int(Opt) == 4:
-                    compra.compra_quant()
+                    self.pula()
                 elif int(Opt) == 5:
-                    Venda.venda_quant()
+                    self.pula()
                 elif int(Opt) == 6:
-                    Loja.listar()
+                    self.data.listar()
                 elif int(Opt) == 7:
                     # =====================================================================
                     # menu de seleção das opções de historico
@@ -93,10 +84,10 @@ class Menu:
                 elif int(Opt) == 8:
                     break
                 else:
-                    Loja.pula()
+                    self.pula()
                     print('selecione uma opção \033[31mVALIDA\033[m')
             else:
-                Loja.pula()
+                self.pula()
                 print('Digite um \033[31mNumero!!!!!!!!\033[m')
             # =====================================================================
         # =====================================================================
