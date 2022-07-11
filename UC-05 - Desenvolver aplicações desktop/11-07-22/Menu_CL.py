@@ -1,27 +1,17 @@
 from Data_CL import Data
-import tkinter as tk
+from tkinter import *
 
 
 class Menu:
     def __init__(self):
         self.data = Data()
-
-    def linha(self):  # cria uma linha no terminal
-        print(70 * '\033[34m=', '\033[m')
-
-    def pula(self):  # da um grande espaço entre as linhas do terminal
-        print(30 * '\n')
+        self.window = Tk()
 
     def rodar(self):
-        # loop principal
         # =====================================================================
-        while True:
             # menu de seleção
-            self.linha()
             print(20 * ' ', 'Lojão das fabricantes')
-            self.linha()
             print('selecione uma \033[34mopção:')
-            self.linha()
             print('1 - Cadastrar Produto    2 - Cadastrar Fabri'
                   '\n3 - Alterar / Deletar'
                   '              4 - Entrada de produtos'
