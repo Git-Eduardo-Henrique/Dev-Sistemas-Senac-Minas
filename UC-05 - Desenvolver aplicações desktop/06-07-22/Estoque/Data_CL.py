@@ -35,8 +35,13 @@ class Data:
                   f'\nfabricante: {prod[3]}')
 
     def altera_produtos(self, cod, mudar, valor):
-        try:
-            self.cursor.execute(f'update Produtos set {mudar} = "{valor}" where id = {cod}')
-            self.database.commit()
-        except:
-            print('codigo não encontrado')
+        self.cursor.execute(f'update Produtos set {mudar} = "{valor}" where id = {cod}')
+        self.database.commit()
+
+    def compra_venda(self, cod, mudar, quant):
+        self.cursor.execute(f'update Produtos set quantidade = quantidade {mudar} {quant} where id = {cod}')
+        self.database.commit()
+
+    def deletar_produtos(self, cod):
+        self.cursor.execute(f'delete from Produtos where id = "{cod}"')
+        self.database.commit()
