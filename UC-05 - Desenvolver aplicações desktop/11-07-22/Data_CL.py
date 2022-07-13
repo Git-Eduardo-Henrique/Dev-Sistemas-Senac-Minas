@@ -1,4 +1,5 @@
 import mysql.connector as mys
+from tkinter.messagebox import *
 from Salvar_CL import *
 
 
@@ -12,11 +13,13 @@ class Data:
         veri = self.cursor.fetchall()
 
         for cod in veri:
-            if fabri == cod[0]:
+            if int(fabri) == cod[0]:
                 produto = SalvarProd(nome, quant, fabri)
                 self.cursor.execute(f'insert into Produtos (descricao, quantidade, codigo_fabri) '
                                     f'values ("{produto.nome}", "{produto.quant}", "{produto.fra}")')
                 self.database.commit()
+            else:
+                showerror('Erro de id', 'fabricante desconhecido, verifique e tente novamente')
 
     def cadastro_fabricante(self, nome):
         fabricante = SalvarFabri(nome)
