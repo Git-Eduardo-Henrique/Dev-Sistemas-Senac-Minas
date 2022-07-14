@@ -1,7 +1,6 @@
 from Back_CL import *
 from tkinter import *
 from tkinter import ttk
-import posiciona
 
 
 class Menu:
@@ -13,10 +12,6 @@ class Menu:
         self.window.geometry('960x540')
         self.window.resizable(False, False)
         self.window.title('PagMenos')
-        # ========================================================================================
-        self.window.bind('<Button-1>', posiciona.inicio_place)
-        self.window.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg, self.window))
-        self.window.bind('<Button-2>', lambda arg: posiciona.para_geometry(self.window))
         # ========================================================================================
         # menu principal
         img_menu_botao = PhotoImage(file='Imagens/menu.png')
