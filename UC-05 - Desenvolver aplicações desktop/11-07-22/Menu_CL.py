@@ -1,5 +1,6 @@
 from Back_CL import *
 from tkinter import *
+from tkinter import ttk
 import posiciona
 
 
@@ -11,6 +12,7 @@ class Menu:
         self.window = Tk()
         self.window.geometry('960x540')
         self.window.resizable(False, False)
+        self.window.title('PagMenos')
         # ========================================================================================
         self.window.bind('<Button-1>', posiciona.inicio_place)
         self.window.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg, self.window))
@@ -139,6 +141,26 @@ class Menu:
                               bg=self.fundo, command=lambda: [self.frame_prod_listar.forget(),
                                                               self.frame_menu_prod.pack()])
         botao_voltar.place(width=32, height=31, x=30, y=12)
+        # ====================================================================================
+        # =============================================================================
+        tabela = ttk.Treeview(self.frame_prod_listar, columns=["id", "nome", "quant", "fabri"], selectmode='browse',
+                              show='headings')
+        tabela.place(width=823, height=475, x=65, y=69)
+        # ==============================================================================
+        rolar = ttk.Scrollbar(self.frame_prod_listar, orient='vertical', command=tabela.yview())
+        rolar.place(height=470, x=886, y=70)
+        # ==============================================================================
+        tabela.config(xscrollcommand=rolar.set)
+        tabela.column("id", width=10)
+        tabela.column("nome", width=150)
+        tabela.column("quant", width=30)
+        tabela.column("fabri", width=150)
+        tabela.heading("id", text='Id')
+        tabela.heading("nome", text='Nome do produto')
+        tabela.heading("quant", text='Quantidade')
+        tabela.heading("fabri", text='Fabricante')
+        self.back.listar(tabela)
+        # ==============================================================================
         # ========================================================================================
         # tela de alterar produto
         self.frame_prod_alterar = Frame(self.window)

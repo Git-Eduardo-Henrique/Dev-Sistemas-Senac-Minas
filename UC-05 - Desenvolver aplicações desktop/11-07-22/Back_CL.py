@@ -28,3 +28,6 @@ class BackEnd:
             nome.delete(0, 'end')
             frame_cada.forget()
             frame_menu.pack()
+
+    def listar(self, frame):
+        self.data.listar(frame)

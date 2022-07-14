@@ -9,33 +9,26 @@ class Data:
         self.cursor = self.database.cursor()
 
     def cadastro_produto(self, nome, quant, fabri):
-        self.cursor.execute('select codigo from Fabricantes')
-        veri = self.cursor.fetchall()
-
-        for cod in veri:
-            if int(fabri) == cod[0]:
-                produto = SalvarProd(nome, quant, fabri)
-                self.cursor.execute(f'insert into Produtos (descricao, quantidade, codigo_fabri) '
-                                    f'values ("{produto.nome}", "{produto.quant}", "{produto.fra}")')
-                self.database.commit()
-            else:
-                showerror('Erro de id', 'fabricante desconhecido, verifique e tente novamente')
+        try:
+            produto = SalvarProd(nome, quant, fabri)
+            self.cursor.execute(f'insert into Produtos (descricao, quantidade, codigo_fabri) '
+                                f'values ("{produto.nome}", "{produto.quant}", "{produto.fra}")')
+            self.database.commit()
+        except:
+            showerror('Erro de id', 'fabricante desconhecido, verifique e tente novamente')
 
     def cadastro_fabricante(self, nome):
         fabricante = SalvarFabri(nome)
         self.cursor.execute(f'insert into Fabricantes (nome) values ("{fabricante.nome}")')
         self.database.commit()
 
-    def listar(self):
+    def listar(self, tabela):
         self.cursor.execute('select Produtos.id, Produtos.descricao,Produtos.quantidade, Fabricantes.nome '
                             'from Produtos, Fabricantes where Fabricantes.codigo = Produtos.codigo_fabri')
         produtos = self.cursor.fetchall()
         for prod in produtos:
-            print(70 * '\033[34m=', '\033[m')
-            print(f'codigo: {prod[0]}'
-                  f'\nproduto: {prod[1]}'
-                  f'\nquantidade: {prod[2]}'
-                  f'\nfabricante: {prod[3]}')
+            valores = [prod[0], prod[1], prod[2], prod[3]]
+            tabela.insert('', 'end', values=valores, tags='1')
 
     def altera_produtos(self, cod, mudar, valor):
         self.cursor.execute(f'update Produtos set {mudar} = "{valor}" where id = {cod}')
