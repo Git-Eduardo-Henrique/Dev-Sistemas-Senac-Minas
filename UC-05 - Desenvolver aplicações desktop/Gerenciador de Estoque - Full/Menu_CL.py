@@ -12,6 +12,9 @@ class Menu:
         self.window.geometry('960x540')
         self.window.resizable(False, False)
         self.window.title('PagMenos')
+        self.window.iconbitmap('Imagens/pagmenos.ico')
+        style = ttk.Style()
+        style.configure("Treeview.Heading", font=('arial', 20))
         # ========================================================================================
         # menu principal
         img_menu_botao = PhotoImage(file='Imagens/menu.png')
@@ -66,7 +69,8 @@ class Menu:
                                                                    self.frame_menu_prod.forget()])
         botao_prod_listar = Button(self.frame_menu_prod, image=img_prod_listar, bd=0, activebackground=self.fundo,
                                    bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
-                                                                   self.frame_prod_listar.pack()])
+                                                                   self.frame_prod_listar.pack(),
+                                                                   self.back.listar(tabela)])
         botao_prod_alterar = Button(self.frame_menu_prod, image=img_prod_alterar, bd=0, activebackground=self.fundo,
                                     bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
                                                                     self.frame_prod_alterar.pack()])
@@ -154,7 +158,6 @@ class Menu:
         tabela.heading("nome", text='Nome do produto')
         tabela.heading("quant", text='Quantidade')
         tabela.heading("fabri", text='Fabricante')
-        self.back.listar(tabela)
         # ==============================================================================
         # ========================================================================================
         # tela de alterar produto

@@ -14,6 +14,7 @@ class Data:
             self.cursor.execute(f'insert into Produtos (descricao, quantidade, codigo_fabri) '
                                 f'values ("{produto.nome}", "{produto.quant}", "{produto.fra}")')
             self.database.commit()
+            showinfo('Cadastrado', 'Produto cadastrado com sucesso')
         except:
             showerror('Erro de id', 'fabricante desconhecido, verifique e tente novamente')
 
@@ -26,6 +27,7 @@ class Data:
         self.cursor.execute('select Produtos.id, Produtos.descricao,Produtos.quantidade, Fabricantes.nome '
                             'from Produtos, Fabricantes where Fabricantes.codigo = Produtos.codigo_fabri')
         produtos = self.cursor.fetchall()
+        tabela.delete(*tabela.get_children())
         for prod in produtos:
             valores = [prod[0], prod[1], prod[2], prod[3]]
             tabela.insert('', 'end', values=valores, tags='1')
