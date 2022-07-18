@@ -47,4 +47,4 @@ select * from Produtos;
 select * from Fabricantes;
 select * from Compras_Produtos;
 select * from Saida_Produtos;
-# update Produtos, Saida set quantidade = quantidade + 10 where id = 1;
+update Produtos set descricao = 'sus', valor = 1000 where id = 1;

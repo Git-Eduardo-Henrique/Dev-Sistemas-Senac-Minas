@@ -2,6 +2,7 @@ from Back_CL import *
 from tkinter import *
 from tkinter import ttk
 import posiciona
+import webbrowser as web
 
 
 class Menu:  # classe que cria todo o front end
@@ -19,7 +20,7 @@ class Menu:  # classe que cria todo o front end
         # =======================================================================================
         # objetos e outras variaveis uteis
         style = ttk.Style()
-        style.configure("Treeview.Heading", font=('arial', 20))
+        style.configure("Treeview.Heading", font=('arial', 15, 'bold'))
         self.back = BackEnd()
         self.fundo = '#728BB7'
         self.branco = '#ffffff'
@@ -53,6 +54,10 @@ class Menu:  # classe que cria todo o front end
         img_confirmar = PhotoImage(file='Imagens/botao_confirma.PNG')
         img_recarrega = PhotoImage(file='Imagens/recarregar.PNG')
         img_botao_alterar = PhotoImage(file='Imagens/botao_alterar.PNG')
+        img_github = PhotoImage(file='Imagens/github.png')
+        img_insta = PhotoImage(file='Imagens/instagram.png')
+        img_twitter = PhotoImage(file='Imagens/twitter.png')
+        img_face = PhotoImage(file='Imagens/facebook.png')
         # ==========================================================================================
         # MENU PRINCIPAL
         # ----------------------------------------------------------------------------------------
@@ -67,10 +72,22 @@ class Menu:  # classe que cria todo o front end
         botao_prod = Button(self.frame_menu_ini, image=img_botao_prod, bd=0, activebackground=self.fundo,
                             command=lambda: [self.frame_menu_prod.pack(), self.frame_menu_ini.forget(),
                                              self.frame_menu_cadas.forget()])
+        botao_github = Button(self.frame_menu_ini, image=img_github, bd=0, activebackground=self.fundo, bg=self.fundo,
+                              command=lambda: web.open('https://github.com/Git-Eduardo-Henrique'))
+        botao_insta = Button(self.frame_menu_ini, image=img_insta, bd=0, activebackground=self.fundo, bg=self.fundo,
+                             command=lambda: web.open('https://www.instagram.com'))
+        botao_twitter = Button(self.frame_menu_ini, image=img_twitter, bd=0, activebackground=self.fundo, bg=self.fundo,
+                               command=lambda: web.open('https://twitter.com/?lang=pt-br'))
+        botao_face = Button(self.frame_menu_ini, image=img_face, bd=0, activebackground=self.fundo, bg=self.fundo,
+                            command=lambda: web.open('https://pt-br.facebook.com'))
         # ----------------------------------------------------------------------------------------
         #  Posições
-        botao_cadas.place(width=140, height=45, x=517, y=325)
-        botao_prod.place(width=138, height=50, x=789, y=326)
+        botao_cadas.place(width=140, height=45, x=510, y=325)
+        botao_prod.place(width=138, height=50, x=780, y=326)
+        botao_insta.place(x=530, y=460)
+        botao_face.place(x=578, y=460)
+        botao_github.place(x=626, y=460)
+        botao_twitter.place(x=674, y=460)
         menu.pack()
         # ----------------------------------------------------------------------------------------
         # ============================================================================================
@@ -128,6 +145,7 @@ class Menu:  # classe que cria todo o front end
         entry_nome = Entry(self.frame_cadas_prod, font='Arial 15 bold', bd=0)
         entry_quant = Entry(self.frame_cadas_prod, font='Arial 15 bold', bd=0)
         entry_id = Entry(self.frame_cadas_prod, font='Arial 15 bold', bd=0)
+        entry_valor = Entry(self.frame_cadas_prod, font='Arial 15 bold', bd=0)
         # ----------------------------------------------------------------------------------------
         # Button's
         botao_menu = Button(self.frame_cadas_prod, image=img_menu_botao, bd=0, activebackground=self.fundo,
@@ -138,14 +156,15 @@ class Menu:  # classe que cria todo o front end
                                                               self.frame_menu_cadas.pack()])
         botao_confirma = Button(self.frame_cadas_prod, image=img_confirmar, bd=0, activebackground=self.fundo,
                                 bg=self.fundo, command=lambda: self.back.cadastrar_produto(entry_nome, entry_quant,
-                                                                                           entry_id,
+                                                                                           entry_id, entry_valor,
                                                                                            self.frame_cadas_prod,
                                                                                            self.frame_menu_cadas))
         # ----------------------------------------------------------------------------------------
         #  Posições
-        entry_id.place(width=77, height=25, x=475, y=234)
-        entry_nome.place(width=409, height=26, x=129, y=178)
+        entry_id.place(width=75, height=24, x=199, y=281)
+        entry_nome.place(width=409, height=26, x=129, y=176)
         entry_quant.place(width=137, height=23, x=168, y=234)
+        entry_valor.place(width=117, height=26, x=414, y=232)
         botao_voltar.place(width=32, height=31, x=40, y=12)
         botao_confirma.place(width=122, height=42, x=420, y=313)
         cadas_prod.pack()
@@ -158,6 +177,7 @@ class Menu:  # classe que cria todo o front end
         # ----------------------------------------------------------------------------------------
         #  Entry's
         entry_nome_fabri = Entry(self.frame_cadas_fabri, font='Arial 15 bold', bd=0)
+        entry_cnpj = Entry(self.frame_cadas_fabri, font='Arial 15 bold', bd=0)
         # ----------------------------------------------------------------------------------------
         #  Button's
         botao_menu_cadas = Button(self.frame_cadas_fabri, image=img_menu_botao, bd=0, activebackground=self.fundo,
@@ -169,12 +189,13 @@ class Menu:  # classe que cria todo o front end
                                                               self.frame_menu_cadas.pack()])
         botao_confirma_fabri = Button(self.frame_cadas_fabri, image=img_confirmar, bd=0, activebackground=self.fundo,
                                       bg=self.fundo,
-                                      command=lambda: self.back.cadastrar_fabricante(entry_nome_fabri,
+                                      command=lambda: self.back.cadastrar_fabricante(entry_nome_fabri,  entry_cnpj,
                                                                                      self.frame_cadas_fabri,
                                                                                      self.frame_menu_cadas))
         # ----------------------------------------------------------------------------------------
         #  Posições
         botao_confirma_fabri.place(width=116, height=40, x=422, y=272)
+        entry_cnpj.place(width=356, height=26, x=132, y=223)
         entry_nome_fabri.place(width=420, height=23, x=130, y=178)
         botao_voltar.place(width=32, height=31, x=40, y=12)
         cadas_fabri.pack()
@@ -196,17 +217,19 @@ class Menu:  # classe que cria todo o front end
                                   bg='black', command=lambda: [self.back.listar(tabela)])
         # ----------------------------------------------------------------------------------------
         #  Treeview
-        tabela = ttk.Treeview(self.frame_prod_listar, columns=["id", "nome", "quant", "fabri"], selectmode='browse',
-                              show='headings')
+        tabela = ttk.Treeview(self.frame_prod_listar, columns=["id", "nome", "quant", "valor", "fabri"],
+                              selectmode='browse', show='headings')
         rolar = ttk.Scrollbar(self.frame_prod_listar, orient='vertical', command=tabela.yview())
         tabela.config(xscrollcommand=rolar.set)
-        tabela.column("id", width=10)
-        tabela.column("nome", width=150)
+        tabela.column("id", width=2)
+        tabela.column("nome", width=70)
         tabela.column("quant", width=30)
-        tabela.column("fabri", width=150)
+        tabela.column("valor", width=30)
+        tabela.column("fabri", width=70)
         tabela.heading("id", text='Id')
         tabela.heading("nome", text='Nome do produto')
         tabela.heading("quant", text='Quantidade')
+        tabela.heading("valor", text='Valores')
         tabela.heading("fabri", text='Fabricante')
         # ----------------------------------------------------------------------------------------
         #  Posições
@@ -225,6 +248,7 @@ class Menu:  # classe que cria todo o front end
         #  Entry's
         entry_id_prod = Entry(self.frame_prod_alterar, font='Arial 15 bold', bd=0)
         entry_novo_nome = Entry(self.frame_prod_alterar, font='Arial 15 bold', bd=0)
+        entry_novo_valor = Entry(self.frame_prod_alterar, font='Arial 15 bold', bd=0)
         # ----------------------------------------------------------------------------------------
         # Button's
         botao_menu_cadas = Button(self.frame_prod_alterar, image=img_menu_botao, bd=0, activebackground=self.branco,
@@ -237,13 +261,14 @@ class Menu:  # classe que cria todo o front end
         botao_confirma_fabri = Button(self.frame_prod_alterar, image=img_botao_alterar, bd=0,
                                       activebackground=self.fundo, bg=self.fundo,
                                       command=lambda: self.back.alterar_prod(entry_id_prod, entry_novo_nome,
-                                                                             self.frame_prod_alterar,
+                                                                             entry_novo_valor, self.frame_prod_alterar,
                                                                              self.frame_menu_prod))
         # ----------------------------------------------------------------------------------------
         #  Posições
         botao_confirma_fabri.place(width=125, height=40, x=785, y=270)
         entry_novo_nome.place(width=425, height=22, x=490, y=190)
-        entry_id_prod.place(width=81, height=25, x=557, y=145)
+        entry_id_prod.place(width=81, height=25, x=552, y=147)
+        entry_novo_valor.place(width=108, height=25, x=798, y=146)
         botao_voltar.place(width=32, height=31, x=40, y=12)
         prod_alterar.pack()
         # ----------------------------------------------------------------------------------------
