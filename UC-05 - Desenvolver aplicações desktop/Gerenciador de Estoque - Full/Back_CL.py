@@ -5,6 +5,14 @@ class BackEnd:  # classe para realizar o back end
     def __init__(self):
         self.data = Data()
 
+    def login(self, nome, codigo, frame1, frame2):
+        if self.data.login(nome=nome.get(), codigo=codigo.get()):
+            showinfo('Login Realizado', 'Login efetuado com sucesso!')
+            frame1.forget()
+            frame2.pack()
+        else:
+            showerror('Erro Login', 'Funcionario desconhecido, tente novamente!')
+
     def cadastrar_produto(self, nome, quant, fabri, valor, frame_cada, frame_menu):
         # cria uma janela para confirmar o cadastro de produtos
         if askyesno('Confirmar', 'Confirmar dados para o cadastro?'):

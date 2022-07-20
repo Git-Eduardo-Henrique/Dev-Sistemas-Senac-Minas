@@ -8,6 +8,19 @@ class Data:  # faz a conexão com o banco de dados e usa seus dados
         self.database = mys.connect(host='localhost', user='root', password='q1w2e3', database='Estoque')
         self.cursor = self.database.cursor()
 
+    def login(self, nome, codigo):
+        self.cursor.execute('select * from Funcionario')
+        func = self.cursor.fetchall()
+        veri = False
+        for i in func:
+            if i[0] == nome:
+                if i[1] == codigo:
+                    veri = True
+        if veri:
+            return True
+        else:
+            return False
+
     def cadastro_produto(self, nome, quant, fabri, valor):  # faz o cadastro do produto no banco
         try:
             produto = SalvarProd(nome, quant, fabri, valor)

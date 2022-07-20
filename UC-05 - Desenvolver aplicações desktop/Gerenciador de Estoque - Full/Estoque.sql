@@ -1,6 +1,13 @@
-# drop database estoque;
+drop database estoque;
 create database estoque;
 use estoque;
+# =================================================  tabela Funcionario =======================================================================
+create table Funcionario (
+nome varchar(70) not null,
+codigo int not null,
+primary key(codigo));
+
+insert into Funcionario value ("Eduardo", 010203);
 # =================================================  tabela Fabricante =======================================================================
 create table Fabricantes (
 codigo int auto_increment, 
@@ -47,4 +54,3 @@ select * from Produtos;
 select * from Fabricantes;
 select * from Compras_Produtos;
 select * from Saida_Produtos;
-update Produtos set descricao = 'sus', valor = 1000 where id = 1;

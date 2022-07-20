@@ -13,7 +13,7 @@ class Menu:  # classe que cria todo o front end
         self.window.geometry('960x540')
         self.window.resizable(False, False)
         self.window.title('PagMenos')
-        self.window.iconbitmap('Imagens/pagmenos.ico')
+        self.window.iconbitmap('Imagens/Frames/pagmenos.ico')
         self.window.bind('<Button-1>', posiciona.inicio_place)
         self.window.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg, self.window))
         self.window.bind('<Button-2>', lambda arg: posiciona.para_geometry(self.window))
@@ -26,38 +26,64 @@ class Menu:  # classe que cria todo o front end
         self.branco = '#ffffff'
         # ========================================================================================
         # frames
+        self.frame_inicial = Frame(self.window)
+        self.frame_login = Frame(self.window)
         self.frame_menu_ini = Frame(self.window)
-        self.frame_menu_ini.pack()
         self.frame_menu_cadas = Frame(self.window)
         self.frame_menu_prod = Frame(self.window)
         self.frame_cadas_prod = Frame(self.window)
         self.frame_cadas_fabri = Frame(self.window)
         self.frame_prod_listar = Frame(self.window)
         self.frame_prod_alterar = Frame(self.window)
+        self.frane_opt_alt = Frame(self.window)
+        self.frame_inicial.pack()
+        self.frame_login.pack()
         # ========================================================================================
         # imagens
-        img1 = PhotoImage(file='Imagens/1.png')
-        img2 = PhotoImage(file='Imagens/2.png')
-        img3 = PhotoImage(file='Imagens/3.png')
-        img4 = PhotoImage(file='Imagens/4.png')
-        img5 = PhotoImage(file='Imagens/5.png')
-        img6 = PhotoImage(file='Imagens/6.png')
-        img7 = PhotoImage(file='Imagens/7.png')
-        img_menu_botao = PhotoImage(file='Imagens/menu.png')
-        img_voltar_botao = PhotoImage(file='Imagens/voltar.png')
-        img_botao_cadas = PhotoImage(file='Imagens/botao_cadas.PNG')
-        img_botao_prod = PhotoImage(file='Imagens/botao_prod.PNG')
-        img_cadas_prod = PhotoImage(file='Imagens/botao_cadas_prod.PNG')
-        img_cadas_fabri = PhotoImage(file='Imagens/botao_cadas_fabri.PNG')
-        img_prod_listar = PhotoImage(file='Imagens/botao_prod_listar.PNG')
-        img_prod_alterar = PhotoImage(file='Imagens/botao_prod_alterar.PNG')
-        img_confirmar = PhotoImage(file='Imagens/botao_confirma.PNG')
-        img_recarrega = PhotoImage(file='Imagens/recarregar.PNG')
-        img_botao_alterar = PhotoImage(file='Imagens/botao_alterar.PNG')
-        img_github = PhotoImage(file='Imagens/github.png')
-        img_insta = PhotoImage(file='Imagens/instagram.png')
-        img_twitter = PhotoImage(file='Imagens/twitter.png')
-        img_face = PhotoImage(file='Imagens/facebook.png')
+        img0 = PhotoImage(file='Imagens/Frames/inicial.png')
+        img_lo = PhotoImage(file='Imagens/Frames/login.png')
+        img1 = PhotoImage(file='Imagens/Frames/Principal.png')
+        img2 = PhotoImage(file='Imagens/Frames/Cadastrar.png')
+        img3 = PhotoImage(file='Imagens/Frames/Opt_Produtos.png')
+        img4 = PhotoImage(file='Imagens/Frames/Cadas_Prod.png')
+        img5 = PhotoImage(file='Imagens/Frames/Cadas_Fabri.png')
+        img6 = PhotoImage(file='Imagens/Frames/Listagem.png')
+        img7 = PhotoImage(file='Imagens/Frames/Altr_Prod.png')
+        img8 = PhotoImage(file='Imagens/Frames/Opt_Alterar.png')
+        img_menu_botao = PhotoImage(file='Imagens/botoes/menu.png')
+        img_voltar_botao = PhotoImage(file='Imagens/botoes/voltar.png')
+        img_botao_cadas = PhotoImage(file='Imagens/botoes/botao_cadas.PNG')
+        img_botao_prod = PhotoImage(file='Imagens/botoes/botao_prod.PNG')
+        img_cadas_prod = PhotoImage(file='Imagens/botoes/botao_cadas_prod.PNG')
+        img_cadas_fabri = PhotoImage(file='Imagens/botoes/botao_cadas_fabri.PNG')
+        img_prod_listar = PhotoImage(file='Imagens/botoes/botao_prod_listar.PNG')
+        img_prod_alterar = PhotoImage(file='Imagens/botoes/botao_prod_alterar.PNG')
+        img_confirmar = PhotoImage(file='Imagens/botoes/botao_confirma.PNG')
+        img_recarrega = PhotoImage(file='Imagens/botoes/recarregar.PNG')
+        img_botao_alterar = PhotoImage(file='Imagens/botoes/botao_alterar.PNG')
+        img_github = PhotoImage(file='Imagens/botoes/github.png')
+        img_insta = PhotoImage(file='Imagens/botoes/instagram.png')
+        img_twitter = PhotoImage(file='Imagens/botoes/twitter.png')
+        img_face = PhotoImage(file='Imagens/botoes/facebook.png')
+        img_bt_login = PhotoImage(file='Imagens/botoes/botao_login.PNG')
+        # ==========================================================================================
+        # INICIAL
+        inicial = Label(self.frame_inicial, image=img0)
+        inicial.pack()
+        # ==========================================================================================
+        # LOGIN
+        login = Label(self.frame_login, image=img_lo)
+        login.pack()
+        # ----------------------------------------------------------------------------------------
+        entry_nome_func = Entry(self.frame_login, font='Arial 15 bold', bd=0)
+        entry_codigo_as = Entry(self.frame_login, font='Arial 15 bold', bd=0)
+        # ----------------------------------------------------------------------------------------
+        botao_login = Button(self.frame_login, image=img_bt_login, bd=0, activebackground=self.branco, command=lambda:
+                             [self.back.login(entry_nome_func, entry_codigo_as, self.frame_login, self.frame_menu_ini)])
+        # ----------------------------------------------------------------------------------------
+        entry_nome_func.place(width=399, height=28, x=280, y=215)
+        entry_codigo_as.place(width=399, height=28, x=280, y=316)
+        botao_login.place(x=330, y=392)
         # ==========================================================================================
         # MENU PRINCIPAL
         # ----------------------------------------------------------------------------------------
@@ -84,10 +110,10 @@ class Menu:  # classe que cria todo o front end
         #  Posições
         botao_cadas.place(width=140, height=45, x=510, y=325)
         botao_prod.place(width=138, height=50, x=780, y=326)
-        botao_insta.place(x=530, y=460)
-        botao_face.place(x=578, y=460)
-        botao_github.place(x=626, y=460)
-        botao_twitter.place(x=674, y=460)
+        botao_insta.place(x=625, y=460)
+        botao_face.place(x=673, y=460)
+        botao_github.place(x=721, y=460)
+        botao_twitter.place(x=769, y=460)
         menu.pack()
         # ----------------------------------------------------------------------------------------
         # ============================================================================================
@@ -127,12 +153,12 @@ class Menu:  # classe que cria todo o front end
                                                                    self.back.listar(tabela)])
         botao_prod_alterar = Button(self.frame_menu_prod, image=img_prod_alterar, bd=0, activebackground=self.fundo,
                                     bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
-                                                                    self.frame_prod_alterar.pack()])
+                                                                    self.frane_opt_alt.pack()])
         # ----------------------------------------------------------------------------------------
         #  Posições
         botao_prod_listar.place(width=230, height=79, x=420, y=245)
         botao_menu_cadas.place(width=32, height=31, x=9, y=11)
-        botao_prod_alterar.place(width=196, height=70, x=730, y=247)
+        botao_prod_alterar.place(width=196, height=70, x=770, y=410)
         menu_prod.pack()
         # ----------------------------------------------------------------------------------------
         # ============================================================================================
@@ -273,4 +299,9 @@ class Menu:  # classe que cria todo o front end
         prod_alterar.pack()
         # ----------------------------------------------------------------------------------------
         # ==========================================================================================
+        # MENU ALTERAR
+        opt_alter = Label(self.frane_opt_alt, image=img8)
+        opt_alter.pack()
+        # ==========================================================================================
+        self.window.after(2000, self.frame_inicial.forget)
         self.window.mainloop()
