@@ -14,7 +14,7 @@ class Data:  # faz a conexão com o banco de dados e usa seus dados
         veri = False
         for i in func:
             if i[0] == nome:
-                if i[1] == codigo:
+                if i[1] == int(codigo):
                     veri = True
         if veri:
             return True
