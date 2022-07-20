@@ -40,5 +40,12 @@ class BackEnd:  # classe para realizar o back end
             frame_cada.forget()
             frame_menu.pack()
 
+    def deletar_prod(self, cod, frame1, frame2):
+        if askyesno('Confirmar', 'Confirmar alteração?'):
+            self.data.deletar_produtos(cod=cod.get())
+            frame1.forget()
+            frame2.pack()
+            cod.delete(0, 'end')
+
     def listar(self, frame):  # lista todos os produtos
         self.data.listar(frame)

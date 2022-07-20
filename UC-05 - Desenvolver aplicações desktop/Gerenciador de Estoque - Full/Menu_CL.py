@@ -36,6 +36,7 @@ class Menu:  # classe que cria todo o front end
         self.frame_prod_listar = Frame(self.window)
         self.frame_prod_alterar = Frame(self.window)
         self.frane_opt_alt = Frame(self.window)
+        self.frame_dele_prod = Frame(self.window)
         self.frame_inicial.pack()
         self.frame_login.pack()
         # ========================================================================================
@@ -50,6 +51,7 @@ class Menu:  # classe que cria todo o front end
         img6 = PhotoImage(file='Imagens/Frames/Listagem.png')
         img7 = PhotoImage(file='Imagens/Frames/Altr_Prod.png')
         img8 = PhotoImage(file='Imagens/Frames/Opt_Alterar.png')
+        img9 = PhotoImage(file='Imagens/Frames/Deletar_Prod.png')
         img_menu_botao = PhotoImage(file='Imagens/botoes/menu.png')
         img_voltar_botao = PhotoImage(file='Imagens/botoes/voltar.png')
         img_botao_cadas = PhotoImage(file='Imagens/botoes/botao_cadas.PNG')
@@ -66,6 +68,9 @@ class Menu:  # classe que cria todo o front end
         img_twitter = PhotoImage(file='Imagens/botoes/twitter.png')
         img_face = PhotoImage(file='Imagens/botoes/facebook.png')
         img_bt_login = PhotoImage(file='Imagens/botoes/botao_login.PNG')
+        img_bt_modi = PhotoImage(file='Imagens/botoes/botao_mod_prod.PNG')
+        img_delete = PhotoImage(file='Imagens/botoes/botao_deletar.PNG')
+        img_bt_dele = PhotoImage(file='Imagens/botoes/Deletar_bt.PNG')
         # ==========================================================================================
         # INICIAL
         inicial = Label(self.frame_inicial, image=img0)
@@ -78,8 +83,9 @@ class Menu:  # classe que cria todo o front end
         entry_nome_func = Entry(self.frame_login, font='Arial 15 bold', bd=0)
         entry_codigo_as = Entry(self.frame_login, font='Arial 15 bold', bd=0)
         # ----------------------------------------------------------------------------------------
-        botao_login = Button(self.frame_login, image=img_bt_login, bd=0, activebackground=self.branco, command=lambda:
-                             [self.back.login(entry_nome_func, entry_codigo_as, self.frame_login, self.frame_menu_ini)])
+        botao_login = Button(self.frame_login, image=img_bt_login, bd=0, activebackground=self.branco, bg=self.branco,
+                             command=lambda: [self.back.login(entry_nome_func, entry_codigo_as, self.frame_login,
+                                                              self.frame_menu_ini)])
         # ----------------------------------------------------------------------------------------
         entry_nome_func.place(width=399, height=28, x=280, y=215)
         entry_codigo_as.place(width=399, height=28, x=280, y=316)
@@ -158,7 +164,7 @@ class Menu:  # classe que cria todo o front end
         #  Posições
         botao_prod_listar.place(width=230, height=79, x=420, y=245)
         botao_menu_cadas.place(width=32, height=31, x=9, y=11)
-        botao_prod_alterar.place(width=196, height=70, x=770, y=410)
+        botao_prod_alterar.place(width=196, height=70, x=767, y=410)
         menu_prod.pack()
         # ----------------------------------------------------------------------------------------
         # ============================================================================================
@@ -266,6 +272,24 @@ class Menu:  # classe que cria todo o front end
         botao_recarregar.place(width=54, height=49, x=811, y=23)
         # ----------------------------------------------------------------------------------------
         # ==========================================================================================
+        # MENU ALTERAR
+        opt_alter = Label(self.frane_opt_alt, image=img8)
+        opt_alter.pack()
+        botao_menu = Button(self.frane_opt_alt, image=img_menu_botao, bd=0, activebackground=self.branco, bg=self.branco
+                            , command=lambda: [self.frame_menu_ini.pack(), self.frane_opt_alt.forget()])
+        botao_voltar = Button(self.frane_opt_alt, image=img_voltar_botao, bd=0, activebackground=self.branco,
+                              bg=self.branco, command=lambda: [self.frane_opt_alt.forget(),
+                                                               self.frame_menu_prod.pack()])
+        botao_mod = Button(self.frane_opt_alt, image=img_bt_modi, bd=0, activebackground=self.fundo, bg=self.fundo,
+                           command=lambda: [self.frane_opt_alt.forget(), self.frame_prod_alterar.pack()])
+        botao_dele = Button(self.frane_opt_alt, image=img_delete, bd=0, activebackground=self.fundo, bg=self.fundo,
+                            command=lambda: [self.frane_opt_alt.forget(), self.frame_dele_prod.pack()])
+
+        botao_menu.place(width=32, height=31, x=9, y=11)
+        botao_voltar.place(width=32, height=31, x=40, y=12)
+        botao_mod.place(x=428, y=234)
+        botao_dele.place(x=709, y=234)
+        # ==========================================================================================
         # ALTERAR PRODUTO
         # ----------------------------------------------------------------------------------------
         #  Labels
@@ -283,7 +307,7 @@ class Menu:  # classe que cria todo o front end
         botao_menu_cadas.place(width=32, height=31, x=9, y=11)
         botao_voltar = Button(self.frame_prod_alterar, image=img_voltar_botao, bd=0, activebackground=self.branco,
                               bg=self.branco, command=lambda: [self.frame_prod_alterar.forget(),
-                                                               self.frame_menu_prod.pack()])
+                                                               self.frane_opt_alt.pack()])
         botao_confirma_fabri = Button(self.frame_prod_alterar, image=img_botao_alterar, bd=0,
                                       activebackground=self.fundo, bg=self.fundo,
                                       command=lambda: self.back.alterar_prod(entry_id_prod, entry_novo_nome,
@@ -299,9 +323,24 @@ class Menu:  # classe que cria todo o front end
         prod_alterar.pack()
         # ----------------------------------------------------------------------------------------
         # ==========================================================================================
-        # MENU ALTERAR
-        opt_alter = Label(self.frane_opt_alt, image=img8)
-        opt_alter.pack()
+        # DELETAR PRODUTO
+        deletar = Label(self.frame_dele_prod, image=img9)
+        deletar.pack()
+
+        entry_id_dele = Entry(self.frame_dele_prod, font='Arial 15 bold', bd=0)
+
+        botao_menu = Button(self.frame_dele_prod, image=img_menu_botao, bd=0, activebackground=self.fundo,
+                            bg=self.fundo, command=lambda: [self.frame_menu_ini.pack(), self.frame_dele_prod.forget()])
+        botao_voltar = Button(self.frame_dele_prod, image=img_voltar_botao, bd=0, activebackground=self.fundo,
+                              bg=self.fundo, command=lambda: [self.frame_dele_prod.forget(), self.frane_opt_alt.pack()])
+        botao_deletar = Button(self.frame_dele_prod, image=img_bt_dele, bd=0, activebackground=self.fundo,
+                               bg=self.fundo, command=lambda: self.back.deletar_prod(entry_id_dele, self.frame_dele_prod
+                                                                                     , self.frane_opt_alt))
+
+        botao_menu.place(width=32, height=31, x=9, y=11)
+        botao_voltar.place(width=32, height=31, x=40, y=12)
+        entry_id_dele.place(width=152, height=30, x=219, y=207)
+        botao_deletar.place(x=355, y=275)
         # ==========================================================================================
         self.window.after(2000, self.frame_inicial.forget)
         self.window.mainloop()
