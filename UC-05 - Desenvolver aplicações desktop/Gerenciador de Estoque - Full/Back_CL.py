@@ -49,3 +49,6 @@ class BackEnd:  # classe para realizar o back end
 
     def listar(self, frame):  # lista todos os produtos
         self.data.listar(frame)
+
+    def listar_fabri(self, tabela):
+        self.data.listar_fabri(tabela=tabela)

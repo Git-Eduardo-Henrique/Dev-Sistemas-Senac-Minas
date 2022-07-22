@@ -21,6 +21,9 @@ descricao varchar(70) not null,
 quantidade int not null, 
 valor float not null,
 primary key (id));
+
+# insert into Produtos (descricao, quantidade, valor, codigo_fabri) values ("mi 8 lite", 102030, 1000, 1);
+# delete from Produtos where id > 0;
 # =================================================  tabela Saida =======================================================================
 create table Saida (
 id int auto_increment not null,
@@ -38,7 +41,9 @@ add foreign key (codigo_fabri) references Fabricantes(codigo);
 # =================================================  Relacionamento N:N Compra ======================================================================
 create table Compras_Produtos (
 cod_produtos int not null, 
-id_compra int auto_increment not null, 
+id_compra int auto_increment not null,
+data_compra datetime not null,
+quantidade_compra int not null,
 primary key (cod_produtos, id_compra), 
 foreign key (cod_produtos) references Produtos(id),
 foreign key (id_compra) references Compras(id));
@@ -46,6 +51,8 @@ foreign key (id_compra) references Compras(id));
 create table Saida_Produtos (
 cod_produtos int not null, 
 id_saida int auto_increment not null, 
+data_saida datetime not null,
+quantidade_saida int not null,
 primary key (cod_produtos, id_saida), 
 foreign key (cod_produtos) references Produtos(id),
 foreign key (id_saida) references Saida(id));

@@ -45,6 +45,14 @@ class Data:  # faz a conexão com o banco de dados e usa seus dados
             valores = [prod[0], prod[1], prod[2], prod[3], prod[4]]
             tabela.insert('', 'end', values=valores, tags='1')
 
+    def listar_fabri(self, tabela):
+        self.cursor.execute(f'select * from Fabricantes')
+        fabricantes = self.cursor.fetchall()
+        tabela.delete(*tabela.get_children())
+        for fabri in fabricantes:
+            valores = [fabri[0], fabri[1], fabri[2]]
+            tabela.insert('', 'end', values=valores, tags='1')
+
     def altera_produtos(self, cod, desc, valor):  # altera o dado de descrição de um produto
         self.cursor.execute(f'update Produtos set descricao = "{desc}", valor = {valor} where id = {cod}')
         self.database.commit()

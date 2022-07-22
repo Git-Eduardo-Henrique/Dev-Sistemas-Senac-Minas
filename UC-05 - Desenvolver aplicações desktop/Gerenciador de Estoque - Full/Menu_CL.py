@@ -40,6 +40,8 @@ class Menu:  # classe que cria todo o front end
         self.frame_prod_alterar = Frame(self.window)
         self.frane_opt_alt = Frame(self.window)
         self.frame_dele_prod = Frame(self.window)
+        self.frame_compra = Frame(self.window)
+        self.frame_venda = Frame(self.window)
         self.frame_inicial.pack()
         self.frame_login.pack()
         # ========================================================================================
@@ -56,8 +58,11 @@ class Menu:  # classe que cria todo o front end
         img8 = PhotoImage(file='Imagens/Frames/Opt_Alterar.png')
         img9 = PhotoImage(file='Imagens/Frames/Deletar_Prod.png')
         img10 = PhotoImage(file='Imagens/Frames/Listar_Fabri.png')
+        img11 = PhotoImage(file='Imagens/Frames/Compra.png')
+        img12 = PhotoImage(file='Imagens/Frames/Venda.png')
         img_menu_botao = PhotoImage(file='Imagens/botoes/menu.png')
         img_voltar_botao = PhotoImage(file='Imagens/botoes/voltar.png')
+        img_historico = PhotoImage(file='Imagens/botoes/historia.png')
         img_botao_cadas = PhotoImage(file='Imagens/botoes/botao_cadas.PNG')
         img_botao_prod = PhotoImage(file='Imagens/botoes/botao_prod.PNG')
         img_cadas_prod = PhotoImage(file='Imagens/botoes/botao_cadas_prod.PNG')
@@ -76,6 +81,8 @@ class Menu:  # classe que cria todo o front end
         img_delete = PhotoImage(file='Imagens/botoes/botao_deletar.PNG')
         img_bt_dele = PhotoImage(file='Imagens/botoes/Deletar_bt.PNG')
         img_bt_list_fabri = PhotoImage(file='Imagens/botoes/List_Fabri.PNG')
+        img_compra = PhotoImage(file='Imagens/botoes/Botao_Compra.PNG')
+        img_venda = PhotoImage(file='Imagens/botoes/Botao_Venda.PNG')
         # ==========================================================================================
         # INICIAL
         inicial = Label(self.frame_inicial, image=img0)
@@ -158,13 +165,23 @@ class Menu:  # classe que cria todo o front end
         botao_menu_cadas = Button(self.frame_menu_prod, image=img_menu_botao, bd=0, activebackground=self.branco,
                                   bg=self.branco, command=lambda: [self.frame_menu_ini.pack(),
                                                                    self.frame_menu_prod.forget()])
+        botao_historico = Button(self.frame_menu_prod, image=img_historico, bd=0, activebackground=self.fundo,
+                                 bg=self.fundo)
+
         botao_prod_listar = Button(self.frame_menu_prod, image=img_prod_listar, bd=0, activebackground=self.fundo,
                                    bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
                                                                    self.frame_prod_listar.pack(),
                                                                    self.back.listar(tabela)])
         botao_fabri_listar = Button(self.frame_menu_prod, image=img_bt_list_fabri, bd=0, activebackground=self.fundo,
                                     bg=self.fundo, command=lambda: [self.frame_fabri_listar.pack(),
-                                                                    self.frame_menu_prod.forget()])
+                                                                    self.frame_menu_prod.forget(),
+                                                                    self.back.listar_fabri(tabela_fabri)])
+        botao_compra = Button(self.frame_menu_prod, image=img_compra, bd=0, activebackground=self.fundo, bg=self.fundo,
+                              command=lambda: [self.frame_menu_prod.forget(), self.frame_compra.pack()])
+
+        botao_venda = Button(self.frame_menu_prod, image=img_venda, bd=0, activebackground=self.fundo, bg=self.fundo,
+                             command=lambda: [self.frame_menu_prod.forget(), self.frame_venda.pack()])
+
         botao_prod_alterar = Button(self.frame_menu_prod, image=img_prod_alterar, bd=0, activebackground=self.fundo,
                                     bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
                                                                     self.frane_opt_alt.pack()])
@@ -174,6 +191,9 @@ class Menu:  # classe que cria todo o front end
         botao_fabri_listar.place(x=711, y=248)
         botao_menu_cadas.place(width=32, height=31, x=9, y=11)
         botao_prod_alterar.place(width=196, height=70, x=767, y=410)
+        botao_compra.place(x=385, y=413)
+        botao_venda.place(x=575, y=413)
+        botao_historico.place(x=400, y=11)
         menu_prod.pack()
         # ----------------------------------------------------------------------------------------
         # ============================================================================================
@@ -230,7 +250,7 @@ class Menu:  # classe que cria todo o front end
                                                               self.frame_menu_cadas.pack()])
         botao_confirma_fabri = Button(self.frame_cadas_fabri, image=img_confirmar, bd=0, activebackground=self.fundo,
                                       bg=self.fundo,
-                                      command=lambda: self.back.cadastrar_fabricante(entry_nome_fabri,  entry_cnpj,
+                                      command=lambda: self.back.cadastrar_fabricante(entry_nome_fabri, entry_cnpj,
                                                                                      self.frame_cadas_fabri,
                                                                                      self.frame_menu_cadas))
         # ----------------------------------------------------------------------------------------
@@ -259,7 +279,9 @@ class Menu:  # classe que cria todo o front end
                               bg=self.fundo, command=lambda: [self.frame_prod_listar.forget(),
                                                               self.frame_menu_prod.pack()])
         botao_recarregar = Button(self.frame_prod_listar, image=img_recarrega, bd=0, activebackground='black',
-                                  bg='black', command=lambda: [self.back.listar(tabela)])
+                                  bg='black', command=lambda: [self.frame_prod_listar.forget(),
+                                                               self.frame_prod_listar.pack(),
+                                                               self.back.listar(tabela)])
         # ----------------------------------------------------------------------------------------
         #  Treeview
         tabela = ttk.Treeview(self.frame_prod_listar, columns=["id", "nome", "quant", "valor", "fabri"],
@@ -290,8 +312,9 @@ class Menu:  # classe que cria todo o front end
         listagem_fabri = Label(self.frame_fabri_listar, image=img10)
         listagem_fabri.pack()
         # ----------------------------------------------------------------------------------------
-        botao_menu = Button(self.frame_fabri_listar, image=img_menu_botao, bd=0, activebackground=self.fundo, bg=self.fundo
-                            , command=lambda: [self.frame_menu_ini.pack(), self.frame_fabri_listar.forget()])
+        botao_menu = Button(self.frame_fabri_listar, image=img_menu_botao, bd=0, activebackground=self.fundo,
+                            bg=self.fundo, command=lambda: [self.frame_menu_ini.pack(),
+                                                            self.frame_fabri_listar.forget()])
         botao_voltar = Button(self.frame_fabri_listar, image=img_voltar_botao, bd=0, activebackground=self.fundo,
                               bg=self.fundo, command=lambda: [self.frame_fabri_listar.forget(),
                                                               self.frame_menu_prod.pack()])
@@ -305,7 +328,7 @@ class Menu:  # classe que cria todo o front end
         tabela_fabri.column("nome", width=70)
         tabela_fabri.column("cnpj", width=30)
         tabela_fabri.heading("id", text='Id')
-        tabela_fabri. heading("nome", text='Nome da fabricante')
+        tabela_fabri.heading("nome", text='Nome da fabricante')
         tabela_fabri.heading("cnpj", text='CNPJ da empresa')
         # ----------------------------------------------------------------------------------------
         botao_menu.place(width=32, height=31, x=9, y=11)
@@ -383,6 +406,28 @@ class Menu:  # classe que cria todo o front end
         botao_voltar.place(width=32, height=31, x=40, y=12)
         entry_id_dele.place(width=152, height=30, x=219, y=207)
         botao_deletar.place(x=355, y=275)
+        # ==========================================================================================
+        # COMPRA
+        compra = Label(self.frame_compra, image=img11)
+        compra.pack()
+        botao_menu = Button(self.frame_compra, image=img_menu_botao, bd=0, activebackground=self.fundo,
+                            bg=self.fundo, command=lambda: [self.frame_menu_ini.pack(), self.frame_compra.forget()])
+        botao_voltar = Button(self.frame_compra, image=img_voltar_botao, bd=0, activebackground=self.fundo,
+                              bg=self.fundo, command=lambda: [self.frame_compra.forget(), self.frame_menu_prod.pack()])
+
+        botao_menu.place(width=32, height=31, x=916, y=11)
+        botao_voltar.place(width=32, height=31, x=885, y=12)
+        # ==========================================================================================
+        # ==========================================================================================
+        venda = Label(self.frame_venda, image=img12)
+        venda.pack()
+        botao_menu = Button(self.frame_venda, image=img_menu_botao, bd=0, activebackground=self.fundo, bg=self.fundo,
+                            command=lambda: [self.frame_menu_ini.pack(), self.frame_venda.forget()])
+        botao_voltar = Button(self.frame_venda, image=img_voltar_botao, bd=0, activebackground=self.fundo,bg=self.fundo,
+                              command=lambda: [self.frame_venda.forget(), self.frame_menu_prod.pack()])
+
+        botao_menu.place(width=32, height=31, x=916, y=11)
+        botao_voltar.place(width=32, height=31, x=885, y=12)
         # ==========================================================================================
         self.window.after(2000, self.frame_inicial.forget)
         self.window.mainloop()
