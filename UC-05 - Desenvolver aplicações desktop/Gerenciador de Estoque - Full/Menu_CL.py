@@ -24,6 +24,8 @@ class Menu:  # classe que cria todo o front end
         self.back = BackEnd()
         self.fundo = '#728BB7'
         self.branco = '#ffffff'
+        self.preto = '#000000'
+        self.cinza = '#d9d9d9'
         # ========================================================================================
         # frames
         self.frame_inicial = Frame(self.window)
@@ -34,6 +36,7 @@ class Menu:  # classe que cria todo o front end
         self.frame_cadas_prod = Frame(self.window)
         self.frame_cadas_fabri = Frame(self.window)
         self.frame_prod_listar = Frame(self.window)
+        self.frame_fabri_listar = Frame(self.window)
         self.frame_prod_alterar = Frame(self.window)
         self.frane_opt_alt = Frame(self.window)
         self.frame_dele_prod = Frame(self.window)
@@ -52,6 +55,7 @@ class Menu:  # classe que cria todo o front end
         img7 = PhotoImage(file='Imagens/Frames/Altr_Prod.png')
         img8 = PhotoImage(file='Imagens/Frames/Opt_Alterar.png')
         img9 = PhotoImage(file='Imagens/Frames/Deletar_Prod.png')
+        img10 = PhotoImage(file='Imagens/Frames/Listar_Fabri.png')
         img_menu_botao = PhotoImage(file='Imagens/botoes/menu.png')
         img_voltar_botao = PhotoImage(file='Imagens/botoes/voltar.png')
         img_botao_cadas = PhotoImage(file='Imagens/botoes/botao_cadas.PNG')
@@ -71,6 +75,7 @@ class Menu:  # classe que cria todo o front end
         img_bt_modi = PhotoImage(file='Imagens/botoes/botao_mod_prod.PNG')
         img_delete = PhotoImage(file='Imagens/botoes/botao_deletar.PNG')
         img_bt_dele = PhotoImage(file='Imagens/botoes/Deletar_bt.PNG')
+        img_bt_list_fabri = PhotoImage(file='Imagens/botoes/List_Fabri.PNG')
         # ==========================================================================================
         # INICIAL
         inicial = Label(self.frame_inicial, image=img0)
@@ -157,12 +162,16 @@ class Menu:  # classe que cria todo o front end
                                    bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
                                                                    self.frame_prod_listar.pack(),
                                                                    self.back.listar(tabela)])
+        botao_fabri_listar = Button(self.frame_menu_prod, image=img_bt_list_fabri, bd=0, activebackground=self.fundo,
+                                    bg=self.fundo, command=lambda: [self.frame_fabri_listar.pack(),
+                                                                    self.frame_menu_prod.forget()])
         botao_prod_alterar = Button(self.frame_menu_prod, image=img_prod_alterar, bd=0, activebackground=self.fundo,
                                     bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
                                                                     self.frane_opt_alt.pack()])
         # ----------------------------------------------------------------------------------------
         #  Posições
         botao_prod_listar.place(width=230, height=79, x=420, y=245)
+        botao_fabri_listar.place(x=711, y=248)
         botao_menu_cadas.place(width=32, height=31, x=9, y=11)
         botao_prod_alterar.place(width=196, height=70, x=767, y=410)
         menu_prod.pack()
@@ -237,6 +246,10 @@ class Menu:  # classe que cria todo o front end
         #  Label's
         prod_listar = Label(self.frame_prod_listar, image=img6)
         # ----------------------------------------------------------------------------------------
+        # Entry's
+        entry_busca_prod = Entry(self.frame_prod_listar, font='Arial 15 bold', bd=0, bg=self.cinza,
+                                 foreground=self.preto)
+        # ----------------------------------------------------------------------------------------
         #  Button's
         botao_menu_cadas = Button(self.frame_prod_listar, image=img_menu_botao, bd=0, activebackground=self.fundo,
                                   bg=self.fundo, command=lambda: [self.frame_menu_ini.pack(),
@@ -267,9 +280,38 @@ class Menu:  # classe que cria todo o front end
         #  Posições
         prod_listar.pack()
         tabela.place(width=823, height=475, x=65, y=69)
+        entry_busca_prod.place(width=100, height=37, x=638, y=28)
         botao_voltar.place(width=32, height=31, x=30, y=12)
         rolar.place(height=470, x=886, y=70)
         botao_recarregar.place(width=54, height=49, x=811, y=23)
+        # ----------------------------------------------------------------------------------------
+        # ==========================================================================================
+        # Listagem Fabricante
+        listagem_fabri = Label(self.frame_fabri_listar, image=img10)
+        listagem_fabri.pack()
+        # ----------------------------------------------------------------------------------------
+        botao_menu = Button(self.frame_fabri_listar, image=img_menu_botao, bd=0, activebackground=self.fundo, bg=self.fundo
+                            , command=lambda: [self.frame_menu_ini.pack(), self.frame_fabri_listar.forget()])
+        botao_voltar = Button(self.frame_fabri_listar, image=img_voltar_botao, bd=0, activebackground=self.fundo,
+                              bg=self.fundo, command=lambda: [self.frame_fabri_listar.forget(),
+                                                              self.frame_menu_prod.pack()])
+        # ----------------------------------------------------------------------------------------
+        #  Treeview
+        tabela_fabri = ttk.Treeview(self.frame_fabri_listar, columns=["id", "nome", "cnpj"],
+                                    selectmode='browse', show='headings')
+        rolar_fabri = ttk.Scrollbar(self.frame_fabri_listar, orient='vertical', command=tabela_fabri.yview())
+        tabela_fabri.config(xscrollcommand=rolar.set)
+        tabela_fabri.column("id", width=2)
+        tabela_fabri.column("nome", width=70)
+        tabela_fabri.column("cnpj", width=30)
+        tabela_fabri.heading("id", text='Id')
+        tabela_fabri. heading("nome", text='Nome da fabricante')
+        tabela_fabri.heading("cnpj", text='CNPJ da empresa')
+        # ----------------------------------------------------------------------------------------
+        botao_menu.place(width=32, height=31, x=9, y=11)
+        botao_voltar.place(width=32, height=31, x=40, y=12)
+        tabela_fabri.place(width=670, height=480, x=148, y=62)
+        rolar_fabri.place(width=18, height=480, x=816, y=63)
         # ----------------------------------------------------------------------------------------
         # ==========================================================================================
         # MENU ALTERAR

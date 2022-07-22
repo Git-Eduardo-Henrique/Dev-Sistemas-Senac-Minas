@@ -1,4 +1,4 @@
-drop database estoque;
+# drop database estoque;
 create database estoque;
 use estoque;
 # =================================================  tabela Funcionario =======================================================================
@@ -7,7 +7,7 @@ nome varchar(70) not null,
 codigo int not null,
 primary key(codigo));
 
-insert into Funcionario value ("Eduardo", 010203);
+insert into Funcionario value ("Eduardo", 102030);
 # =================================================  tabela Fabricante =======================================================================
 create table Fabricantes (
 codigo int auto_increment, 
@@ -54,3 +54,4 @@ select * from Produtos;
 select * from Fabricantes;
 select * from Compras_Produtos;
 select * from Saida_Produtos;
+select * from Funcionario;
