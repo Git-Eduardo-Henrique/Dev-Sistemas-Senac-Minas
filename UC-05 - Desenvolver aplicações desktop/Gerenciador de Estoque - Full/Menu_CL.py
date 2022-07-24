@@ -424,7 +424,12 @@ class Menu:  # classe que cria todo o front end
         botao_voltar = Button(self.frame_compra, image=img_voltar_botao, bd=0, activebackground=self.fundo,
                               bg=self.fundo, command=lambda: [self.frame_compra.forget(), self.frame_menu_prod.pack()])
         botao_adicionar = Button(self.frame_compra, image=img_bt_adicionar, bd=0, activebackground=self.fundo,
-                                 bg=self.fundo)
+                                 bg=self.fundo, command=lambda: self.back.compra_venda(cod=entry_id_compra.get(),
+                                                                                       mudar='+',
+                                                                                       quant=entry_quant_compra.get(),
+                                                                                       table='compra',
+                                                                                       frame1=self.frame_compra,
+                                                                                       frame2=self.frame_menu_prod))
 
         entry_quant_compra.place(width=113, height=33, x=537, y=168)
         entry_id_compra.place(width=68, height=35, x=852, y=169)

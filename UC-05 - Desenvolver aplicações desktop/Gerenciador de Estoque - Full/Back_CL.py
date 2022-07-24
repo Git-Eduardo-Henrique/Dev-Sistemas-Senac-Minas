@@ -47,6 +47,14 @@ class BackEnd:  # classe para realizar o back end
             frame2.pack()
             cod.delete(0, 'end')
 
+    def compra_venda(self, cod, mudar, quant, table, frame1, frame2):
+        if askyesno('Confirmar', 'Confirmar alteração?'):
+            self.data.compra_venda(cod=cod, mudar=mudar, quant=quant, table=table)
+            cod.delete(0, 'end')
+            quant.delete(0, 'end')
+            frame1.forget()
+            frame2.pack()
+
     def listar(self, frame):  # lista todos os produtos
         self.data.listar(frame)
 

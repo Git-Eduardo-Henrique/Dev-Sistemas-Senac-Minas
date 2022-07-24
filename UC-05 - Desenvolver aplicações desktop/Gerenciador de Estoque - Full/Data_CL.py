@@ -1,6 +1,7 @@
 import mysql.connector as mys
 from tkinter.messagebox import *
 from Salvar_CL import *
+from datetime import datetime
 
 
 class Data:  # faz a conexão com o banco de dados e usa seus dados
@@ -57,8 +58,12 @@ class Data:  # faz a conexão com o banco de dados e usa seus dados
         self.cursor.execute(f'update Produtos set descricao = "{desc}", valor = {valor} where id = {cod}')
         self.database.commit()
 
-    def compra_venda(self, cod, mudar, quant):  # almenta ou diminui a quantidade de um produto
+    def compra_venda(self, cod, mudar, quant, table):  # almenta ou diminui a quantidade de um produto
+        data = datetime.now()
         self.cursor.execute(f'update Produtos set quantidade = quantidade {mudar} {quant} where id = {cod}')
+        self.database.commit()
+        self.cursor.execute(f'insert into {table}_Produtos ("cod_produtos", "data_compra", "quantidade_compra") '
+                            f'values ("{cod}","{data}","{quant}")')
         self.database.commit()
 
     def deletar_produtos(self, cod):  # deleta um determinado produto no banco de dados

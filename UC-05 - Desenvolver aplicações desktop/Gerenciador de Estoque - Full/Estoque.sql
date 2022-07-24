@@ -39,26 +39,26 @@ drop primary key,
 add primary key (id, codigo_fabri),
 add foreign key (codigo_fabri) references Fabricantes(codigo);
 # =================================================  Relacionamento N:N Compra ======================================================================
-create table Compras_Produtos (
+create table compra_Produtos (
 cod_produtos int not null, 
 id_compra int auto_increment not null,
 data_compra datetime not null,
-quantidade_compra int not null,
+quantidade_compra datetime not null,
 primary key (cod_produtos, id_compra), 
 foreign key (cod_produtos) references Produtos(id),
 foreign key (id_compra) references Compras(id));
 # =================================================  Relacionamento N:N Saida ======================================================================
-create table Saida_Produtos (
+create table saida_Produtos (
 cod_produtos int not null, 
 id_saida int auto_increment not null, 
 data_saida datetime not null,
-quantidade_saida int not null,
+quantidade_saida datetime not null,
 primary key (cod_produtos, id_saida), 
 foreign key (cod_produtos) references Produtos(id),
 foreign key (id_saida) references Saida(id));
 # ================================================================  SELECT'S =======================================================================
 select * from Produtos;
 select * from Fabricantes;
-select * from Compras_Produtos;
-select * from Saida_Produtos;
+select * from compra_Produtos;
+select * from saida_Produtos;
 select * from Funcionario;
