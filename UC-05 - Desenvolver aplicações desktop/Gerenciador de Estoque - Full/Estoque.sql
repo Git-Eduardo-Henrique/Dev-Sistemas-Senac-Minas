@@ -31,6 +31,7 @@ primary key(id));
 # =================================================  tabela Compras ======================================================================
 create table Compras (
 id int auto_increment not null,
+test varchar(10),
 primary key(id));
 # =================================================  Relacionamento 1:1 ======================================================================
 alter table Produtos 
@@ -41,7 +42,7 @@ add foreign key (codigo_fabri) references Fabricantes(codigo);
 # =================================================  Relacionamento N:N Compra ======================================================================
 create table compra_Produtos (
 cod_produtos int not null, 
-id_compra int auto_increment not null,
+id_compra int auto_increment,
 data_compra datetime not null,
 quantidade_compra datetime not null,
 primary key (cod_produtos, id_compra), 
@@ -50,7 +51,7 @@ foreign key (id_compra) references Compras(id));
 # =================================================  Relacionamento N:N Saida ======================================================================
 create table saida_Produtos (
 cod_produtos int not null, 
-id_saida int auto_increment not null, 
+id_saida int auto_increment, 
 data_saida datetime not null,
 quantidade_saida datetime not null,
 primary key (cod_produtos, id_saida), 
@@ -60,5 +61,7 @@ foreign key (id_saida) references Saida(id));
 select * from Produtos;
 select * from Fabricantes;
 select * from compra_Produtos;
+select * from Compras;
+select * from Saida;
 select * from saida_Produtos;
 select * from Funcionario;
