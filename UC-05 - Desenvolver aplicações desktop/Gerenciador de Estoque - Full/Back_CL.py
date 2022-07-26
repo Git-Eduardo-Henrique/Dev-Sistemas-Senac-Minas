@@ -49,7 +49,7 @@ class BackEnd:  # classe para realizar o back end
 
     def compra_venda(self, cod, mudar, quant, table, frame1, frame2):
         if askyesno('Confirmar', 'Confirmar alteração?'):
-            self.data.compra_venda(cod=cod, mudar=mudar, quant=quant, table=table)
+            self.data.compra_venda(cod=cod.get(), mudar=mudar, quant=quant.get(), table=table)
             cod.delete(0, 'end')
             quant.delete(0, 'end')
             frame1.forget()

@@ -59,11 +59,11 @@ class Data:  # faz a conexão com o banco de dados e usa seus dados
         self.database.commit()
 
     def compra_venda(self, cod, mudar, quant, table):  # almenta ou diminui a quantidade de um produto
-        datahoje = datetime.now()
+        agora = datetime.now()
         self.cursor.execute(f'update Produtos set quantidade = quantidade {mudar} {quant} where id = {cod}')
-        self.cursor.execute(f'insert into Compras (test) value ("")')
-        self.cursor.execute(f'insert into compra_Produtos (cod_produtos, data_compra, quantidade_compra) values '
-                            f'("{cod}", "{datahoje}", {quant})')
+        self.cursor.execute(f'insert into {table} (test) value ("")')
+        self.cursor.execute(f'insert into {table}_produtos (cod_produtos, data_{table}, quantidade_{table}) values '
+                            f'("{cod}", "{agora}", {quant})')
         self.database.commit()
 
     def deletar_produtos(self, cod):  # deleta um determinado produto no banco de dados
