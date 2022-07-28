@@ -54,8 +54,13 @@ class Data:  # faz a conexão com o banco de dados e usa seus dados
             valores = [fabri[0], fabri[1], fabri[2]]
             tabela.insert('', 'end', values=valores, tags='1')
 
-    def listar_hist(self, tabela):
-        self.cursor.execute(f'')
+    def listar_hist(self, tabela, name):
+        self.cursor.execute(f'select * from {name}_produtos')
+        hist = self.cursor.fetchall()
+        tabela.delete(*tabela.get_children())
+        for cv in hist:
+            valores = [cv[0], cv[1], cv[2], cv[3]]
+            tabela.insert('', 'end', values=valores, tags='1')
 
     def altera_produtos(self, cod, desc, valor):  # altera o dado de descrição de um produto
         self.cursor.execute(f'update Produtos set descricao = "{desc}", valor = {valor} where id = {cod}')

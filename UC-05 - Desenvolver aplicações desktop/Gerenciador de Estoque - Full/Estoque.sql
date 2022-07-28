@@ -50,7 +50,7 @@ primary key (cod_produtos, id_compra),
 foreign key (cod_produtos) references Produtos(id),
 foreign key (id_compra) references compra(id));
 # =================================================  Relacionamento N:N Saida ======================================================================
-create table saida_Produtos (
+create table saida_produtos (
 cod_produtos int not null, 
 id_saida int auto_increment, 
 data_saida datetime not null,
@@ -64,5 +64,5 @@ select * from Fabricantes;
 select * from compra_produtos;
 select * from compra;
 select * from saida;
-select * from saida_Produtos;
+select * from saida_produtos;
 select * from Funcionario;

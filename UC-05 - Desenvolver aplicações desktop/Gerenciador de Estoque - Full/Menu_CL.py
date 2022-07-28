@@ -26,6 +26,14 @@ class Menu:  # classe que cria todo o front end
         self.branco = '#ffffff'
         self.preto = '#000000'
         self.cinza = '#d9d9d9'
+        '''barra = Menu(self.window)
+        menu_cadas = Menu(barra, tearoff=0)
+        menu_cadas.add_command(label='CADASTRO PRODUTOS')
+        menu_cadas.add_command(label='CADASTRO FABRICANTES')
+        menu_cadas.add_command(label='LISTAR PRODUTOS')
+        menu_cadas.add_command(label='LISTAR FABRICANTES')
+        barra.add_cascade(label='CADASTRO', menu=menu_cadas)
+        self.window.config(menu=barra)'''
         # ========================================================================================
         # frames
         self.frame_inicial = Frame(self.window)
@@ -171,7 +179,11 @@ class Menu:  # classe que cria todo o front end
                                                                    self.frame_menu_prod.forget()])
         botao_historico = Button(self.frame_menu_prod, image=img_historico, bd=0, activebackground=self.fundo,
                                  bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
-                                                                 self.frame_hist.pack()])
+                                                                 self.frame_hist.pack(),
+                                                                 self.back.listar_hist(tabela=tabela_hist_compra, name=
+                                                                                       'compra'),
+                                                                 self.back.listar_hist(tabela=tabela_hist_venda, name=
+                                                                                       'saida')])
 
         botao_prod_listar = Button(self.frame_menu_prod, image=img_prod_listar, bd=0, activebackground=self.fundo,
                                    bg=self.fundo, command=lambda: [self.frame_menu_prod.forget(),
@@ -446,8 +458,8 @@ class Menu:  # classe que cria todo o front end
 
         botao_menu = Button(self.frame_venda, image=img_menu_botao, bd=0, activebackground=self.fundo, bg=self.fundo,
                             command=lambda: [self.frame_menu_ini.pack(), self.frame_venda.forget()])
-        botao_voltar = Button(self.frame_venda, image=img_voltar_botao, bd=0, activebackground=self.fundo,bg=self.fundo,
-                              command=lambda: [self.frame_venda.forget(), self.frame_menu_prod.pack()])
+        botao_voltar = Button(self.frame_venda, image=img_voltar_botao, bd=0, activebackground=self.fundo,
+                              bg=self.fundo, command=lambda: [self.frame_venda.forget(), self.frame_menu_prod.pack()])
         botao_retirar = Button(self.frame_venda, image=img_bt_retirar, bd=0, activebackground=self.fundo,
                                bg=self.fundo, command=lambda: self.back.compra_venda(cod=entry_id_venda, mudar='-',
                                                                                      quant=entry_quant_venda,
@@ -466,11 +478,35 @@ class Menu:  # classe que cria todo o front end
 
         botao_menu = Button(self.frame_hist, image=img_menu_botao, bd=0, activebackground=self.fundo, bg=self.fundo,
                             command=lambda: [self.frame_menu_ini.pack(), self.frame_hist.forget()])
-        botao_voltar = Button(self.frame_hist, image=img_voltar_botao, bd=0, activebackground=self.fundo,bg=self.fundo,
+        botao_voltar = Button(self.frame_hist, image=img_voltar_botao, bd=0, activebackground=self.fundo, bg=self.fundo,
                               command=lambda: [self.frame_hist.forget(), self.frame_menu_prod.pack()])
 
+        tabela_hist_compra = ttk.Treeview(self.frame_hist, columns=["codigo_prod", "id", "hora", "quant"],
+                                          selectmode='browse', show='headings')
+        tabela_hist_compra.column("codigo_prod", width=2)
+        tabela_hist_compra.column("id", width=70)
+        tabela_hist_compra.column("hora", width=30)
+        tabela_hist_compra.column("quant", width=30)
+        tabela_hist_compra.heading("codigo_prod", text='CODIGO PRODUTO')
+        tabela_hist_compra.heading("id", text='ID COMPRA')
+        tabela_hist_compra.heading("hora", text='DATA DA COMPRA')
+        tabela_hist_compra.heading("quant", text='QUANTIDADE')
+
+        tabela_hist_venda = ttk.Treeview(self.frame_hist, columns=["codigo_prod", "id", "hora", "quant"],
+                                         selectmode='browse', show='headings')
+        tabela_hist_venda.column("codigo_prod", width=2)
+        tabela_hist_venda.column("id", width=70)
+        tabela_hist_venda.column("hora", width=30)
+        tabela_hist_venda.column("quant", width=30)
+        tabela_hist_venda.heading("codigo_prod", text='CODIGO PRODUTO')
+        tabela_hist_venda.heading("id", text='ID COMPRA')
+        tabela_hist_venda.heading("hora", text='DATA DA COMPRA')
+        tabela_hist_venda.heading("quant", text='QUANTIDADE')
+
         botao_menu.place(width=32, height=31, x=9, y=11)
-        botao_voltar.place(width=32, height=31, x=40, y=12)
+        botao_voltar.place(width=32, height=31, x=40, y=11)
+        tabela_hist_compra.place(width=475, height=443, x=0, y=97)
+        tabela_hist_venda.place(width=500, height=443, x=475, y=97)
         # ==========================================================================================
         self.window.after(2000, self.frame_inicial.forget)
         self.window.mainloop()

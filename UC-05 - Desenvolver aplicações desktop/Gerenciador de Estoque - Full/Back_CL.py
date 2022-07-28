@@ -60,3 +60,6 @@ class BackEnd:  # classe para realizar o back end
 
     def listar_fabri(self, tabela):
         self.data.listar_fabri(tabela=tabela)
+
+    def listar_hist(self, tabela, name):
+        self.data.listar_hist(tabela=tabela, name=name)
