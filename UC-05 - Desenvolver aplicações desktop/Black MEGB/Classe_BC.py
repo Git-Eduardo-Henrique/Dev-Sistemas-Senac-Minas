@@ -1,6 +1,7 @@
 from Classe_DB import *
 from tkinter import messagebox
 
+
 class Back:
     def __init__(self):
         self.db = BlackDB()
@@ -19,9 +20,9 @@ class Back:
         else:
             pass
 
-
-    def logar(self, entry_email, entry_senha, frame1, frame2):
-        if self.db.check_user(entry_email.get(),entry_senha.get()):
+    def logar(self, lista, entry_email, entry_senha, frame1, frame2):
+        if self.db.check_user(entry_email.get(), entry_senha.get()):
+            # lista = self.db.info_user(entry_email)
             frame1.pack()
             frame2.forget()
         else:

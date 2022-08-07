@@ -36,6 +36,5 @@ class BlackDB:
     def info_user(self, email):
         self.mycursor.execute(f'select nome_exibicao, nome, sobrenome, email from Usuarios where email = "{email.get()}"')
         info = self.mycursor.fetchall()
-        print(info)
-        lista = [info[0][0], info[1][0] + info[2][0], info[3]]
+        lista = [info[0][0], info[1][0], info[2][0], info[3][0]]
         return lista

@@ -30,7 +30,7 @@ gray = '#323232'
 red = '#F01F15'
 ligth_red = '#ED3F3F'
 ligth_gray = '#A6A6A6'
-Lista_info = []
+Lista_info = ['', '', '', '']
 # =======================================================================================================================
 # Frames
 frame_entrada = Frame(janela)
@@ -50,6 +50,7 @@ img_entrada = PhotoImage(file='Fotos/Tela_entrada.png')
 img_login = PhotoImage(file='Fotos/tela_login.png')
 img_cadastro = PhotoImage(file='Fotos/Tela_cadastro.png')
 img_principal = PhotoImage(file='Fotos/Tela_principal.png')
+img_jogar = PhotoImage(file='Fotos/tela_jogar.png')
 img_mario = PhotoImage(file='Fotos/tela_mario.png')
 img_sonic = PhotoImage(file='Fotos/tela sonic.png')
 img_mk = PhotoImage(file='Fotos/tela_mk.png')
@@ -67,6 +68,8 @@ img_sonic_ico = PhotoImage(file='Fotos/sonic_icone.png')
 img_donkey_ico = PhotoImage(file='Fotos/donkey.png')
 img_mk3 = PhotoImage(file='Fotos/mk3.png')
 img_sbomber = PhotoImage(file='Fotos/sbomberman.png')
+img_bt_jogar = PhotoImage(file='Fotos/bt_jogar.PNG')
+img_bt_remover = PhotoImage(file='Fotos/bt_desistalar.PNG')
 # =======================================================================================================================
 # Frames principais
 frame_entrada.pack()
@@ -84,9 +87,8 @@ en_email = Entry(frame_login, font='palatino 15 bold', bd=0, bg=dark_gray, fg=wh
 en_senha = Entry(frame_login, font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 # Buttons
 bt_entrar = Button(frame_login, text='Entrar', font='palatino 20 bold', bg=blue, bd=0, fg=white, activebackground=blue,
-                   activeforeground=white, command=lambda: [back.logar(en_email, en_senha,
-                                                                       frame_principal, frame_login),
-                                                                       Lista_info.append(data.info_user(en_email))])
+                   activeforeground=white, command=lambda: [back.logar(Lista_info, en_email, en_senha,
+                                                                       frame_principal, frame_login)])
 bt_cadas = Button(frame_login, text='Cadastrar', font='Cardo 12 underline', bg=dark_gray, fg=blue,
                   activebackground=dark_gray, activeforeground=blue, bd=0,
                   command=lambda: [frame_cadastro.pack(), frame_login.forget()])
@@ -168,10 +170,7 @@ bt_perfil = Button(frame_mario, image=img_bt_perfil, bd=0, bg=dark_gray, activeb
 bt_perfil.place(x=5, y=472)
 bt_add_bibli = Button(frame_mario, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
                       activebackground='#737373', activeforeground=black,
-                      command=lambda: bt_mario_bibli.place(width=195,
-                                                           height=21,
-                                                           x=5,
-                                                           y=164))
+                      command=lambda: bt_mario_bibli.place(width=195, height=21, x=5, y=164))
 bt_add_bibli.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # FRAME SONIC LOJA
@@ -253,24 +252,42 @@ bt_add_bibli.place(width=200, height=39, x=240, y=477)
 # Frame Biblioteca
 lb_biblioteca = Label(frame_biblioteca, image=img_biblioteca, bd=0)
 lb_biblioteca.pack()
+lb_jogar = Label(frame_biblioteca, image=img_jogar, bd=0)
 # Buttons
+bt_jogar = Button(frame_biblioteca, image=img_bt_jogar, bd=0, bg=dark_gray, activebackground=dark_gray)
+bt_remover = Button(frame_biblioteca, image=img_bt_remover, bd=0, bg=dark_gray, activebackground=dark_gray)
+
 bt_menu = Button(frame_biblioteca, image=img_menu_bt, bd=0, bg=dark_gray, activebackground=dark_gray,
                  command=lambda: [frame_principal.pack(), frame_biblioteca.forget()])
 bt_perfil = Button(frame_biblioteca, image=img_bt_perfil, bd=0, bg=dark_gray, activebackground=dark_gray,
                    command=lambda: [frame_perfil.pack(), frame_biblioteca.forget()])
 bt_perfil.place(x=5, y=472)
 bt_mario_bibli = Button(frame_biblioteca, image=img_supermario, text='SUPER MARIO WORLD', font='palatino 10 bold',
-                        bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT)
+                        bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT,
+                        command=lambda: [lb_jogar.place(width=682, height=316, x=238, y=21),
+                                         bt_jogar.place(width=148, height=55, x=30, y=233),
+                                         bt_remover.place(width=152, height=55, x=199, y=233)])
 bt_sonic_bibli = Button(frame_biblioteca, image=img_sonic_ico, text='SONIC THE HEDGEHOG', font='palatino 10 bold',
-                        bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT)
+                        bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT,
+                        command=lambda: [lb_jogar.place(width=682, height=316, x=238, y=21),
+                                         bt_jogar.place(width=148, height=55, x=30, y=233),
+                                         bt_remover.place(width=152, height=55, x=199, y=233)])
 bt_donkey_bibli = Button(frame_biblioteca, image=img_donkey_ico, text='DONKEY KONG TRILOGY', font='palatino 10 bold',
-                         bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white,
-                         compound=LEFT)
+                         bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white,compound=LEFT,
+                         command=lambda: [lb_jogar.place(width=682, height=316, x=238, y=21),
+                                          bt_jogar.place(width=148, height=55, x=30, y=233),
+                                          bt_remover.place(width=152, height=55, x=199, y=233)])
 bt_mk3_bibli = Button(frame_biblioteca, image=img_mk3, text='MORTAL KOMBAT 3', font='palatino 10 bold',
-                      bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT)
+                      bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT,
+                      command=lambda: [lb_jogar.place(width=682, height=316, x=238, y=21),
+                                       bt_jogar.place(width=148, height=55, x=30, y=233),
+                                       bt_remover.place(width=152, height=55, x=199, y=233)])
 
 bt_bomber = Button(frame_biblioteca, image=img_sbomber, text='SUPER BOMBER MAN', font='palatino 10 bold',
-                   bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT)
+                   bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT,
+                   command=lambda: [lb_jogar.place(width=682, height=316, x=238, y=21),
+                                    bt_jogar.place(width=148, height=55, x=30, y=233),
+                                    bt_remover.place(width=152, height=55, x=199, y=233)])
 
 # Entrys
 en_pesquisa = Entry(frame_biblioteca, font='palatino 12 ', bd=0, bg=ligth_gray, fg=black)
