@@ -40,12 +40,11 @@ class Back:
         else:
             bt.place_forget()
 
-    def Lista(self,lista, entry_email):
-        lista = self.db.info_user(entry_email)
-        return lista
-
-    def perfil(self,lb,lista):
-        lb['text'] = lista
+    def Lista(self, entry_email, lb_exi, lb_nome, lb_email):
+        lista = self.db.info_user(entry_email.get())
+        lb_exi['text'] = f'{lista[0]}'
+        lb_nome['text'] = f'{lista[1]} {lista[2]}'
+        lb_email['text'] = f'{lista[3]}'
 
     def add_biblioteca(self, bt, jogo, x, y):
         if bt['fg'] == '#191919':

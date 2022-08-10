@@ -30,7 +30,6 @@ gray = '#323232'
 red = '#F01F15'
 ligth_red = '#ED3F3F'
 ligth_gray = '#A6A6A6'
-Lista_info = []
 # =======================================================================================================================
 # Frames
 frame_entrada = Frame(janela)
@@ -91,7 +90,7 @@ en_senha = Entry(frame_login, font='palatino 15 bold', bd=0, bg=dark_gray, fg=wh
 bt_entrar = Button(frame_login, text='Entrar', font='palatino 20 bold', bg=blue, bd=0, fg=white, activebackground=blue,
                    activeforeground=white, command=lambda: [back.logar(en_email, en_senha,
                                                                        frame_principal, frame_login),
-                                                            back.perfil(La_email,Lista_info)])
+                                                            back.Lista(entry_email=en_email, lb_exi=La_N_exibicao,lb_nome=La_Nome, lb_email=La_email)])
 
 bt_cadas = Button(frame_login, text='Cadastrar', font='Cardo 12 underline', bg=dark_gray, fg=blue,
                   activebackground=dark_gray, activeforeground=blue, bd=0,
@@ -365,7 +364,7 @@ en_pesquisa.place(width=113, height=21, x=39, y=100)
 lb_perfil = Label(frame_perfil, image=img_perfil, bd=0)
 lb_perfil.pack()
 # Label
-La_N_exibicao = Label(frame_perfil,text='',font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
+La_N_exibicao = Label(frame_perfil, text='', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 La_Nome = Label(frame_perfil, text='', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 La_email = Label(frame_perfil, text='', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 La_jogos = Label(frame_perfil, text='0', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
