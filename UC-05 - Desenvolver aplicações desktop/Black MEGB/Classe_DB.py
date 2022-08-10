@@ -1,3 +1,4 @@
+
 import mysql.connector
 
 
@@ -34,7 +35,10 @@ class BlackDB:
         self.conexao.commit()
 
     def info_user(self, email):
+        global lista
         self.mycursor.execute(f'select nome_exibicao, nome, sobrenome, email from Usuarios where email = "{email.get()}"')
-        info = self.mycursor.fetchall()
-        lista = [info[0][0], info[1][0], info[2][0], info[3][0]]
-        return lista
+        infos = self.mycursor.fetchall()
+        for info in infos:
+            if info[3] == email.get():
+                lista = [info[0],info[1],info[2],info[3]]
+                return lista
