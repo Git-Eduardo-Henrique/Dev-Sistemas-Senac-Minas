@@ -46,3 +46,14 @@ class Back:
 
     def perfil(self,lb,lista):
         lb['text'] = lista
+
+    def add_biblioteca(self, bt, jogo, x, y):
+        if bt['fg'] == '#191919':
+            jogo.place(width=195, height=21, x=x, y=y)
+            bt['text'] = 'Remover da Biblioteca'
+            bt['fg'] = '#F01F15'
+        elif bt['fg'] == '#F01F15':
+            jogo.place_forget()
+            bt['fg'] = '#191919'
+            bt['text'] = 'Adicionar a Biblioteca'
+

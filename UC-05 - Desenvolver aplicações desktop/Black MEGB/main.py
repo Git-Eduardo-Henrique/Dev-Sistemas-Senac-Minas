@@ -164,11 +164,9 @@ lb_mario = Label(frame_mario, image=img_mario)
 lb_mario.pack()
 
 chvalue = BooleanVar()
-
 check_fav_mario = Checkbutton(frame_mario, image=img_fav_off, selectimage=img_fav_on, activebackground=dark_gray,
-                              selectcolor=dark_gray, indicatoron=False, bd=0,onvalue=True,offvalue=False,
+                              selectcolor=dark_gray, indicatoron=False, bd=0, onvalue=True, offvalue=False,
                               bg=dark_gray, variable=chvalue, command=lambda: back.mudar(chvalue, fav_mario, x=1, y=311))
-
 check_fav_mario.place(x=735, y=474)
 
 menu_mario = Button(frame_mario, image=img_menu_bt, bd=0, bg=dark_gray, activebackground=dark_gray,
@@ -180,10 +178,10 @@ bt_biblioteca.place(x=4, y=117)
 bt_perfil = Button(frame_mario, image=img_bt_perfil, bd=0, bg=dark_gray, activebackground=dark_gray,
                    command=lambda: [frame_perfil.pack(), frame_mario.forget()])
 bt_perfil.place(x=5, y=472)
-bt_add_bibli = Button(frame_mario, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
-                      activebackground='#737373', activeforeground=black,
-                      command=lambda: bt_mario_bibli.place(width=195, height=21, x=5, y=164))
-bt_add_bibli.place(width=200, height=39, x=240, y=477)
+bt_add_bibli_mario = Button(frame_mario, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
+                            activebackground='#737373', activeforeground=black,
+                            command=lambda: back.add_biblioteca(bt_add_bibli_mario, bt_mario_bibli, x=5, y=164))
+bt_add_bibli_mario.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # FRAME SONIC LOJA
 lb_sonic = Label(frame_sonic, image=img_sonic)
@@ -205,10 +203,10 @@ bt_biblioteca.place(x=4, y=117)
 bt_perfil = Button(frame_sonic, image=img_bt_perfil, bd=0, bg=dark_gray, activebackground=dark_gray,
                    command=lambda: [frame_perfil.pack(), frame_sonic.forget()])
 bt_perfil.place(x=5, y=472)
-bt_add_bibli = Button(frame_sonic, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
-                      activebackground='#737373', activeforeground=black,
-                      command=lambda: bt_sonic_bibli.place(width=195,height=21,x=5,y=192))
-bt_add_bibli.place(width=200, height=39, x=240, y=477)
+bt_add_bibli_sonic = Button(frame_sonic, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
+                            activebackground='#737373', activeforeground=black,
+                            command=lambda: back.add_biblioteca(bt_add_bibli_sonic, bt_sonic_bibli, x=5, y=192))
+bt_add_bibli_sonic.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # FRAME DONK
 lb_kong = Label(frame_donkeykong, image=img_donkeykong)
@@ -230,13 +228,10 @@ check_fav_donkey.place(x=735, y=474)
 bt_perfil = Button(frame_donkeykong, image=img_bt_perfil, bd=0, bg=dark_gray, activebackground=dark_gray,
                    command=lambda: [frame_perfil.pack(), frame_donkeykong.forget()])
 bt_perfil.place(x=5, y=472)
-bt_add_bibli = Button(frame_donkeykong, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
-                      fg=black,
-                      activebackground='#737373', activeforeground=black,
-                      command=lambda: bt_donkey_bibli.place(width=195,
-                                                            height=21,
-                                                            x=10, y=219))
-bt_add_bibli.place(width=200, height=39, x=240, y=477)
+bt_add_bibli_dk = Button(frame_donkeykong, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
+                         fg=black, activebackground='#737373', activeforeground=black,
+                         command=lambda: back.add_biblioteca(bt_add_bibli_dk, bt_donkey_bibli, x=10, y=219))
+bt_add_bibli_dk.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # frame mk
 lb_mk = Label(frame_mk, image=img_mk)
@@ -259,12 +254,10 @@ check_fav_mk.place(x=735, y=474)
 bt_perfil = Button(frame_mk, image=img_bt_perfil, bd=0, bg=dark_gray, activebackground=dark_gray,
                    command=lambda: [frame_perfil.pack(), frame_mk.forget()])
 bt_perfil.place(x=5, y=472)
-bt_add_bibli = Button(frame_mk, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
-                      activebackground='#737373', activeforeground=black, command=lambda: bt_mk3_bibli.place(width=195,
-                                                                                                             height=21,
-                                                                                                             x=0,
-                                                                                                             y=244))
-bt_add_bibli.place(width=200, height=39, x=240, y=477)
+bt_add_bibli_mk = Button(frame_mk, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
+                         activebackground='#737373', activeforeground=black,
+                         command=lambda: back.add_biblioteca(bt_add_bibli_mk, bt_mk3_bibli, x=0, y=244))
+bt_add_bibli_mk.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # frame bomber
 lb_bomber = Label(frame_bomberman, image=img_bomberman)
@@ -286,10 +279,10 @@ check_fav_bomber.place(x=735, y=474)
 bt_perfil = Button(frame_bomberman, image=img_bt_perfil, bd=0, bg=dark_gray, activebackground=dark_gray,
                    command=lambda: [frame_perfil.pack(), frame_bomberman.forget()])
 bt_perfil.place(x=5, y=472)
-bt_add_bibli = Button(frame_bomberman, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
-                      fg=black, activebackground='#737373', activeforeground=black,
-                      command=lambda: bt_bomber.place(width=195, height=21, x=0, y=269))
-bt_add_bibli.place(width=200, height=39, x=240, y=477)
+bt_add_bibli_bomber = Button(frame_bomberman, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
+                             fg=black, activebackground='#737373', activeforeground=black,
+                             command=lambda: back.add_biblioteca(bt_add_bibli_bomber, bt_bomber, x=0, y=269))
+bt_add_bibli_bomber.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # Frame Biblioteca
 lb_biblioteca = Label(frame_biblioteca, image=img_biblioteca, bd=0)
