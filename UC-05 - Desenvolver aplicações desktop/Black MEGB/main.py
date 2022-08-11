@@ -88,10 +88,8 @@ en_email = Entry(frame_login, font='palatino 15 bold', bd=0, bg=dark_gray, fg=wh
 en_senha = Entry(frame_login, font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 # Buttons
 bt_entrar = Button(frame_login, text='Entrar', font='palatino 20 bold', bg=blue, bd=0, fg=white, activebackground=blue,
-                   activeforeground=white, command=lambda: [back.logar(en_email, en_senha,
-                                                                       frame_principal, frame_login),
-                                                            back.Lista(entry_email=en_email, lb_exi=La_N_exibicao,
-                                                                       lb_nome=La_Nome, lb_email=La_email)])
+                   activeforeground=white, command=lambda: [back.logar(en_email, La_N_exibicao, La_Nome, La_email,
+                                                                       en_senha, frame_principal, frame_login)])
 
 bt_cadas = Button(frame_login, text='Cadastrar', font='Cardo 12 underline', bg=dark_gray, fg=blue,
                   activebackground=dark_gray, activeforeground=blue, bd=0,

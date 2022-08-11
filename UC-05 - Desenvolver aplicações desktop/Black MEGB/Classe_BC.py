@@ -24,9 +24,10 @@ class Back:
         else:
             pass
 
-    def logar(self, entry_email, entry_senha, frame1, frame2):
+    def logar(self, entry_email, lb_exi, lb_nome, lb_email, entry_senha, frame1, frame2):
         # faz a verificação da conta com o login
         if self.db.check_user(entry_email.get(), entry_senha.get()):
+            self.Lista(entry_email=entry_email, lb_exi=lb_exi, lb_nome=lb_nome, lb_email=lb_email)
             frame1.pack()
             frame2.forget()
         else:
