@@ -2,22 +2,21 @@ import mysql.connector
 
 
 class BlackDB:
-    def __init__(self):
+    def __init__(self):  # conexões com o banco e outros
         self.conexao = mysql.connector.connect(host='localhost', user='root', password='q1w2e3', database='blackmegb')
         self.mycursor = self.conexao.cursor()
-        self.user = ''
 
-    def cadas_user(self, nome, sobrenome, nome_exibicao, email, senha):
+    def cadas_user(self, nome, sobrenome, nome_exibicao, email, senha):  # cadastro de usuarios no banco
         comando_sql = f'insert into Usuarios (nome, sobrenome, nome_exibicao, email, senha) values ("{nome}",' \
                       f'"{sobrenome}","{nome_exibicao}", "{email}", "{senha}")'
         self.mycursor.execute(comando_sql)
         self.conexao.commit()
 
-    def check_user(self, entry_email, entry_senha):
+    def check_user(self, entry_email, entry_senha):  # virificador de email e senha de cada usuario
         self.mycursor.execute('select email,senha from Usuarios')
-        self.user = self.mycursor.fetchall()
+        user = self.mycursor.fetchall()
         verifica = False
-        for usuarios in self.user:
+        for usuarios in user:
             if entry_email == usuarios[0] and entry_senha == usuarios[1]:
                 verifica = True
             else:
@@ -27,18 +26,17 @@ class BlackDB:
         else:
             return False
 
-    def delete_accont(self, email):
+    def delete_accont(self, email):  # deleta uma conta no banco de dados
         self.mycursor.execute(f'select id from Usuarios where email = "{email}"')
         codigo = self.mycursor.fetchall()
         self.mycursor.execute(f'delete from Usuarios where id = "{codigo[0][0]}" ')
         self.conexao.commit()
 
-    def info_user(self, email):
+    def info_user(self, email):  # cria uma lista com as principais informações
         self.mycursor.execute(f'select nome_exibicao, nome, sobrenome, email from Usuarios where email = "{email}"')
         infos = self.mycursor.fetchall()
         lista = []
         for info in infos:
-            print(info)
             lista.append(info[0])
             lista.append(info[1])
             lista.append(info[2])
