@@ -66,10 +66,10 @@ class Back:
 
     def download(self):  # efetua o download de um jogo
         janela2 = Toplevel()
-        janela2.geometry('350x200')
+        janela2.geometry('250x150')
         janela2.resizable(False, False)
         janela2.iconbitmap('Fotos/black megb.ico')
-        janela2.title('Download')
+        janela2.title('Super Mario World - Instalador')
 
         def instalar():
             urlretrieve("https://docs.google.com/uc?export=download&id=1EjKmIidcQNEgpX4lVJniWJYhtdyAYHSC",
@@ -84,19 +84,11 @@ class Back:
                     messagebox.showinfo(message='Algo deu errado!, Tente novamente')
 
             messagebox.showinfo(message='Super Mario World instalado com sucesso!')
-
-        def parar():
-            progress1.stop()
-            value_label['text'] = progress1['value'], '%'
-
-        progress1 = ttk.Progressbar(janela2, orient='horizontal', mode='determinate', length=200)
+        progress1 = ttk.Progressbar(janela2, orient='horizontal', mode='determinate', length=150)
         progress1.pack(pady=20)
 
         value_label = Label(janela2, text='0%')
-        value_label.pack(pady=20)
+        value_label.pack(pady=4)
 
         bt_instalar = Button(janela2, text='Instalar', command=instalar)
-        bt_instalar.pack(pady=20)
-
-        bt_parar = Button(janela2, text='Cancelar', command=parar)
-        bt_parar.pack(pady=20)
+        bt_instalar.pack(pady=4)
