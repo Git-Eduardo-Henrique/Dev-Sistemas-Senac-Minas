@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: var(--branco);
+}
+
+#nome {
+    --branco: #f2f2f2;
+    background-color: aqua;
+    color: var(--branco);
+}
