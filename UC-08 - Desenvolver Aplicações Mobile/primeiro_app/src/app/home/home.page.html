@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      HELLO WORLD
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">HELLO WORLD</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>AMONGUS</strong>
+    <p>Entrar no hotel trivago <a target="_blank" rel="noopener noreferrer" href="https://www.trivago.com.br/">TRIVAGO</a></p>
+    <ion-input placeholder="escreva aqui"[(ngModel)]="escreva" name="escreva"></ion-input>
+    <ion-button (click)="sus()">se clicar vc é lindo</ion-button>
+    <p>{{ resultado }}</p>
+  </div>
+</ion-content>
