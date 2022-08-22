@@ -9,9 +9,8 @@ import { SubjectSubscriber } from 'rxjs/internal/Subject';
 export class HomePage {
   resultado: string
   escreva: string
-
   constructor() {}
-  sus(){
+  escreval(){
     this.resultado = this.escreva.toString()
   }
 

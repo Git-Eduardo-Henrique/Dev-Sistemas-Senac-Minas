@@ -1,3 +1,4 @@
+<!-- parte do ios -->
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
@@ -6,6 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- parte do android -->
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,11 +15,18 @@
     </ion-toolbar>
   </ion-header>
 
+  <!-- pagina principal -->
   <div id="container">
-    <strong>AMONGUS</strong>
-    <p>Entrar no hotel trivago <a target="_blank" rel="noopener noreferrer" href="https://www.trivago.com.br/">TRIVAGO</a></p>
+    <!-- cria um input no app-->
+    <!-- placeholder = texto transparente  no input -->
+    <!-- [(ngModel)] = modelo que salva oque ta escrito -->
     <ion-input placeholder="escreva aqui"[(ngModel)]="escreva" name="escreva"></ion-input>
-    <ion-button (click)="sus()">se clicar vc é lindo</ion-button>
+
+    <!-- botão do ionic -->
+    <!-- (click) = comando ao apertar-->
+    <ion-button (click)="escreval()">APERTA</ion-button>
+    <!-- mostra o resultado de uma variavel-->
     <p>{{ resultado }}</p>
   </div>
+
 </ion-content>
