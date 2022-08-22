@@ -20,11 +20,21 @@
     <!-- cria um input no app-->
     <!-- placeholder = texto transparente  no input -->
     <!-- [(ngModel)] = modelo que salva oque ta escrito -->
-    <ion-input placeholder="escreva aqui"[(ngModel)]="escreva" name="escreva"></ion-input>
+    <ion-item>
+      <ion-label position='floating'>Numero 1:</ion-label>
+      <ion-input [(ngModel)]="n1" name="n1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='floating'>Numero 2:</ion-label>
+      <ion-input [(ngModel)]="n2" name="n2"></ion-input>
+    </ion-item>
 
     <!-- botão do ionic -->
     <!-- (click) = comando ao apertar-->
-    <ion-button (click)="escreval()">APERTA</ion-button>
+    <ion-button (click)="adicao()">+</ion-button>
+    <ion-button (click)="subtracao()">-</ion-button>
+    <ion-button (click)="mult()">*</ion-button>
+    <ion-button (click)="divi()">/</ion-button>
     <!-- mostra o resultado de uma variavel-->
     <p>{{ resultado }}</p>
   </div>
