@@ -1,0 +1,35 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ANDROID IMC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">IOS IMC</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+    <ion-select [(ngModel)]="sexo_opt">
+      <ion-select-option value="m">Masculino</ion-select-option>
+      <ion-select-option value="f">Feminino</ion-select-option>
+    </ion-select>
+    
+    <ion-label position='floating'>Altura:</ion-label>
+    <ion-input [(ngModel)] = 'altura' name="altura" placeholder="digite a altura"></ion-input>
+
+    <ion-label position='floating'>Peso: </ion-label>
+    <ion-input [(ngModel)] = 'peso' name="peso" placeholder = 'digite o peso'></ion-input>
+
+
+    <ion-button shape="block" (click) = 'imc()' color = 'dark'>IMC</ion-button>
+    <ion-img id="imagem" src='assets/icon/alerta.png'></ion-img>
+
+  </div>
+</ion-content>
