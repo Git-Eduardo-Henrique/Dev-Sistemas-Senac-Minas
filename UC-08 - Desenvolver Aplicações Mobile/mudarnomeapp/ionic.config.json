@@ -1,0 +1,7 @@
+{
+  "name": "mudarnomeapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

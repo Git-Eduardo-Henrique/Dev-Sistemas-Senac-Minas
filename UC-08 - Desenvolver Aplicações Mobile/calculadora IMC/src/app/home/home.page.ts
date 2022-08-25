@@ -12,6 +12,7 @@ export class HomePage {
   peso: string
   resul: string
   msg: string
+  imagem: any = 'assets/icon/favicon.png'
 
   constructor(private alertController: AlertController) {}
 
@@ -39,24 +40,30 @@ export class HomePage {
       if (this.sexo_opt == 'f'){
         if (imc <= 19) {
           this.msg = 'abaixo do peso'
+          this.imagem = 'assets/icon/alerta.png'
         }
         else if (imc > 19 && imc <=27.3) {
           this.msg = 'peso normal'
+          this.imagem = 'assets/icon/normal.png'
         } 
         else {
           this.msg = 'acima do peso'
+          this.imagem = 'assets/icon/alerta_vermelho.png'
         }
       }
 
       if (this.sexo_opt == 'm'){
         if (imc <= 20.7) {
           this.msg = 'abaixo do peso'
+          this.imagem = 'assets/icon/alerta.png'
         }
         else if (imc > 20.7 && imc <=27.8) {
           this.msg = 'peso normal'
+          this.imagem = 'assets/icon/normal.png'
         } 
         else {
           this.msg = 'acima do peso'
+          this.imagem = 'assets/icon/alerta_vermelho.png'
         }
       }
     }
