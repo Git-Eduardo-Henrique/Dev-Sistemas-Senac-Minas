@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      pag3
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">pag3</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <ion-label position='floating'>Primeiro dado</ion-label>
+    <ion-input placeholder="Base" type="number" [(ngModel)] = "Base" name='Base'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position='floating'>Segundo dado</ion-label>
+    <ion-input placeholder="Altura" type="number" [(ngModel)] = "Altura" name='Altura'></ion-input>
+  </ion-item>
+
+  <ion-button shape="block" (click)="calcular()">CALCULAR</ion-button>
+
+  <p>{{ resul }}</p>
+</ion-content>
