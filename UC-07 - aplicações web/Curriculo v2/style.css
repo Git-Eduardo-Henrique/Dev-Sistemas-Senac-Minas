@@ -5,6 +5,7 @@ body{
     margin: 0;
 }
 
+/* ------- cabecalho -------*/
 .cabecalho {
     display: flex;
     flex-direction: row;
@@ -24,8 +25,25 @@ body{
     gap: 16px;
 }
 
+/* ---------- menu -----------*/
+.principal {
+    border-top: 3px solid #14268c;
+
+}
 .principal_sobre {
     display: flex;
     flex-direction: row;
-    background-color: #ffffff;
+    color: #F2F2F2;
+    background-image: url(images/fundo.png);
+    opacity: 70;
+
+    font-family: 'Kanit', sans-serif;
+}
+
+.principal_sobre_foto {
+    height: 350px;
+    width: 300px;
+}
+#principal_sobre_redes_img {
+    height: 64px;
 }
