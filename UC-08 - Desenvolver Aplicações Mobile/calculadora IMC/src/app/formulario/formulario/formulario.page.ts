@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-formulario',
@@ -10,17 +11,30 @@ export class FormularioPage implements OnInit {
   pessoa = {}
   pessoaForm: FormGroup
 
-  constructor(private formularioBuilder: FormBuilder) { }
+  constructor(private formularioBuilder: FormBuilder, private alertController: AlertController) { }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Dados Invalidos',
+      subHeader: 'Siga a orientação certa ',
+      buttons: ['fechar'],
+    })
+    await alert.present()
+  }
 
   submit(){
-    console.log(this.pessoa)
+    if (this.pessoaForm.valid) {
+      console.log(this.pessoa)
+    }
+    else {
+      this.presentAlert()
+    }
   }
 
   ngOnInit() {
     this.pessoaForm = this.formularioBuilder.group({
-      nome: ['',Validators.compose([Validators.required, Validators.minLength(3)])], 
-      email: ['',Validators.compose([Validators.required, Validators.email])]
-    })
+      nome: ['',Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(45)])], 
+      email: ['',Validators.compose([Validators.required, Validators.email])]})
   }
-
+  
 }
