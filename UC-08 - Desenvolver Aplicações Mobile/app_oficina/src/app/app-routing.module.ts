@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'listagem-servicos',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'detalhes-servicos/:id',
     loadChildren: () => import('./pages/detalhes-servicos/detalhes-servicos.module').then( m => m.DetalhesServicosPageModule)
+  },
+  {
+    path: 'listagem-produtos',
+    loadChildren: () => import('./pages/listagem-produtos/listagem-produtos.module').then( m => m.ListagemProdutosPageModule)
+  },
+  {
+    path: 'detalhes-produtos',
+    loadChildren: () => import('./pages/detalhes-produtos/detalhes-produtos.module').then( m => m.DetalhesProdutosPageModule)
   },
 ];
 
