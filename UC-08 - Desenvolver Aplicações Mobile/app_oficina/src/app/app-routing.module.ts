@@ -8,8 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'listagem-servicos',
     pathMatch: 'full'
+  },
+  {
+    path: 'listagem-servicos',
+    loadChildren: () => import('./pages/listagem-servicos/listagem-servicos.module').then( m => m.ListagemServicosPageModule)
+  },
+  {
+    path: 'detalhes-servicos/:id',
+    loadChildren: () => import('./pages/detalhes-servicos/detalhes-servicos.module').then( m => m.DetalhesServicosPageModule)
   },
 ];
 

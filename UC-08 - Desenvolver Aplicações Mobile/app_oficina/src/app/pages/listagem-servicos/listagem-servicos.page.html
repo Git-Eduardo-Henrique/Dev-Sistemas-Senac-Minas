@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listagem de Servicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item *ngFor = 'let Servicos of Servicos' routerLink='/detalhes-servicos/{{Servicos.id}}'>
+
+      <ion-label>{{Servicos.nome}}</ion-label>
+      <ion-label>{{Servicos.valor}}</ion-label>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
