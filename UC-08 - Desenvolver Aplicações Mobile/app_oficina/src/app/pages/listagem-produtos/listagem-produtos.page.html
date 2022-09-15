@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
+    
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+
     <ion-title>listagem-produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-item *ngFor='let Produtos of Produtos' routerLink='/detalhes-produtos/{{Produtos.id}}'>
+    <ion-label>{{ Produtos.nome }}</ion-label>
+    <ion-label>R${{ Produtos.valor }}</ion-label>
+  </ion-item>
 
 </ion-content>

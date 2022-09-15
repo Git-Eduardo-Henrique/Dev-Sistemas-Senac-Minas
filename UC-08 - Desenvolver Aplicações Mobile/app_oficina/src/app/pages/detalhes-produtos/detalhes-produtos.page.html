@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
+
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+
     <ion-title>detalhes-produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div *ngIf='this.altera'>
+    <ion-item>{{dadoseleciona.id}}</ion-item>
+    <ion-item>{{dadoseleciona.nome}}</ion-item>
+    <ion-item>{{dadoseleciona.valor}}</ion-item>
+    <ion-button shape="block" (click)='this.altera = false'>Alterar dados</ion-button>
+  </div>
+
+  <form *ngIf='!this.altera'>
+    <ion-input placeholder="novo nome" [(ngModel)]='dadoseleciona.nome' name="nome"></ion-input>
+    <ion-input placeholder='novo valor' [(ngModel)]='dadoseleciona.valor' name="valor"></ion-input>
+    <ion-button shape="block" (click)='this.altera = true'>Salvar dados</ion-button>
+  </form>
+  
 
 </ion-content>

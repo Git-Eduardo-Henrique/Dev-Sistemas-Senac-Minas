@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DadosProdutosService} from 'src/app/products/dados-produtos.service'
 
 @Component({
   selector: 'app-listagem-produtos',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemProdutosPage implements OnInit {
 
-  constructor() { }
+  public Produtos: any
+
+  constructor( private Objprodutos: DadosProdutosService) { 
+    this.Produtos = Objprodutos.EnviarDados()
+  }
 
   ngOnInit() {
   }
