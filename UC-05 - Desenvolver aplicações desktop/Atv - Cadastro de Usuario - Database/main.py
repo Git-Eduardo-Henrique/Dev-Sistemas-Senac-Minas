@@ -1,14 +1,14 @@
 from Class_Data import *
 
-# ================================================================================================
-Crud = Data()
-while True:
+
+Crud = Data()  # banco de dados
+while True:  # menu principal
     Crud.linha()
     print('1 - Cadastrar usuario'
           '\n2 - Modificar Nome'
           '\n3 - Deletar usuario'
           '\n4 - Listar usuarios'
-          '\n5 - Sair')
+          '\n\033[34m5 - Sair\033[m')
     Crud.linha()
     opt = input('Opção: ')
     if opt.isnumeric():
@@ -31,9 +31,12 @@ while True:
         # ================================================================================================
         elif int(opt) == 5:
             Crud.close()
+            Crud.pula()
+            print('Programa encerrado!!!')
             break
         else:
+            Crud.pula()
             print('\033[31mDigite uma opção valida\033[m')
     else:
-        print(30 * '\n')
+        Crud.pula()
         print('\033[31mDIGITE UM NUMERO')

@@ -4,7 +4,7 @@ from tkinter import *
 def Calculadora(Car):
     if Car == '=':
         try:
-            conta['text'] = str(eval(conta["text"]))
+            conta['text'] = str(eval(conta["text"]))  # eval = efetua calculos
             conta['foreground'] = 'Green'
         except ZeroDivisionError:
             conta['text'] = 'Impossivel dividir 0 por 0'
@@ -12,11 +12,12 @@ def Calculadora(Car):
         except SyntaxError:
             conta['text'] = 'Impossivel realizar conta!'
             conta['foreground'] = 'red'
-    elif Car == 'CE' or Car == 'C':
+    elif Car == 'CE' or Car == 'C':  # deleta todos os caracteres
         conta['text'] = ''
-    elif Car == 'del':
+    elif Car == 'del':  # deleta o ultimo caractere
         conta['text'] = conta['text'][:-1]
     else:
+        # deleta as mensagens de erro
         if conta['text'] == 'Impossivel realizar conta!' or conta['text'] == 'Impossivel dividir 0 por 0':
             conta['text'] = ''
             conta['text'] += Car
@@ -26,12 +27,13 @@ def Calculadora(Car):
             conta['foreground'] = 'Green'
 
 
+# ============================== [ configurações da janela ] =========================
 window = Tk()
 window.geometry('600x550')
 window.minsize(400, 350)
 window.maxsize(800, 750)
 window.config(bg='black')
-
+# atalhos de teclado
 window.bind('0', lambda event: Calculadora(Car='0'))
 window.bind('1', lambda event: Calculadora(Car='1'))
 window.bind('2', lambda event: Calculadora(Car='2'))
@@ -57,6 +59,7 @@ for linha in range(6):
 for Coluna in range(4):
     window.grid_columnconfigure(Coluna, weight=1)
 
+# ====================================== [ front - end ] ============================================
 zero = Button(window, text='0', font='Arial 30', bg='gray', command=lambda: Calculadora(Car='0'))
 um = Button(window, text='1', font='Arial 30', bg='gray', command=lambda: Calculadora(Car='1'))
 dois = Button(window, text='2', font='Arial 30', bg='gray', command=lambda: Calculadora(Car='2'))
@@ -78,7 +81,7 @@ Del = Button(window, text='del', font='Arial 30', bg='#484848', command=lambda: 
 elevado = Button(window, text='x²', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='**'))
 DelC = Button(window, text='C', font='Arial 30', bg='#484848', command=lambda: Calculadora(Car='C'))
 conta = Label(window, text='', font='Arial 30', bg='black', foreground='green')
-
+# ====================================== [ posições na janela ] =========================================
 conta.grid(columnspan=4, sticky=NSEW)
 DelTudo.grid(row=2, column=0, sticky=NSEW)
 DelC.grid(row=2, column=1, sticky=NSEW)
@@ -100,6 +103,5 @@ zero.grid(row=6, column=1, sticky=NSEW)
 virgula.grid(row=6, column=2, sticky=NSEW)
 igual.grid(row=6, column=3, sticky=NSEW)
 elevado.grid(row=6, column=0, sticky=NSEW)
-
 
 window.mainloop()
