@@ -2,11 +2,11 @@ from tkinter import *
 
 
 def Calculadora(car):
-    if car == 'del':
+    if car == 'del':  # deleta um numero
         conta['text'] = conta['text'][:-1]
-    elif car == 'CE' or car == 'C':
+    elif car == 'CE' or car == 'C':  # deleta tudo oque foi digitado
         conta['text'] = ''
-    else:
+    else:  # deleta as mensagens de erro quando algo é digitado
         if conta['text'] == 'Conta Invalida!!!' or conta['text'] == 'Impossivel dividir por 0':
             conta['text'] = ''
             conta['text'] += car
@@ -40,6 +40,7 @@ def Resul():
         conta['foreground'] = 'red'
 
 
+# ==================================== [ configurações da janela ] ==============================
 window = Tk()
 window.geometry('800x550')
 window.minsize(400, 350)
@@ -71,6 +72,7 @@ for linha in range(6):
 for Coluna in range(5):
     window.grid_columnconfigure(Coluna, weight=1)
 
+# =================================== [ front-end ] =====================================
 zero = Button(window, text='0', font='Arial 30', bg='#B0C4DE', command=lambda: Calculadora(car='0'))
 um = Button(window, text='1', font='Arial 30', bg='#B0C4DE', command=lambda: Calculadora(car='1'))
 dois = Button(window, text='2', font='Arial 30', bg='#B0C4DE', command=lambda: Calculadora(car='2'))
@@ -94,7 +96,7 @@ DelC = Button(window, text='C', font='Arial 30', bg='#1E90FF', command=lambda: C
 conta = Label(window, text='', font='Arial 30', bg='#778899', foreground='black')
 histo = Label(window, text='historico:', font='Arial 30', bg='#483D8B', foreground='black')
 last = Label(window, text='', font='Arial 30', bg='#483D8B', foreground='white')
-
+# ================================== [ posições na janela ] ===============================
 conta.grid(columnspan=4, sticky=NSEW)
 DelTudo.grid(row=1, column=0, sticky=NSEW)
 DelC.grid(row=1, column=1, sticky=NSEW)
