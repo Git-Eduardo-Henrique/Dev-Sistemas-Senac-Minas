@@ -11,17 +11,18 @@
 
 <ion-content>
 
-  <div *ngIf='this.altera'>
+  <div *ngIf='!this.altera'>
     <ion-item>{{dadoseleciona.id}}</ion-item>
     <ion-item>{{dadoseleciona.nome}}</ion-item>
     <ion-item>{{dadoseleciona.valor}}</ion-item>
-    <ion-button shape="block" (click)='this.altera = false'>Alterar dados</ion-button>
+    <ion-button shape="block" (click)='Editar()'>Alterar dados</ion-button>
+    <ion-button color="danger" shape="block" (click)='RemoverProdu()' routerLink='/listagem-produtos'>Deletar produto</ion-button>
   </div>
 
-  <form *ngIf='!this.altera'>
-    <ion-input placeholder="novo nome" [(ngModel)]='dadoseleciona.nome' name="nome"></ion-input>
-    <ion-input placeholder='novo valor' [(ngModel)]='dadoseleciona.valor' name="valor"></ion-input>
-    <ion-button shape="block" (click)='this.altera = true'>Salvar dados</ion-button>
+  <form *ngIf='this.altera'>
+    <ion-input placeholder="Nome" [(ngModel)]='dadoseleciona.nome' name="nome"></ion-input>
+    <ion-input placeholder='Valor' [(ngModel)]='dadoseleciona.valor' name="valor"></ion-input>
+    <ion-button shape="block" (click)='encerrarEdicao()' routerLink='/listagem-produtos' >Salvar dados</ion-button>
   </form>
   
 

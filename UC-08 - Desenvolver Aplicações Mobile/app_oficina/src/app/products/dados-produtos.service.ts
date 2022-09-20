@@ -19,6 +19,15 @@ export class DadosProdutosService {
   EnviarDados() {
     return this.Produtos
   }
+  RecebeDados(dadosRecebidos : any){
+    dadosRecebidos.id = this.Produtos.length + 1
+    this.Produtos.push(dadosRecebidos)
+  }
+  
+  RemoverDados(item : any){
+    const index = this.Produtos.indexOf(item.id)
+    this.Produtos.splice(index, 1)
+  }
 
   FiltrarDados(id: number) {
     const selecionaProdu = this.Produtos.filter(produto => produto.id === id)

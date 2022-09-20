@@ -10,10 +10,14 @@
 </ion-header>
 
 <ion-content>
-
   <ion-item *ngFor='let Produtos of Produtos' routerLink='/detalhes-produtos/{{Produtos.id}}'>
     <ion-label>{{ Produtos.nome }}</ion-label>
     <ion-label>R${{ Produtos.valor }}</ion-label>
   </ion-item>
-
+  <!-- adiciona um botao de add no topo da tela -->
+  <ion-fab vertical='top' horizontal='end' slot='fixed' edge="true">
+    <ion-fab-button routerLink='/detalhes-produtos/-1'>
+      <ion-icon name='add'></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
