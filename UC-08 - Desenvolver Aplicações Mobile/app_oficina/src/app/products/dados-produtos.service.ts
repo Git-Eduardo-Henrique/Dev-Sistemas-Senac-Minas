@@ -23,9 +23,9 @@ export class DadosProdutosService {
     dadosRecebidos.id = this.Produtos.length + 1
     this.Produtos.push(dadosRecebidos)
   }
-  
+
   RemoverDados(item : any){
-    const index = this.Produtos.indexOf(item.id)
+    const index = this.Produtos.indexOf(item)
     this.Produtos.splice(index, 1)
   }
 

@@ -33,8 +33,6 @@ export class DetalhesProdutosPage implements OnInit {
   }
 
   RemoverProdu(){
-    const id: number = Number(this.route.snapshot.paramMap.get('id'))
-    this.dadoseleciona = this.ObjProdu.FiltrarDados(id)
     this.ObjProdu.RemoverDados(this.dadoseleciona)
   }
 

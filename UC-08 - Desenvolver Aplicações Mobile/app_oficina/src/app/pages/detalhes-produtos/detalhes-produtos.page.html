@@ -11,12 +11,17 @@
 
 <ion-content>
 
+  <ion-fab vertical='top' horizontal='end' slot='fixed' edge="true">
+    <ion-fab-button color='danger' (click)='RemoverProdu()' routerLink='/listagem-produtos'>
+      <ion-icon name='trash-outline'></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <div *ngIf='!this.altera'>
     <ion-item>{{dadoseleciona.id}}</ion-item>
     <ion-item>{{dadoseleciona.nome}}</ion-item>
     <ion-item>{{dadoseleciona.valor}}</ion-item>
     <ion-button shape="block" (click)='Editar()'>Alterar dados</ion-button>
-    <ion-button color="danger" shape="block" (click)='RemoverProdu()' routerLink='/listagem-produtos'>Deletar produto</ion-button>
   </div>
 
   <form *ngIf='this.altera'>
