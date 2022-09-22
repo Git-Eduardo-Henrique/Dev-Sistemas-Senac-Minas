@@ -5,24 +5,42 @@
       <ion-back-button Href=""></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Contato</ion-title>
+    <ion-title> 
+      <ion-item>
+        contato
+      </ion-item>
+    </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <div *ngIf='this.janela'>
+
     <ion-item>{{dados.nome}}</ion-item>
     <ion-item>{{dados.num}}</ion-item>
     <ion-item>{{dados.email}}</ion-item>
-    <ion-button shape="block" (click)='editar()'>Alterar dados</ion-button>
+
+    <ion-button fill='clear' color='dark' (click)='editar()'>
+      <ion-icon name="heart"></ion-icon>
+      Favorito
+    </ion-button>
+
+    <ion-button fill='clear' color='dark' (click)='editar()'>
+      <ion-icon name="create"></ion-icon>
+      Editar
+    </ion-button>
   </div>
 
   <form *ngIf='!this.janela'>
     <ion-input placeholder="Nome" [(ngModel)]='dados.nome' name="nome"></ion-input>
     <ion-input placeholder='Numero' [(ngModel)]='dados.num' name="num"></ion-input>
     <ion-input placeholder='Email' [(ngModel)]='dados.email' name="email"></ion-input>
-    <ion-button shape="block" (click)='mostrar()' routerLink='\home' >Salvar dados</ion-button>
+    <ion-item>
+      <ion-button shape="block" (click)='mostrar()' routerLink='/home' >Salvar dados</ion-button>
+      <ion-button color='danger' shape="block" (click)='deletar_id()' routerLink='/home' >Deletar</ion-button>
+    </ion-item>
   </form>
 
 </ion-content>

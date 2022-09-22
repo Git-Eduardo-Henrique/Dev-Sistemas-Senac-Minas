@@ -20,12 +20,29 @@ export class EditContatosPage implements OnInit {
   }
 
   mostrar(){
-    this.janela = true
+    const id: number = Number(this.route.snapshot.paramMap.get('id'))
+    if (id > 0) {
+      this.janela = true
+    }
+    else {
+      this.dadosContats.adicionar(this.dados)
+      this.janela = true
+    }
+  }
+  
+  deletar_id(){
+    this.dadosContats.deletar(this.dados)
   }
 
   ngOnInit() {
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
-    this.dados = this.dadosContats.Filtrar(id)
+    if (id > 0){
+      this.dados = this.dadosContats.Filtrar(id)
+    }
+    else {
+      this.dados = {id, nome: '', num: '', email: ''}
+      this.janela = false
+    }
   }
 
 }

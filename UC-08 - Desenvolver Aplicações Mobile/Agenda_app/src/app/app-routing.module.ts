@@ -12,10 +12,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'info-contatos',
-    loadChildren: () => import('./pages/info-contatos/info-contatos.module').then( m => m.InfoContatosPageModule)
-  },
-  {
     path: 'edit-contatos/:id',
     loadChildren: () => import('./pages/edit-contatos/edit-contatos.module').then( m => m.EditContatosPageModule)
   },
