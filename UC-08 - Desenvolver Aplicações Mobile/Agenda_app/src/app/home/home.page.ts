@@ -7,7 +7,7 @@ import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contato
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  mostrar : any
+  public mostrar : any
 
   constructor( private TodosContatos : DadosContatosServiceService) {
     this.mostrar = TodosContatos.retorno()
