@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class DadosContatosServiceService {
 
   private Contatos = [
-    {id: 1, nome: 'Mãe', num: '(35) 9985-2009', email: 'socapanoff@gmail.com'}
+    {id: 1, nome: 'Mãe', num: '(35) 9985-2009', email: 'taty@gmail.com'}
   ]
 
   constructor() { }

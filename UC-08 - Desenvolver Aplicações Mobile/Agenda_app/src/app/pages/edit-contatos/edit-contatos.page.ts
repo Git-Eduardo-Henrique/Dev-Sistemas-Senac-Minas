@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditContatosPage implements OnInit {
 
   public janela = true
+  public delete = false
   public dados: any
 
   constructor( private dadosContats: DadosContatosServiceService,
@@ -38,10 +39,12 @@ export class EditContatosPage implements OnInit {
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
     if (id > 0){
       this.dados = this.dadosContats.Filtrar(id)
+      this.delete = false
     }
     else {
       this.dados = {id, nome: '', num: '', email: ''}
       this.janela = false
+      this.delete = true
     }
   }
 

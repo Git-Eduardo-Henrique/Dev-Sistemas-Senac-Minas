@@ -6,40 +6,59 @@
     </ion-buttons>
 
     <ion-title> 
-      <ion-item>
-        contato
-      </ion-item>
+        {{dados.nome}}
     </ion-title>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <!-- informações do contato -->
   <div *ngIf='this.janela'>
-
-    <ion-item>{{dados.nome}}</ion-item>
-    <ion-item>{{dados.num}}</ion-item>
-    <ion-item>{{dados.email}}</ion-item>
-
-    <ion-button fill='clear' color='dark' (click)='editar()'>
-      <ion-icon name="heart"></ion-icon>
+    <!------------------------  numero de telefone ----------------------->
+    <ion-item lines='full'>
+      <ion-label>
+        <h2>{{dados.num}}</h2> 
+        <p>celular</p>
+      </ion-label>
+      <ion-button fill='clear' color='success'><ion-icon name="call"></ion-icon></ion-button>
+      <ion-button fill='clear' color=''><ion-icon name="mail"></ion-icon></ion-button>
+    </ion-item>
+    <!-------------------------- whatsapp  -------------------------->
+      <ion-button fill='clear' expand='block' color='success'>
+        <ion-label slot='start'>Whatsapp</ion-label>
+        <ion-icon slot='end' name="logo-whatsapp"></ion-icon>
+      </ion-button>
+    <!-------------------------- email comercial -------------------------->
+    <ion-item lines='full'>
+      <ion-label>
+        <h2>{{dados.email}}</h2>
+        <p>comercial</p>
+      </ion-label>
+    </ion-item>
+    <!----------------------- buttons favorito e editar --------------------->
+    <ion-item lines='full'>
+    <ion-button fill='clear' color='dark' slot='start'>
+      <ion-icon name="heart" slot="start"></ion-icon>
       Favorito
     </ion-button>
-
-    <ion-button fill='clear' color='dark' (click)='editar()'>
-      <ion-icon name="create"></ion-icon>
+    <ion-button fill='clear' color='dark' slot='end' (click)='editar()'>
+      <ion-icon name="create" slot="start"></ion-icon>
       Editar
     </ion-button>
+    </ion-item>
   </div>
-
+  <!---------------------- modo de edição ----------------->
   <form *ngIf='!this.janela'>
     <ion-input placeholder="Nome" [(ngModel)]='dados.nome' name="nome"></ion-input>
     <ion-input placeholder='Numero' [(ngModel)]='dados.num' name="num"></ion-input>
     <ion-input placeholder='Email' [(ngModel)]='dados.email' name="email"></ion-input>
-    <ion-item>
-      <ion-button shape="block" (click)='mostrar()' routerLink='/home' >Salvar dados</ion-button>
-      <ion-button color='danger' shape="block" (click)='deletar_id()' routerLink='/home' >Deletar</ion-button>
+    <ion-button (click)='mostrar()' routerLink='/home' >Salvar  dados</ion-button>
+
+    <ion-item *ngIf='!this.delete'>
+      <ion-button fill='clear' color='danger' (click)='deletar_id()' routerLink='/home' >
+        Excluir este contato
+      </ion-button>
     </ion-item>
   </form>
 

@@ -1,9 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
 
+    <!-- titulo aba principal(home)-->
     <ion-title>
       <ion-icon name="person"></ion-icon>
-      Todos os contatos
+      Contatos
     </ion-title>
 
   </ion-toolbar>
@@ -11,23 +12,22 @@
 
 
 <ion-content [fullscreen]="true">
-
+  <!-- titulo aba principal(home) IOS-->
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
-        <ion-icon name="person"></ion-icon>
-        Todos os contatos
+        Contatos
       </ion-title>  
     </ion-toolbar>
   </ion-header>
-
+  <!----------------------------- botão de adicionar ----------------->
   <ion-fab vertical='bottom' horizontal='end' slot='fixed'>
-    <ion-fab-button routerLink='/edit-contatos/-1'>
-      <ion-icon name="person-add"></ion-icon>
+    <ion-fab-button routerLink='/edit-contatos/-1' color='success'>
+      <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id }}'>
+  <!----------------------------- todos os contatos ----------------->
+  <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id }}' lines='full'>
     <ion-icon slot='start' name="person-circle"></ion-icon>
     <ion-label> {{mostrar.nome}} </ion-label>
   </ion-item>
