@@ -16,6 +16,9 @@
   <!-- informações do contato -->
   <div *ngIf='this.janela'>
     <!------------------------  numero de telefone ----------------------->
+    <ion-avatar>
+      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
+    </ion-avatar>
     <ion-item lines='full'>
       <ion-label>
         <h2>{{dados.num}}</h2> 
@@ -38,10 +41,8 @@
     </ion-item>
     <!----------------------- buttons favorito e editar --------------------->
     <ion-item lines='full'>
-    <ion-button fill='clear' color='dark' slot='start'>
-      <ion-icon name="heart" slot="start"></ion-icon>
-      Favorito
-    </ion-button>
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-label>Favorito</ion-label>
     <ion-button fill='clear' color='dark' slot='end' (click)='editar()'>
       <ion-icon name="create" slot="start"></ion-icon>
       Editar
