@@ -8,7 +8,7 @@ sobrenome varchar(25),
 nome_exibicao varchar(45),
 email varchar(60),
 senha varchar(8),
-jogos_adiquiridos int);
+total_jogos int);
 
 create table jogos (
 id int auto_increment primary key,
