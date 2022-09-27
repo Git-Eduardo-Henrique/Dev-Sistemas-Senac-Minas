@@ -3,6 +3,7 @@ from Classe_DB import *
 from tkinter import Button, Label, messagebox, ttk
 from urllib.request import urlretrieve
 import time
+from shutil import move
 
 
 class Back:
@@ -54,18 +55,21 @@ class Back:
         lb_nome['text'] = f'{lista[1]} {lista[2]}'
         lb_email['text'] = f'{lista[3]}'
 
-    def add_biblioteca(self, bt, jogo, x, y):  # muda o botão de adicionar e remover jogo
+    def add_biblioteca(self, bt, jogo, x, y, num_jogo):  # muda o botão de adicionar e remover jogo
         if bt['fg'] == '#191919':
             jogo.place(width=195, height=21, x=x, y=y)
             bt['text'] = 'Remover da Biblioteca'
             bt['fg'] = '#F01F15'
+            num_jogo += 1
         elif bt['fg'] == '#F01F15':
             jogo.place_forget()
             bt['fg'] = '#191919'
             bt['text'] = 'Adicionar a Biblioteca'
+            num_jogo -= 1
 
     def download(self):  # efetua o download de um jogo
         janela2 = Toplevel()
+        print(Toplevel())
         janela2.geometry('250x150')
         janela2.resizable(False, False)
         janela2.iconbitmap('Fotos/black megb.ico')
@@ -73,7 +77,7 @@ class Back:
 
         def instalar():
             urlretrieve("https://docs.google.com/uc?export=download&id=1EjKmIidcQNEgpX4lVJniWJYhtdyAYHSC",
-                        "JogoMario.rar")
+                        "Super_Mario.rar")
             for i in range(5):
                 if progress1['value'] < 100:
                     janela2.update_idletasks()

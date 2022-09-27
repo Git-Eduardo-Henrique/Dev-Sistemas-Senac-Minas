@@ -12,8 +12,8 @@ data = BlackDB()
 janela = Tk()
 janela.geometry('960x540')
 janela.title('Black MEGB')
+janela.resizable(False, False)
 janela.iconbitmap('Fotos/black megb.ico')
-# janela.resizable(False, False)
 # =======================================================================================================================
 # Comando para copiar as coordenadas que sai no terminal
 '''
@@ -30,6 +30,7 @@ gray = '#323232'
 red = '#F01F15'
 ligth_red = '#ED3F3F'
 ligth_gray = '#A6A6A6'
+jogos = 0
 # =======================================================================================================================
 # Frames
 frame_entrada = Frame(janela)
@@ -179,7 +180,8 @@ bt_perfil = Button(frame_mario, image=img_bt_perfil, bd=0, bg=dark_gray, activeb
 bt_perfil.place(x=5, y=472)
 bt_add_bibli_mario = Button(frame_mario, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
                             fg=black, activebackground='#737373', activeforeground=black,
-                            command=lambda: back.add_biblioteca(bt_add_bibli_mario, bt_mario_bibli, x=5, y=164))
+                            command=lambda: back.add_biblioteca(bt_add_bibli_mario, bt_mario_bibli, x=5, y=164,
+                                                                num_jogo=jogos))
 bt_add_bibli_mario.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # FRAME SONIC LOJA
@@ -205,7 +207,8 @@ bt_perfil = Button(frame_sonic, image=img_bt_perfil, bd=0, bg=dark_gray, activeb
 bt_perfil.place(x=5, y=472)
 bt_add_bibli_sonic = Button(frame_sonic, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
                             fg=black, activebackground='#737373', activeforeground=black,
-                            command=lambda: back.add_biblioteca(bt_add_bibli_sonic, bt_sonic_bibli, x=5, y=192))
+                            command=lambda: back.add_biblioteca(bt_add_bibli_sonic, bt_sonic_bibli, x=5, y=192,
+                                                                num_jogo=jogos))
 bt_add_bibli_sonic.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # FRAME DONK
@@ -231,7 +234,8 @@ bt_perfil = Button(frame_donkeykong, image=img_bt_perfil, bd=0, bg=dark_gray, ac
 bt_perfil.place(x=5, y=472)
 bt_add_bibli_dk = Button(frame_donkeykong, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373',
                          fg=black, activebackground='#737373', activeforeground=black,
-                         command=lambda: back.add_biblioteca(bt_add_bibli_dk, bt_donkey_bibli, x=10, y=219))
+                         command=lambda: back.add_biblioteca(bt_add_bibli_dk, bt_donkey_bibli, x=10, y=219,
+                                                             num_jogo=jogos))
 bt_add_bibli_dk.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # frame mk
@@ -246,7 +250,6 @@ bt_biblioteca.place(x=4, y=117)
 
 ch_mk = BooleanVar()
 
-
 check_fav_mk = Checkbutton(frame_mk, image=img_fav_off, selectimage=img_fav_on, activebackground=dark_gray,
                            selectcolor=dark_gray, indicatoron=False, bd=0, onvalue=True, offvalue=False,
                            bg=dark_gray, variable=ch_mk, command=lambda: back.mudar(ch_mk, fav_mk, x=1, y=385))
@@ -257,7 +260,8 @@ bt_perfil = Button(frame_mk, image=img_bt_perfil, bd=0, bg=dark_gray, activeback
 bt_perfil.place(x=5, y=472)
 bt_add_bibli_mk = Button(frame_mk, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0, bg='#737373', fg=black,
                          activebackground='#737373', activeforeground=black,
-                         command=lambda: back.add_biblioteca(bt_add_bibli_mk, bt_mk3_bibli, x=0, y=244))
+                         command=lambda: back.add_biblioteca(bt_add_bibli_mk, bt_mk3_bibli, x=0, y=244,
+                                                             num_jogo=jogos))
 bt_add_bibli_mk.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # frame bomber
@@ -283,7 +287,8 @@ bt_perfil = Button(frame_bomberman, image=img_bt_perfil, bd=0, bg=dark_gray, act
 bt_perfil.place(x=5, y=472)
 bt_add_bibli_bomber = Button(frame_bomberman, text='Adicionar a Biblioteca', font='palatino 15 bold', bd=0,
                              bg='#737373', fg=black, activebackground='#737373', activeforeground=black,
-                             command=lambda: back.add_biblioteca(bt_add_bibli_bomber, bt_bomber, x=0, y=269))
+                             command=lambda: back.add_biblioteca(bt_add_bibli_bomber, bt_bomber, x=0, y=269,
+                                                                 num_jogo=jogos))
 bt_add_bibli_bomber.place(width=200, height=39, x=240, y=477)
 # =======================================================================================================================
 # Frame Biblioteca
@@ -340,7 +345,6 @@ fav_sonic = Button(frame_biblioteca, image=img_sonic_ico, text='SONIC THE HEDGEH
                                     bt_jogar.place(width=166, height=78, x=253, y=247),
                                     bt_remover.place(width=166, height=78, x=433, y=247)])
 
-
 fav_donkey = Button(frame_biblioteca, image=img_donkey_ico, text='DONKEY KONG TRILOGY', font='palatino 10 bold',
                     bd=0, fg=white, bg=dark_gray, activebackground=dark_gray, activeforeground=white, compound=LEFT,
                     command=lambda: [lb_jogar.place(width=682, height=316, x=238, y=21),
@@ -371,7 +375,7 @@ lb_perfil.pack()
 La_N_exibicao = Label(frame_perfil, text='', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 La_Nome = Label(frame_perfil, text='', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 La_email = Label(frame_perfil, text='', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
-La_jogos = Label(frame_perfil, text='0', font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
+La_jogos = Label(frame_perfil, text=jogos, font='palatino 15 bold', bd=0, bg=dark_gray, fg=white)
 # Buttons
 bt_biblioteca = Button(frame_perfil, image=img_bt_biblioteca, bd=0, bg=dark_gray, activebackground=dark_gray,
                        command=lambda: [frame_biblioteca.pack(), frame_perfil.forget()])

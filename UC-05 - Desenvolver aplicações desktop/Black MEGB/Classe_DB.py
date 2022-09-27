@@ -42,3 +42,4 @@ class BlackDB:
             lista.append(info[2])
             lista.append(info[3])
         return lista
+
