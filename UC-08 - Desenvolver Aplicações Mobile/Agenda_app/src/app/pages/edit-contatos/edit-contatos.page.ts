@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'
 import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-contatos',
@@ -12,9 +13,24 @@ export class EditContatosPage implements OnInit {
   public janela = true
   public delete = false
   public dados: any
+  public voltar: any
 
-  constructor( private dadosContats: DadosContatosServiceService,
-    private route: ActivatedRoute) { }
+  constructor( 
+    private dadosContats: DadosContatosServiceService,
+    private route: ActivatedRoute,
+    private alerta: AlertController) { }
+
+  async presentAlert() {
+     const alert = await this.alerta.create({
+      header: 'Atenção',
+      subHeader: '',
+      message: 'Este contato sera excluido e não podera mais ser resgatado!',
+      buttons: [{text: 'Cancelar', role: 'cancel'}, 
+                {text: 'Deletar', role: 'confirm', 
+                handler: ()=> this.dadosContats.deletar(this.dados)}],
+    });
+     await alert.present();
+    }
 
   editar() {
     this.janela = false
@@ -32,17 +48,18 @@ export class EditContatosPage implements OnInit {
   }
   
   deletar_id(){
-    this.dadosContats.deletar(this.dados)
+    this.presentAlert()
   }
 
   ngOnInit() {
+    this.voltar = '/edit-contatos/{{ dadosContats.id }}'
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
     if (id > 0){
       this.dados = this.dadosContats.Filtrar(id)
       this.delete = false
     }
     else {
-      this.dados = {id, nome: '', num: '', email: ''}
+      this.dados = {id, nome: '', sobrenome: '', tipo_num: '',num: '', email: ''}
       this.janela = false
       this.delete = true
     }
