@@ -63,7 +63,7 @@
     <ion-button (click)='mostrar()' routerLink='/home' >Salvar  dados</ion-button>
 
     <ion-item *ngIf='!this.delete' lines='full'>
-      <ion-button fill='clear' color='danger' (click)='deletar_id()' routerLink='{{ voltar }}' >
+      <ion-button fill='clear' color='danger' (click)='mostrar_alert()' routerLink='/home' >
         Excluir este contato
       </ion-button>
     </ion-item>

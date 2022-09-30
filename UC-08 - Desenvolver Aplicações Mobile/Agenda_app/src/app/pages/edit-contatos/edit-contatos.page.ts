@@ -13,7 +13,6 @@ export class EditContatosPage implements OnInit {
   public janela = true
   public delete = false
   public dados: any
-  public voltar: any
 
   constructor( 
     private dadosContats: DadosContatosServiceService,
@@ -27,7 +26,7 @@ export class EditContatosPage implements OnInit {
       message: 'Este contato sera excluido e não podera mais ser resgatado!',
       buttons: [{text: 'Cancelar', role: 'cancel'}, 
                 {text: 'Deletar', role: 'confirm', 
-                handler: ()=> this.dadosContats.deletar(this.dados)}],
+                handler: ()=> this.deletar_id()}],
     });
      await alert.present();
     }
@@ -46,13 +45,15 @@ export class EditContatosPage implements OnInit {
       this.janela = true
     }
   }
-  
-  deletar_id(){
+  mostrar_alert(){
     this.presentAlert()
   }
 
+  deletar_id(){
+    this.dadosContats.deletar(this.dados)
+  }
+
   ngOnInit() {
-    this.voltar = '/edit-contatos/{{ dadosContats.id }}'
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
     if (id > 0){
       this.dados = this.dadosContats.Filtrar(id)

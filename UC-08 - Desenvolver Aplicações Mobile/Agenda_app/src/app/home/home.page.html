@@ -27,6 +27,8 @@
     </ion-fab-button>
   </ion-fab>
   <!----------------------------- todos os contatos ----------------->
+  <ion-searchbar show-clear-button="always" placeholder="Procurar contato" color="medium"></ion-searchbar>
+
   <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id }}' lines='full'>
     <ion-icon slot='start' name="person-circle"></ion-icon>
     <ion-label> {{mostrar.nome}} </ion-label>
