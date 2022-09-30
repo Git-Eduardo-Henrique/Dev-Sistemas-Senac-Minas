@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-contatos',
@@ -13,11 +14,14 @@ export class EditContatosPage implements OnInit {
   public janela = true
   public delete = false
   public dados: any
+  contatoForm: FormGroup
+
 
   constructor( 
     private dadosContats: DadosContatosServiceService,
     private route: ActivatedRoute,
-    private alerta: AlertController) { }
+    private alerta: AlertController,
+    private formulario: FormBuilder) { }
 
   async presentAlert() {
      const alert = await this.alerta.create({
@@ -35,18 +39,17 @@ export class EditContatosPage implements OnInit {
     this.janela = false
   }
 
-  mostrar(){
+  submit(){
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
-    if (id > 0) {
-      this.janela = true
+    if (this.contatoForm.valid){
+      if (id > 0) {
+        this.janela = true
+      }
+      else {
+        this.dadosContats.adicionar(this.dados)
+        this.janela = true
+      }
     }
-    else {
-      this.dadosContats.adicionar(this.dados)
-      this.janela = true
-    }
-  }
-  mostrar_alert(){
-    this.presentAlert()
   }
 
   deletar_id(){
@@ -54,6 +57,7 @@ export class EditContatosPage implements OnInit {
   }
 
   ngOnInit() {
+
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
     if (id > 0){
       this.dados = this.dadosContats.Filtrar(id)
@@ -64,6 +68,13 @@ export class EditContatosPage implements OnInit {
       this.janela = false
       this.delete = true
     }
+    this.contatoForm = this.formulario.group({
+      nome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
+      sobrenome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
+      email: ['', Validators.compose([Validators.required, Validators.maxLength(15), Validators.email])],
+      num: ['', Validators.compose([Validators.required, Validators.maxLength(17)])],  
+      tipo_num: ['']
+    })
   }
 
 }

@@ -17,7 +17,7 @@
   <div *ngIf='this.janela'>
     <!------------------------  numero de telefone ----------------------->
     <ion-avatar>
-      <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
+      <img class='img' alt="Silhouette of a person's head" src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
     </ion-avatar>
     <ion-item lines='full'>
       <ion-label>
@@ -44,26 +44,26 @@
     </ion-item>
   </div>
   <!---------------------- modo de edição ----------------->
-  <form *ngIf='!this.janela'>
-    <ion-input placeholder="Nome" [(ngModel)]='dados.nome' name="nome"></ion-input>
-    <ion-input placeholder="Sobrenome" [(ngModel)]='dados.sobrenome' name="sobrenome"></ion-input>
+  <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm'>
+    <ion-input placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
+    <ion-input placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
 
     <ion-item lines="full">
 
-      <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' name='tipo_num'>
+      <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' formControlName='tipo_num'>
         <ion-select-option value='celular'>celular</ion-select-option>
         <ion-select-option value='casa'>casa</ion-select-option>
         <ion-select-option value='trabalho'>trabalho</ion-select-option>
       </ion-select>
 
-      <ion-input placeholder='Numero' [(ngModel)]='dados.num' name="num"></ion-input>
+      <ion-input simpleMask='(999)9-9999-9999' [clearIfNotMatch]="true" placeholder='Numero' [(ngModel)]='dados.num' type='text' formControlName="num"></ion-input>
     </ion-item>
 
-    <ion-input placeholder='Email' [(ngModel)]='dados.email' name="email"></ion-input>
-    <ion-button (click)='mostrar()' routerLink='/home' >Salvar  dados</ion-button>
+    <ion-input placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
+    <ion-button (click)="submit()" routerLink='/home' >Salvar  dados</ion-button>
 
     <ion-item *ngIf='!this.delete' lines='full'>
-      <ion-button fill='clear' color='danger' (click)='mostrar_alert()' routerLink='/home' >
+      <ion-button fill='clear' color='danger' (click)='presentAlert()' routerLink='/home' >
         Excluir este contato
       </ion-button>
     </ion-item>
