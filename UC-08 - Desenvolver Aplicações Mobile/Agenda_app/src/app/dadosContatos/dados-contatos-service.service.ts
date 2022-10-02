@@ -10,7 +10,7 @@ export class DadosContatosServiceService {
       nome: 'Eduardo', 
       sobrenome: 'Henrique', 
       tipo_num: 'trabalho',
-      num: '(035)9-9999-9993', 
+      num: '(035) 9 4002-8922', 
       email: 'taty@gmail.com'}
   ]
 

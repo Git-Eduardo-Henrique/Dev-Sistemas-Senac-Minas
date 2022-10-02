@@ -23,7 +23,7 @@ export class EditContatosPage implements OnInit {
     private alerta: AlertController,
     private formulario: FormBuilder) { }
 
-  async presentAlert() {
+  async Excluir_contato() {
      const alert = await this.alerta.create({
       header: 'Atenção',
       subHeader: '',
@@ -31,6 +31,16 @@ export class EditContatosPage implements OnInit {
       buttons: [{text: 'Cancelar', role: 'cancel'}, 
                 {text: 'Deletar', role: 'confirm', 
                 handler: ()=> this.deletar_id()}],
+    });
+     await alert.present();
+    }
+
+   async Erro() {
+     const alert = await this.alerta.create({
+      header: 'contato não validado!',
+      subHeader: '',
+      message: 'preencha cada campo com a formatação certa!',
+      buttons: ['OK'],
     });
      await alert.present();
     }
@@ -50,6 +60,9 @@ export class EditContatosPage implements OnInit {
         this.janela = true
       }
     }
+    else {
+      this.Erro()
+    }
   }
 
   deletar_id(){
@@ -68,10 +81,11 @@ export class EditContatosPage implements OnInit {
       this.janela = false
       this.delete = true
     }
+
     this.contatoForm = this.formulario.group({
       nome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
       sobrenome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
-      email: ['', Validators.compose([Validators.required, Validators.maxLength(15), Validators.email])],
+      email: ['', Validators.compose([Validators.required, Validators.maxLength(45), Validators.email])],
       num: ['', Validators.compose([Validators.required, Validators.maxLength(17)])],  
       tipo_num: ['']
     })
