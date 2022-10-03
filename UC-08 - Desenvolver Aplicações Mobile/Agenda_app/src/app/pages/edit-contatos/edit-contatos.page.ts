@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +13,7 @@ export class EditContatosPage implements OnInit {
 
   public janela = true
   public delete = false
-  public dados: any
+  dados: any
   contatoForm: FormGroup
 
 
@@ -21,16 +21,18 @@ export class EditContatosPage implements OnInit {
     private dadosContats: DadosContatosServiceService,
     private route: ActivatedRoute,
     private alerta: AlertController,
-    private formulario: FormBuilder) { }
+    private formulario: FormBuilder,
+    private _router: Router) { }
 
   async Excluir_contato() {
      const alert = await this.alerta.create({
       header: 'Atenção',
       subHeader: '',
       message: 'Este contato sera excluido e não podera mais ser resgatado!',
-      buttons: [{text: 'Cancelar', role: 'cancel'}, 
+      buttons: [{text: 'Cancelar', role: 'cancel',
+                 handler: ()=> {}}, 
                 {text: 'Deletar', role: 'confirm', 
-                handler: ()=> this.deletar_id()}],
+                handler: ()=> {this.deletar_id(), this._router.navigate(['/home'])}}],
     });
      await alert.present();
     }
@@ -58,6 +60,7 @@ export class EditContatosPage implements OnInit {
       else {
         this.dadosContats.adicionar(this.dados)
         this.janela = true
+        this._router.navigate(['/home'])
       }
     }
     else {
@@ -87,7 +90,7 @@ export class EditContatosPage implements OnInit {
       sobrenome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
       email: ['', Validators.compose([Validators.required, Validators.maxLength(45), Validators.email])],
       num: ['', Validators.compose([Validators.required, Validators.maxLength(17)])],  
-      tipo_num: ['']
+      tipo_num: ['', Validators.required]
     })
   }
 

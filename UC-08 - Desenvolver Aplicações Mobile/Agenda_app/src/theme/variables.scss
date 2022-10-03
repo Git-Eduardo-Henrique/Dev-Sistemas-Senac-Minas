@@ -11,6 +11,14 @@
     padding-top: 10px;
     padding-bottom: 5px;
   }
+  .inputs{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    border: 4px #1f1f1f solid;
+    border-radius: 25px;
+  }
 
   /** primary **/
   --ion-color-primary: #3880ff;

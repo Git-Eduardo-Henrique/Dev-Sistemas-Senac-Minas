@@ -16,7 +16,7 @@
     <!------------------------  numero de telefone ----------------------->
     <div class='nome_avatar'>
       <ion-avatar>
-        <img alt="Silhouette of a person's head" 
+        <img alt="you" 
              src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
       
       </ion-avatar>
@@ -49,10 +49,10 @@
   </div>
   <!---------------------- modo de edição ----------------->
   <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm'>
-    <ion-input placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
-    <ion-input placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
+    <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
+    <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
 
-    <ion-item lines="full">
+    <ion-item class='inputs'>
 
       <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' formControlName='tipo_num'>
         <ion-select-option value='celular'>celular</ion-select-option>
@@ -65,11 +65,11 @@
 
     </ion-item>
 
-    <ion-input placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
-    <ion-button (click)="submit()" routerLink='/home' >Salvar  dados</ion-button>
+    <ion-input class='inputs' placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
+    <ion-button (click)="submit()">Salvar  dados</ion-button>
 
     <ion-item *ngIf='!this.delete' lines='full'>
-      <ion-button fill='clear' color='danger' (click)='Excluir_contato()' routerLink='/home' >
+      <ion-button fill='clear' color='danger' (click)='Excluir_contato()'>
         Excluir este contato
       </ion-button>
     </ion-item>
