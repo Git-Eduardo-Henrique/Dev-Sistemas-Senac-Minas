@@ -5,7 +5,11 @@
       <ion-back-button Href=""></ion-back-button>
     </ion-buttons>
 
- 
+    <ion-fab vertical='top' horizontal='end' slot='fixed' edge="true">
+      <ion-fab-button color='success' (click)="submit()">
+        <ion-icon name="checkmark"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
   </ion-toolbar>
 </ion-header>
@@ -13,7 +17,7 @@
 <ion-content>
   <!-- informações do contato -->
   <div *ngIf='this.janela'>
-    <!------------------------  numero de telefone ----------------------->
+    <!------------------------  numero de telefone mostrar ----------------------->
     <div class='nome_avatar'>
       <ion-avatar>
         <img alt="you" 
@@ -31,13 +35,13 @@
       <ion-button fill='clear' color='success'><ion-icon name="call"></ion-icon></ion-button>
       <ion-button fill='clear' color=''><ion-icon name="mail"></ion-icon></ion-button>
     </ion-item>
-    <!-------------------------- email comercial -------------------------->
+    <!-------------------------- email comercial mostrar -------------------------->
     <ion-item lines='full'>
       <ion-label>
         <h2>{{dados.email}}</h2>
       </ion-label>
     </ion-item>
-    <!----------------------- buttons favorito e editar --------------------->
+    <!----------------------- buttons favorito e editar  mostrar --------------------->
     <ion-item lines='full'>
       <ion-checkbox slot="start"></ion-checkbox>
       <ion-label>Favorito</ion-label>
@@ -47,11 +51,22 @@
     </ion-button>
     </ion-item>
   </div>
-  <!---------------------- modo de edição ----------------->
-  <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm'>
-    <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
-    <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
 
+  <!---------------------- modo de edição ----------------->
+  <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm' class="formulario">
+
+    <!---------------------- nome e sobrenome imput ------------------>
+    <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
+    <small>
+
+    </small>
+
+    <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
+    <small>
+
+    </small>
+
+    <!---------------------- numero e tipo -------------------------->
     <ion-item class='inputs'>
 
       <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' formControlName='tipo_num'>
@@ -65,14 +80,25 @@
 
     </ion-item>
 
+    <!------------------------ email input -------------------------->
     <ion-input class='inputs' placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
+
+    <!------------------------ salvar botao ------------------------->
     <ion-button (click)="submit()">Salvar  dados</ion-button>
 
+    <ion-fab vertical='top' horizontal='end' slot='fixed'>
+      <ion-fab-button color='success' (click)="submit()">
+        <ion-icon name="checkmark"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <!------------------------ excluir contato ---------------------->
     <ion-item *ngIf='!this.delete' lines='full'>
       <ion-button fill='clear' color='danger' (click)='Excluir_contato()'>
         Excluir este contato
       </ion-button>
     </ion-item>
+
   </form>
 
 </ion-content>
