@@ -4,27 +4,28 @@
     <ion-buttons>
       <ion-back-button Href=""></ion-back-button>
     </ion-buttons>
-
-    <ion-fab vertical='top' horizontal='end' slot='fixed' edge="true">
-      <ion-fab-button color='success' (click)="submit()">
-        <ion-icon name="checkmark"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    <!------------------------ salvar botao ------------------------->
+    <ion-button *ngIf="!this.janela" slot="end" (click)="submit()" fill="clear">
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-button>
+  
 
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <!-- informações do contato -->
   <div *ngIf='this.janela'>
     <!------------------------  numero de telefone mostrar ----------------------->
     <div class='nome_avatar'>
-      <ion-avatar>
-        <img alt="you" 
-             src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
-      
-      </ion-avatar>
-      <h3>{{dados.nome}} {{dados.sobrenome}}</h3>
+      <img alt="you" src="assets/images/user.png"/>
+
+      <h3 class="nome_sobrenome">
+        {{dados.nome}} 
+        <div *ngIf="(dados.sobrenome != '')" >{{dados.sobrenome}}</div> 
+      </h3>
+
     </div>
 
     <ion-item lines='full'>
@@ -32,11 +33,13 @@
         <h2>{{dados.num}}</h2> 
         <p>{{dados.tipo_num}}</p>
       </ion-label>
+
       <ion-button fill='clear' color='success'><ion-icon name="call"></ion-icon></ion-button>
       <ion-button fill='clear' color=''><ion-icon name="mail"></ion-icon></ion-button>
+
     </ion-item>
     <!-------------------------- email comercial mostrar -------------------------->
-    <ion-item lines='full'>
+    <ion-item lines='full' *ngIf="(dados.email != '')">
       <ion-label>
         <h2>{{dados.email}}</h2>
       </ion-label>
@@ -54,43 +57,37 @@
 
   <!---------------------- modo de edição ----------------->
   <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm' class="formulario">
+    <div class="info">
+      <img class='avatar' src="assets/images/avatar.png" alt="user">
+  
+      <!---------------------- nome e sobrenome imput ------------------>
+      <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
+      <small>
 
-    <!---------------------- nome e sobrenome imput ------------------>
-    <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
-    <small>
+      </small>
 
-    </small>
+      <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
+      <small>
 
-    <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
-    <small>
+      </small>
 
-    </small>
+      <!---------------------- numero e tipo -------------------------->
+      <ion-item class='inputs'>
 
-    <!---------------------- numero e tipo -------------------------->
-    <ion-item class='inputs'>
+        <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' formControlName='tipo_num'>
+          <ion-select-option value='celular'>celular</ion-select-option>
+          <ion-select-option value='casa'>casa</ion-select-option>
+          <ion-select-option value='trabalho'>trabalho</ion-select-option>
+        </ion-select>
 
-      <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' formControlName='tipo_num'>
-        <ion-select-option value='celular'>celular</ion-select-option>
-        <ion-select-option value='casa'>casa</ion-select-option>
-        <ion-select-option value='trabalho'>trabalho</ion-select-option>
-      </ion-select>
+        <ion-input simpleMask='(999) 9 9999-9999' [clearIfNotMatch]="true" placeholder='Numero' 
+        [(ngModel)]='dados.num' type='text' formControlName="num"></ion-input>
 
-      <ion-input simpleMask='(999) 9 9999-9999' [clearIfNotMatch]="true" placeholder='Numero' 
-      [(ngModel)]='dados.num' type='text' formControlName="num"></ion-input>
+      </ion-item>
 
-    </ion-item>
-
-    <!------------------------ email input -------------------------->
-    <ion-input class='inputs' placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
-
-    <!------------------------ salvar botao ------------------------->
-    <ion-button (click)="submit()">Salvar  dados</ion-button>
-
-    <ion-fab vertical='top' horizontal='end' slot='fixed'>
-      <ion-fab-button color='success' (click)="submit()">
-        <ion-icon name="checkmark"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+      <!------------------------ email input -------------------------->
+      <ion-input class='inputs' placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
+    </div>
 
     <!------------------------ excluir contato ---------------------->
     <ion-item *ngIf='!this.delete' lines='full'>

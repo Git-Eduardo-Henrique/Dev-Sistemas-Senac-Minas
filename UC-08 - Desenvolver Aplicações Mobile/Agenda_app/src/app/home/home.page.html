@@ -30,8 +30,10 @@
   <ion-searchbar animated='true' show-clear-button="always" placeholder="Procurar contato" color="medium"></ion-searchbar>
 
   <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id }}' lines='full'>
-    <ion-icon slot='start' name="person-circle"></ion-icon>
-    <ion-label> {{mostrar.nome}} </ion-label>
+    <ion-avatar>
+      <img src="assets/images/user.png" alt="user">
+    </ion-avatar>
+    <ion-label class="label_nome"> {{mostrar.nome}} </ion-label>
   </ion-item>
 
 </ion-content>

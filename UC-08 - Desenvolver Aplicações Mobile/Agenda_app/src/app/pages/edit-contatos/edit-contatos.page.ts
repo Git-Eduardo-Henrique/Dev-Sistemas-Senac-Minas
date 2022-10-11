@@ -87,8 +87,8 @@ export class EditContatosPage implements OnInit {
 
     this.contatoForm = this.formulario.group({
       nome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
-      sobrenome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
-      email: ['', Validators.compose([Validators.required, Validators.maxLength(45), Validators.email])],
+      sobrenome: ['', Validators.compose([Validators.minLength(3), Validators.maxLength(15)])],
+      email: ['', Validators.compose([Validators.maxLength(45), Validators.email])],
       num: ['', Validators.compose([Validators.required, Validators.maxLength(17)])],  
       tipo_num: ['', Validators.required]
     })
