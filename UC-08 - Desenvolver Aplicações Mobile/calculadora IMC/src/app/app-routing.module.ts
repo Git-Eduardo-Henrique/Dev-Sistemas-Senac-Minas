@@ -8,12 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'formulario',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: 'formulario',
     loadChildren: () => import('./formulario/formulario/formulario.module').then( m => m.FormularioPageModule)
+  },
+  {
+    path: 'historico',
+    loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule)
   },
 ];
 

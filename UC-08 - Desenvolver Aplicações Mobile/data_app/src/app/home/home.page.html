@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Mostrador de Nome 7.000 pro max
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mostrador de Nome 7.000 pro max</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <form [formGroup]="nome_form" (submit)="submit()">
+      <ion-item>
+        <ion-label position="floating">Nome: </ion-label>
+        <ion-input formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-button padding shape="round" expand="block" type="submit">salvar</ion-button>
+    </form>
+  </div>
+
+  <ion-item *ngFor="let arraynome of arraynome" lines="none">
+    <ion-label>
+      {{arraynome.nome}}
+    </ion-label>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>historico</ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let arrayImc of arrayImc" lines="none">
+    <ion-label>
+      {{arrayImc.sexo}} | {{arrayImc.altura}} | {{arrayImc.peso}} | {{arrayImc.imc}}
+    </ion-label>
+  </ion-item>
+</ion-content>
