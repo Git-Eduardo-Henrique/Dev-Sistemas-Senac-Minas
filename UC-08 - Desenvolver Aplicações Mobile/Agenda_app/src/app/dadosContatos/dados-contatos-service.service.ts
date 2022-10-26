@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 
+// banco de dados
+import { Guid } from "guid-typescript";
+import { Storage } from '@ionic/storage-angular';
+import { Contatos } from '../models/contatos.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DadosContatosServiceService {
 
+  
   private Contatos = [
     {id: 1, 
       nome: 'Eduardo', 
@@ -14,15 +20,18 @@ export class DadosContatosServiceService {
       email: 'taty@gmail.com'}
   ]
 
-  constructor() { }
+  constructor(private storage: Storage) { }
 
   retorno() {
     return this.Contatos
   }
 
-  adicionar(novo_contato: any) {
-    novo_contato.id = this.Contatos.length + 1
-    this.Contatos.push(novo_contato)
+  adicionar(arg : Contatos) {
+    arg.id = Guid.create()
+    this.storage.set(arg.id.toString(), JSON.stringify(arg))
+
+    // novo_contato.id = this.Contatos.length + 1
+    // this.Contatos.push(novo_contato)
   }
   
   deletar(remover){

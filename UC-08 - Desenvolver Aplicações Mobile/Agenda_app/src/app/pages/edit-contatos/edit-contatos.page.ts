@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Guid } from "guid-typescript";
+import { Contatos } from 'src/app/models/contatos.model';
+import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'
 
 @Component({
   selector: 'app-edit-contatos',
@@ -75,6 +78,7 @@ export class EditContatosPage implements OnInit {
   ngOnInit() {
 
     const id: number = Number(this.route.snapshot.paramMap.get('id'))
+
     if (id > 0){
       this.dados = this.dadosContats.Filtrar(id)
       this.delete = false

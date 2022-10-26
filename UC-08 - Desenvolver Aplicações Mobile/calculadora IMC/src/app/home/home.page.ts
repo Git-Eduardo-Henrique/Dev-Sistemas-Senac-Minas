@@ -14,6 +14,10 @@ import { ImcDbService } from '../services/imc-db.service';
 export class HomePage implements OnInit {
 
   private imcs: imc
+
+  public vetor: any
+  public imc: any
+
   public formG: FormGroup
 
   sexo_opt: string
@@ -39,7 +43,7 @@ export class HomePage implements OnInit {
     await alert.present()
   }
 
-  imc() {
+  imcc() {
     if (this.sexo_opt == null) {
       this.msg = 'selecione um sexo!!!'
     } 
@@ -47,15 +51,15 @@ export class HomePage implements OnInit {
     else {
       var p = parseFloat(this.peso)
       var a = parseFloat(this.altura)
-      var imc = p / a**2
-      this.resul = imc.toFixed(2)
+      this.imc = p / a**2
+      this.resul = this.imc.toFixed(2)
 
       if (this.sexo_opt == 'f'){
-        if (imc <= 19) {
+        if (this.imc <= 19) {
           this.msg = 'abaixo do peso'
           this.imagem = 'assets/icon/alerta.png'
         }
-        else if (imc > 19 && imc <=27.3) {
+        else if (this.imc > 19 && this.imc <=27.3) {
           this.msg = 'peso normal'
           this.imagem = 'assets/icon/normal.png'
         } 
@@ -66,17 +70,18 @@ export class HomePage implements OnInit {
       }
 
       if (this.sexo_opt == 'm'){
-        if (imc <= 20.7) {
+        if (this.imc <= 20.7) {
           this.msg = 'abaixo do peso'
           this.imagem = 'assets/icon/alerta.png'
         }
-        else if (imc > 20.7 && imc <=27.8) {
+        else if (this.imc > 20.7 && this.imc <=27.8) {
           this.msg = 'peso normal'
           this.imagem = 'assets/icon/normal.png'
         } 
         else {
           this.msg = 'acima do peso'
           this.imagem = 'assets/icon/alerta_vermelho.png'
+          
         }
       }
     }
@@ -85,7 +90,13 @@ export class HomePage implements OnInit {
 
   submit(){
     if (this.formG.valid){
-      this.service.insert(this.formG.value)
+
+      // guarda o formulario em uma variavel
+      this.vetor = this.formG.value
+      this.vetor.imc = this.imc
+      this.vetor.resul = this.msg
+
+      this.service.insert(this.vetor)
     }
   }
 
