@@ -61,40 +61,35 @@
       <img class='avatar' src="assets/images/avatar.png" alt="user">
   
       <!---------------------- nome e sobrenome imput ------------------>
-      <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='dados.nome'type='text' formControlName="nome"></ion-input>
-      <small>
+      <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='contato.nome'type='text' formControlName="nome"></ion-input>
 
-      </small>
-
-      <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='dados.sobrenome' type='text' formControlName="sobrenome"></ion-input>
-      <small>
-
-      </small>
+      <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='contato.sobrenome' type='text' formControlName="sobrenome"></ion-input>
 
       <!---------------------- numero e tipo -------------------------->
       <ion-item class='inputs'>
 
-        <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='dados.tipo_num' formControlName='tipo_num'>
+        <ion-select placeholder="tipo de telefone" slot='start' [(ngModel)]='contato.tipo_num' formControlName='tipo_num'>
           <ion-select-option value='celular'>celular</ion-select-option>
           <ion-select-option value='casa'>casa</ion-select-option>
           <ion-select-option value='trabalho'>trabalho</ion-select-option>
         </ion-select>
 
         <ion-input simpleMask='(999) 9 9999-9999' [clearIfNotMatch]="true" placeholder='Numero' 
-        [(ngModel)]='dados.num' type='text' formControlName="num"></ion-input>
+        [(ngModel)]='contato.num' type='text' formControlName="num"></ion-input>
 
       </ion-item>
 
       <!------------------------ email input -------------------------->
-      <ion-input class='inputs' placeholder='Email' [(ngModel)]='dados.email' type='text' formControlName="email"></ion-input>
+      <ion-input class='inputs' placeholder='Email' [(ngModel)]='contato.email' type='text' formControlName="email"></ion-input>
     </div>
 
     <!------------------------ excluir contato ---------------------->
+<!--     
     <ion-item *ngIf='!this.delete' lines='full'>
       <ion-button fill='clear' color='danger' (click)='Excluir_contato()'>
         Excluir este contato
       </ion-button>
-    </ion-item>
+    </ion-item> -->
 
   </form>
 

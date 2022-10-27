@@ -16,29 +16,32 @@ export class EditContatosPage implements OnInit {
 
   public janela = true
   public delete = false
-  dados: any
-  contatoForm: FormGroup
 
+  private contato: Contatos
+  public contatoForm: FormGroup
 
   constructor( 
-    private dadosContats: DadosContatosServiceService,
     private route: ActivatedRoute,
     private alerta: AlertController,
-    private formulario: FormBuilder,
-    private _router: Router) { }
+    private _router: Router,
 
-  async Excluir_contato() {
-     const alert = await this.alerta.create({
-      header: 'Atenção',
-      subHeader: '',
-      message: 'Este contato sera excluido e não podera mais ser resgatado!',
-      buttons: [{text: 'Cancelar', role: 'cancel',
-                 handler: ()=> {}}, 
-                {text: 'Deletar', role: 'confirm', 
-                handler: ()=> {this.deletar_id(), this._router.navigate(['/home'])}}],
-    });
-     await alert.present();
-    }
+    private dadosContats: DadosContatosServiceService,
+    private formulario: FormBuilder) { }
+
+ // ==============================================================================================================
+
+  // async Excluir_contato() {
+  //    const alert = await this.alerta.create({
+  //     header: 'Atenção',
+  //     subHeader: '',
+  //     message: 'Este contato sera excluido e não podera mais ser resgatado!',
+  //     buttons: [{text: 'Cancelar', role: 'cancel',
+  //                handler: ()=> {}}, 
+  //               {text: 'Deletar', role: 'confirm', 
+  //               handler: ()=> {this.deletar_id(), this._router.navigate(['/home'])}}],
+  //   });
+  //    await alert.present();
+  //   }
 
    async Erro() {
      const alert = await this.alerta.create({
@@ -50,20 +53,22 @@ export class EditContatosPage implements OnInit {
      await alert.present();
     }
 
+  // ==============================================================================================================
+
   editar() {
     this.janela = false
   }
 
   submit(){
-    const id: number = Number(this.route.snapshot.paramMap.get('id'))
+    var id: any = String(this.route.snapshot.paramMap.get('id'))
     if (this.contatoForm.valid){
-      if (id > 0) {
-        this.janela = true
-      }
-      else {
-        this.dadosContats.adicionar(this.dados)
+      if (id = 'edit') {
+        this.dadosContats.adicionar(this.contatoForm.value)
         this.janela = true
         this._router.navigate(['/home'])
+      }
+      else {
+        this.janela = true
       }
     }
     else {
@@ -71,30 +76,32 @@ export class EditContatosPage implements OnInit {
     }
   }
 
-  deletar_id(){
-    this.dadosContats.deletar(this.dados)
-  }
+  // deletar_id(){
+  //   this.dadosContats.deletar(this.dados)
+  // }
 
   ngOnInit() {
 
-    const id: number = Number(this.route.snapshot.paramMap.get('id'))
+    var id: any =  String(this.route.snapshot.paramMap.get('id'))
 
-    if (id > 0){
-      this.dados = this.dadosContats.Filtrar(id)
-      this.delete = false
-    }
-    else {
-      this.dados = {id, nome: '', sobrenome: '', tipo_num: '',num: '', email: ''}
+    if (id = 'edit'){
+      // this.dados = {id, nome: '', sobrenome: '', tipo_num: '',num: '', email: ''}
+      this.contato = {id: Guid.createEmpty(), nome: '', sobrenome: '', tipo_num: '', num: '', email: ''}
+
       this.janela = false
       this.delete = true
     }
+    else {
+      // this.dados = this.dadosContats.Filtrar(id)
+      this.delete = false
+    }
 
     this.contatoForm = this.formulario.group({
-      nome: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
-      sobrenome: ['', Validators.compose([Validators.minLength(3), Validators.maxLength(15)])],
-      email: ['', Validators.compose([Validators.maxLength(45), Validators.email])],
-      num: ['', Validators.compose([Validators.required, Validators.maxLength(17)])],  
-      tipo_num: ['', Validators.required]
+      nome: [this.contato.nome, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(15)])],
+      sobrenome: [this.contato.sobrenome, Validators.compose([Validators.minLength(3), Validators.maxLength(15)])],
+      email: [this.contato.tipo_num, Validators.compose([Validators.maxLength(45), Validators.email])],
+      num: [this.contato.num, Validators.compose([Validators.required, Validators.maxLength(17)])],  
+      tipo_num: [this.contato.email, Validators.required]
     })
   }
 
