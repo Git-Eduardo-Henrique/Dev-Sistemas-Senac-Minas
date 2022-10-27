@@ -29,7 +29,7 @@
   <!----------------------------- todos os contatos ----------------->
   <ion-searchbar animated='true' show-clear-button="always" placeholder="Procurar contato" color="medium"></ion-searchbar>
 
-  <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id }}' lines='full'>
+  <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id.value }}' lines='full'>
     <ion-avatar>
       <img src="assets/images/user.png" alt="user">
     </ion-avatar>

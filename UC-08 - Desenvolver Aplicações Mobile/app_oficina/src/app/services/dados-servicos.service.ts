@@ -20,7 +20,7 @@ export class DadosServicosService {
   }
 
   FiltrarDadosId(id:number){
-    const servicoSeleciona = this.Servicos.filter(servico => servico.id === id)
+    const servicoSeleciona = this.Servicos.filter(dado => dado.id === id)
     return servicoSeleciona[0]
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'; 
 
 @Component({
@@ -6,11 +6,16 @@ import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contato
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   public mostrar: any
 
-  constructor( private TodosContatos : DadosContatosServiceService) {
-    TodosContatos.retorno().then(arraycontato => {this.mostrar = arraycontato})
+  constructor( private TodosContatos : DadosContatosServiceService) {}
+
+
+ngOnInit(){
+  this.TodosContatos.retorno().then(arraycontato => {this.mostrar = arraycontato})
+  console.log()
 }
+
 }

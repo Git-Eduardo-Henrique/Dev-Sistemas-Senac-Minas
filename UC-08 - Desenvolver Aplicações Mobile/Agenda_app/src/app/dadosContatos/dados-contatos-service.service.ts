@@ -5,6 +5,7 @@ import { Guid } from "guid-typescript";
 import { Storage } from '@ionic/storage-angular';
 import { Contatos } from '../models/contatos.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,7 @@ export class DadosContatosServiceService {
   // ]
 
 
+  public array: any
 
   constructor(
     private storage: Storage) { }
@@ -48,8 +50,31 @@ export class DadosContatosServiceService {
   //   this.Contatos.splice(index, 1)
   // }
 
-  // Filtrar(id : any) {
-  //   const selecionaProdu = this.Contatos.filter(produto => produto.id === id)
-  //   return selecionaProdu[0]
-  // }
-}
+  async Filtrar(id : any, vetor: any) {
+
+    const servicoSeleciona = vetor.filter(servico => servico.id === id)
+
+    return servicoSeleciona[0]
+ 
+    //========================
+    // let arraycontato: Contatos [] = []
+
+    // await this.storage.forEach((value: string) => 
+    //     {const contato: Contatos = JSON.parse(value); arraycontato.push(contato)})
+   
+    // for (var single in arraycontato) {
+    //   if (arraycontato[single].id == id) {
+
+    //     console.log('foi')
+
+    //     var receba = arraycontato[single]
+
+    //     return receba
+    //   }
+
+    //   else {
+    //     console.log("nao foi")
+    //   }
+    }
+  }
+
