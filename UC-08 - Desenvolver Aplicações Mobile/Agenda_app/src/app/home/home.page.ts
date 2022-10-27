@@ -12,5 +12,5 @@ export class HomePage {
 
   constructor( private TodosContatos : DadosContatosServiceService) {
     TodosContatos.retorno().then(arraycontato => {this.mostrar = arraycontato})
-  }
+}
 }

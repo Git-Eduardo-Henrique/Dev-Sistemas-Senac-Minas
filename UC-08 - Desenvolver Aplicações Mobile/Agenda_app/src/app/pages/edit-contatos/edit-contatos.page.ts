@@ -17,7 +17,7 @@ export class EditContatosPage implements OnInit {
   public janela = true
   public delete = false
 
-  private contato: Contatos
+  public contato: Contatos
   public contatoForm: FormGroup
 
   constructor( 
@@ -82,18 +82,22 @@ export class EditContatosPage implements OnInit {
 
   ngOnInit() {
 
-    var id: any =  String(this.route.snapshot.paramMap.get('id'))
+    let id: any =  String(this.route.snapshot.paramMap.get('id'))
+    console.log(id)
 
     if (id = 'edit'){
-      // this.dados = {id, nome: '', sobrenome: '', tipo_num: '',num: '', email: ''}
+
+      console.log('editando')
       this.contato = {id: Guid.createEmpty(), nome: '', sobrenome: '', tipo_num: '', num: '', email: ''}
 
       this.janela = false
       this.delete = true
+      
     }
     else {
       // this.dados = this.dadosContats.Filtrar(id)
       this.delete = false
+      console.log('id')
     }
 
     this.contatoForm = this.formulario.group({
