@@ -50,11 +50,17 @@ export class DadosContatosServiceService {
   //   this.Contatos.splice(index, 1)
   // }
 
-  async Filtrar(id : any, vetor: any) {
+  // async Filtrar(id : any) {
+  //   let arraycontato: Contatos [] = []
 
-    const servicoSeleciona = vetor.filter(servico => servico.id === id)
-
-    return servicoSeleciona[0]
+  //   await this.storage.forEach((value: string) => 
+  //       {const contato: Contatos = JSON.parse(value); arraycontato.push(contato)})
+    
+    
+  //   for (var sus in arraycontato){
+  //     console.log('array = ', arraycontato[sus].id)
+  //   }
+  //   return arraycontato.filter(servico => servico.id === id)
  
     //========================
     // let arraycontato: Contatos [] = []
@@ -75,6 +81,6 @@ export class DadosContatosServiceService {
     //   else {
     //     console.log("nao foi")
     //   }
-    }
-  }
+  //   }
+ }
 

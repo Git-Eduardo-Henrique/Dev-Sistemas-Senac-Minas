@@ -5,7 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Guid } from "guid-typescript";
 import { Contatos } from 'src/app/models/contatos.model';
-import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service'
+import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contatos-service.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-edit-contatos',
@@ -20,8 +21,7 @@ export class EditContatosPage implements OnInit {
   public contato: Contatos
   public contatoForm: FormGroup
 
-  public new_array: any = {}
-  public na2: any = {}
+  public user: any
 
   constructor( 
     private route: ActivatedRoute,
@@ -29,7 +29,8 @@ export class EditContatosPage implements OnInit {
     private _router: Router,
 
     private dadosContats: DadosContatosServiceService,
-    private formulario: FormBuilder) { }
+    private formulario: FormBuilder,
+    private storage: Storage) { }
 
  // ==============================================================================================================
 
@@ -79,11 +80,18 @@ export class EditContatosPage implements OnInit {
     }
   }
 
+  async Filtrar(id : any) {
+    // console.log('id_user = ', this.user[0].id)
+    
+    console.log(this.user.filter(usu => usu.id === id))
+  }
+
   // deletar_id(){
   //   this.dadosContats.deletar(this.dados)
   // }
 
   ngOnInit() {
+    this.dadosContats.retorno().then(arraycontato => {this.user = arraycontato})
 
     let id: any =  String(this.route.snapshot.paramMap.get('id'))
 
@@ -96,10 +104,7 @@ export class EditContatosPage implements OnInit {
     }
     else {
       // this.dadosContats.retorno().then(arraycontato => {this.new_array = arraycontato})
-
-      this.na2 = this.dadosContats.Filtrar(id, this.new_array)
-      console.log(this.new_array)
-
+      this.Filtrar(id)
       this.delete = false
     }
 
