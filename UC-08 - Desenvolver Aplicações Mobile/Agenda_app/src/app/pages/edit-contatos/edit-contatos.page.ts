@@ -15,14 +15,12 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class EditContatosPage implements OnInit {
 
-  public janela = true
+  public janela: boolean
   public delete = false
 
   public contato: Contatos
   public contatoForm: FormGroup
-
-  public user: {}
-
+  
   constructor( 
     private route: ActivatedRoute,
     private alerta: AlertController,
@@ -81,20 +79,18 @@ export class EditContatosPage implements OnInit {
   }
 
   async Filtrar(id : any) {
-    for (var index in this.user) {
-      console.log('entrou')
-      
-    }
+    const user = await this.storage.get(id)
+    const a_user = JSON.parse(user)
+
+    this.contato = a_user
   }
 
-  // deletar_id(){
-  //   this.dadosContats.deletar(this.dados)
-  // }
 
   ngOnInit() {
-    this.dadosContats.retorno().then(arraycontato => {this.user = arraycontato})
 
     let id: any =  String(this.route.snapshot.paramMap.get('id'))
+
+   
 
     if (id == 'edit'){
       this.contato = {id: Guid.createEmpty(), nome: '', sobrenome: '', tipo_num: '', num: '', email: ''}
@@ -104,8 +100,9 @@ export class EditContatosPage implements OnInit {
       
     }
     else {
-      var sus = this.Filtrar(id)
       this.delete = false
+      this.Filtrar(id)
+      this.janela = true
     }
 
     this.contatoForm = this.formulario.group({
