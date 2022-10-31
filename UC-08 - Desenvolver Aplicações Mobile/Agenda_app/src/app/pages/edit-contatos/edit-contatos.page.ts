@@ -21,7 +21,7 @@ export class EditContatosPage implements OnInit {
   public contato: Contatos
   public contatoForm: FormGroup
 
-  public user: any
+  public user: {}
 
   constructor( 
     private route: ActivatedRoute,
@@ -81,9 +81,10 @@ export class EditContatosPage implements OnInit {
   }
 
   async Filtrar(id : any) {
-    // console.log('id_user = ', this.user[0].id)
-    
-    console.log(this.user.filter(usu => usu.id === id))
+    for (var index in this.user) {
+      console.log('entrou')
+      
+    }
   }
 
   // deletar_id(){
@@ -103,8 +104,7 @@ export class EditContatosPage implements OnInit {
       
     }
     else {
-      // this.dadosContats.retorno().then(arraycontato => {this.new_array = arraycontato})
-      this.Filtrar(id)
+      var sus = this.Filtrar(id)
       this.delete = false
     }
 
