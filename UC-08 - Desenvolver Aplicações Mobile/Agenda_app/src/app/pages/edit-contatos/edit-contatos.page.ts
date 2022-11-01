@@ -90,18 +90,17 @@ export class EditContatosPage implements OnInit {
 
     let id: any =  String(this.route.snapshot.paramMap.get('id'))
 
+    this.contato = {id: Guid.createEmpty(), nome: '', sobrenome: '', tipo_num: '', num: '', email: ''}
    
-
     if (id == 'edit'){
-      this.contato = {id: Guid.createEmpty(), nome: '', sobrenome: '', tipo_num: '', num: '', email: ''}
-
       this.janela = false
       this.delete = true
       
     }
     else {
-      this.delete = false
       this.Filtrar(id)
+      
+      this.delete = false
       this.janela = true
     }
 
