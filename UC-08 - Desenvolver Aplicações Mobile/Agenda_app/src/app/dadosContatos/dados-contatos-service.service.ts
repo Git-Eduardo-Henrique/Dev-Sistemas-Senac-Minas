@@ -22,6 +22,9 @@ export class DadosContatosServiceService {
     this.storage.set(arg.id.toString(), JSON.stringify(arg))
 
   }
+  deletar(id: any){
+    this.storage.remove(id)
+  }
 
   async retorno(){
     let arraycontato: Contatos [] = []

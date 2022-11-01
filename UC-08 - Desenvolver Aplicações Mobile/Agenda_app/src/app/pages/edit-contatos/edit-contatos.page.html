@@ -41,19 +41,22 @@
 
     </ion-item>
     <!-------------------------- email comercial mostrar -------------------------->
-    <ion-item lines='full'> <!--*ngIf="(dados.email != '')"-->
+    <ion-item lines='none' *ngIf="(contato.email)">
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+
       <ion-label>
         <h2>{{contato.email}}</h2>
       </ion-label>
+
     </ion-item>
     <!----------------------- buttons favorito e editar  mostrar --------------------->
-    <ion-item lines='full'>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Favorito</ion-label>
-    <ion-button fill='clear' color='dark' slot='end' (click)='editar()'>
-      <ion-icon name="create" slot="start"></ion-icon>
-      Editar
-    </ion-button>
+    <ion-item class='fav_edit'  lines='none'>
+      <ion-button fill='clear' color='dark' slot='start'>
+        <ion-icon name="heart-dislike-outline" slot="start"></ion-icon> Favoritar
+      </ion-button>
+      <ion-button fill='clear' color='dark' slot='end' (click)='editar()'>
+        <ion-icon name="create" slot="start"></ion-icon> Editar
+      </ion-button>
     </ion-item>
   </div>
 
@@ -86,12 +89,12 @@
     </div>
 
     <!------------------------ excluir contato ---------------------->
-<!--     
+    
     <ion-item *ngIf='!this.delete' lines='full'>
       <ion-button fill='clear' color='danger' (click)='Excluir_contato()'>
         Excluir este contato
       </ion-button>
-    </ion-item> -->
+    </ion-item>
 
   </form>
 

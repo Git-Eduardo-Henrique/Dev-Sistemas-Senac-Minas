@@ -32,18 +32,21 @@ export class EditContatosPage implements OnInit {
 
  // ==============================================================================================================
 
-  // async Excluir_contato() {
-  //    const alert = await this.alerta.create({
-  //     header: 'Atenção',
-  //     subHeader: '',
-  //     message: 'Este contato sera excluido e não podera mais ser resgatado!',
-  //     buttons: [{text: 'Cancelar', role: 'cancel',
-  //                handler: ()=> {}}, 
-  //               {text: 'Deletar', role: 'confirm', 
-  //               handler: ()=> {this.deletar_id(), this._router.navigate(['/home'])}}],
-  //   });
-  //    await alert.present();
-  //   }
+  async Excluir_contato() {
+    var id: any = String(this.route.snapshot.paramMap.get('id'))
+
+     const alert = await this.alerta.create({
+      header: 'Atenção',
+      subHeader: '',
+      message: 'Este contato sera excluido e não podera mais ser resgatado!',
+      buttons: [{text: 'Cancelar', role: 'cancel',
+                 handler: ()=> {}}, 
+                {text: 'Deletar', role: 'confirm', 
+                handler: ()=> {this.dadosContats.deletar(id), this._router.navigate(['/home'])}}],
+    });
+
+     await alert.present();
+    }
 
    async Erro() {
      const alert = await this.alerta.create({
@@ -77,7 +80,6 @@ export class EditContatosPage implements OnInit {
       this.Erro()
     }
   }
-
 
 
   ngOnInit() {
