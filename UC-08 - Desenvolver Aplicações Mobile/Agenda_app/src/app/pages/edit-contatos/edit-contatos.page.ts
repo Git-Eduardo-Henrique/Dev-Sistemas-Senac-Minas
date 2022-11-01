@@ -64,7 +64,7 @@ export class EditContatosPage implements OnInit {
   submit(){
     var id: any = String(this.route.snapshot.paramMap.get('id'))
     if (this.contatoForm.valid){
-      if (id = 'edit') {
+      if (id == 'edit') {
         this.dadosContats.adicionar(this.contatoForm.value)
         this.janela = true
         this._router.navigate(['/home'])
@@ -78,12 +78,6 @@ export class EditContatosPage implements OnInit {
     }
   }
 
-  async Filtrar(id : any) {
-    const user = await this.storage.get(id)
-    const a_user = JSON.parse(user)
-
-    this.contato = a_user
-  }
 
 
   ngOnInit() {
@@ -98,8 +92,7 @@ export class EditContatosPage implements OnInit {
       
     }
     else {
-      this.Filtrar(id)
-      
+      this.dadosContats.Filtrar(id).then(a_user => this.contato = a_user)
       this.delete = false
       this.janela = true
     }

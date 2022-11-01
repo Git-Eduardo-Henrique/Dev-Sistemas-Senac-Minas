@@ -31,7 +31,13 @@ export class DadosContatosServiceService {
 
     return arraycontato
   }
-  
+
+  async Filtrar(id : any) {
+    const user = await this.storage.get(id)
+    const a_user = JSON.parse(user)
+
+    return a_user
+  }
   
  }
 
