@@ -1,25 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" mode="md">
 
-    <!-- titulo aba principal(home)-->
-    <ion-title>
-      <ion-icon name="person"></ion-icon>
+  <ion-toolbar class="toolbar" mode="ios">
+    <ion-title size="large">
       Contatos
-    </ion-title>
-
+    </ion-title>  
   </ion-toolbar>
+
+  <ion-toolbar mode="ios">
+    <ion-searchbar animated='true' show-clear-button="always" placeholder="Procurar contato" color="light"></ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 
+
 <ion-content [fullscreen]="true">
-  <!-- titulo aba principal(home) IOS-->
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        Contatos
-      </ion-title>  
-    </ion-toolbar>
-  </ion-header>
   <!----------------------------- botão de adicionar ----------------->
   <ion-fab vertical='bottom' horizontal='end' slot='fixed'>
     <ion-fab-button routerLink='/edit-contatos/edit' color='tertiary'>
@@ -27,9 +22,8 @@
     </ion-fab-button>
   </ion-fab>
   <!----------------------------- todos os contatos ----------------->
-  <ion-searchbar animated='true' show-clear-button="always" placeholder="Procurar contato" color="medium"></ion-searchbar>
 
-  <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id.value }}' lines='full'>
+  <ion-item *ngFor='let mostrar of mostrar' routerLink='/edit-contatos/{{ mostrar.id.value }}' lines='full' mode="ios" class="todosContatos">
     <ion-avatar>
       <img src="assets/images/user.png" alt="user">
     </ion-avatar>

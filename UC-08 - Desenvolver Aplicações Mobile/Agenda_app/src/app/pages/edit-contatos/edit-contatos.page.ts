@@ -27,8 +27,7 @@ export class EditContatosPage implements OnInit {
     private _router: Router,
 
     private dadosContats: DadosContatosServiceService,
-    private formulario: FormBuilder,
-    private storage: Storage) { }
+    private formulario: FormBuilder) { }
 
  // ==============================================================================================================
 
@@ -62,17 +61,20 @@ export class EditContatosPage implements OnInit {
 
   editar() {
     this.janela = false
+
   }
 
   submit(){
     var id: any = String(this.route.snapshot.paramMap.get('id'))
     if (this.contatoForm.valid){
+
       if (id == 'edit') {
         this.dadosContats.adicionar(this.contatoForm.value)
         this.janela = true
         this._router.navigate(['/home'])
       }
       else {
+        this.dadosContats.Atualizar(id, this.contatoForm.value)
         this.janela = true
       }
     }

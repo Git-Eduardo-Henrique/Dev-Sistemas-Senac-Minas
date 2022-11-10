@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar>
 
     <ion-buttons>
@@ -17,7 +17,7 @@
 <ion-content>
   <!-- informações do contato -->
 
-  <div *ngIf='this.janela'>
+  <div *ngIf='this.janela' mode="ios">
     <!------------------------  numero de telefone mostrar ----------------------->
     <div class='nome_avatar'>
       <img alt="you" src="assets/images/user.png"/>
@@ -61,7 +61,7 @@
   </div>
 
   <!---------------------- modo de edição ----------------->
-  <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm' class="formulario">
+  <form *ngIf='!this.janela' #form='ngForm' [formGroup]='contatoForm' class="formulario" mode="md">
     <div class="info">
       <img class='avatar' src="assets/images/avatar.png" alt="user">
   

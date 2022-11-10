@@ -8,6 +8,12 @@
   .label_nome {
     text-indent: 15px;
   }
+  .toolbar{
+    padding-top: 35px
+  }
+  .todosContatos {
+    padding-top: 5px;
+  }
   
   // ================================ edit-contatos.html =======================
   .nome_avatar{
@@ -44,7 +50,7 @@
     border: 2px var(--ion-color-dark) solid;
     border-radius: 25px;
     margin-bottom: 5px;
-    text-indent: 10px;  // espaçamento das letras com a borda 
+    text-indent: 15px;  // espaçamento das letras com a borda 
   }
   .formulario{
     padding-top: 40px;

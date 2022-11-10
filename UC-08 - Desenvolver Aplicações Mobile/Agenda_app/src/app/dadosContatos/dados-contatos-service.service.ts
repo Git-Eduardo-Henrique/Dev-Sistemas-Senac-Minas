@@ -11,12 +11,15 @@ import { Contatos } from '../models/contatos.model';
 })
 export class DadosContatosServiceService {
 
-
-  public array: any
-
   constructor(
     private storage: Storage) { }
 
+  Atualizar(id : any, arg: Contatos){
+    arg.id = Guid.parse(id)
+    this.storage.set(arg.id.toString(), JSON.stringify(arg))
+  
+  }
+ 
   adicionar(arg : Contatos) {
     arg.id = Guid.create()
     this.storage.set(arg.id.toString(), JSON.stringify(arg))
@@ -36,11 +39,7 @@ export class DadosContatosServiceService {
   }
 
   async Filtrar(id : any) {
-    const user = await this.storage.get(id)
-    const a_user = JSON.parse(user)
-
-    return a_user
+    const user = JSON.parse(await this.storage.get(id))
+    return user
   }
-  
  }
-
