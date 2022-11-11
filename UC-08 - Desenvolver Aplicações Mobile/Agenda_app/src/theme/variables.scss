@@ -31,6 +31,7 @@
   }
 
   .avatar {
+
     height: 80px;
     width: 80px;
     margin-bottom: 10px;
@@ -46,6 +47,8 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    
+    width: 100%;
 
     border: 2px var(--ion-color-dark) solid;
     border-radius: 25px;
@@ -61,7 +64,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    
     padding-left: 5px;
     padding-right: 5px;
   }

@@ -15,6 +15,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class EditContatosPage implements OnInit {
 
+  public valid = false
   public janela: boolean
   public delete = false
 
@@ -80,12 +81,14 @@ export class EditContatosPage implements OnInit {
     }
     else {
       this.Erro()
+
+      this.valid = true
     }
   }
 
 
   ngOnInit() {
-
+    this.valid = false
     let id: any =  String(this.route.snapshot.paramMap.get('id'))
 
     this.contato = {id: Guid.createEmpty(), nome: '', sobrenome: '', tipo_num: '', num: '', email: ''}

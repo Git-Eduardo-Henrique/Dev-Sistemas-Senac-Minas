@@ -66,10 +66,16 @@
       <img class='avatar' src="assets/images/avatar.png" alt="user">
   
       <!---------------------- nome e sobrenome imput ------------------>
-      <ion-input class='inputs' placeholder="Digite seu nome" [(ngModel)]='contato.nome'type='text' formControlName="nome"></ion-input>
-
-      <ion-input class='inputs' placeholder="Digite seu sobrenome" [(ngModel)]='contato.sobrenome' type='text' formControlName="sobrenome"></ion-input>
-
+    
+      <ion-item class='inputs'>
+        <ion-input  placeholder="Digite seu nome" [(ngModel)]='contato.nome'type='text' formControlName="nome" maxlength="15"></ion-input>
+        <ion-note  *ngIf='valid' slot="error">Digite um nome com 3 ou mais letras</ion-note>
+      </ion-item>
+     
+      <ion-item class='inputs'>
+        <ion-input placeholder="Digite seu sobrenome" [(ngModel)]='contato.sobrenome' type='text' formControlName="sobrenome" maxlength="15"></ion-input>
+        <ion-note  *ngIf='valid' slot="error">Digite um sobrenome com 3 ou mais letras</ion-note>
+      </ion-item>
       <!---------------------- numero e tipo -------------------------->
       <ion-item class='inputs'>
 
@@ -82,10 +88,14 @@
         <ion-input simpleMask='(999) 9 9999-9999' [clearIfNotMatch]="true" placeholder='Numero' 
         [(ngModel)]='contato.num' type='text' formControlName="num"></ion-input>
 
+        <ion-note *ngIf='valid' slot="error">insira um tipo e numero validos</ion-note>
       </ion-item>
 
       <!------------------------ email input -------------------------->
-      <ion-input class='inputs' placeholder='Email' [(ngModel)]='contato.email' type='text' formControlName="email"></ion-input>
+      <ion-item class='inputs'>
+        <ion-input placeholder='Email' [(ngModel)]='contato.email' type='text' formControlName="email"></ion-input>
+        <ion-note *ngIf='valid' slot="error">insira um email valido</ion-note>
+      </ion-item>
     </div>
 
     <!------------------------ excluir contato ---------------------->

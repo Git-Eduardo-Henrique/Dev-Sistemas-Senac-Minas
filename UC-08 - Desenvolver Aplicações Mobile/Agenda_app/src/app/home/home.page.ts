@@ -14,5 +14,6 @@ export class HomePage{
 
 ionViewDidEnter(){ //executa toda vez que o pagina é carregada
   this.TodosContatos.retorno().then(arraycontato => {this.mostrar = arraycontato})
+  
 }
 }
