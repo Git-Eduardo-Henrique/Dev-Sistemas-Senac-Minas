@@ -7,7 +7,7 @@
   </ion-toolbar>
 
   <ion-toolbar mode="ios">
-    <ion-searchbar animated='true' show-clear-button="always" placeholder="Procurar contato" color="light"></ion-searchbar>
+    <ion-searchbar (ionChange)="handleChange($event)" animated='true' show-clear-button="always" placeholder="Procurar contato" color="tertiary"></ion-searchbar>
   </ion-toolbar>
 
 </ion-header>
@@ -28,6 +28,7 @@
       <img src="assets/images/user.png" alt="user">
     </ion-avatar>
     <ion-label class="label_nome"> {{mostrar.nome}} </ion-label>
+
   </ion-item>
 
 </ion-content>
