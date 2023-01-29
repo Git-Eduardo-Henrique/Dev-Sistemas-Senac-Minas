@@ -272,5 +272,74 @@ footer {
   }
   /* fim do footer */
 
+/* ========================================================= */
+/* parte do EDUARDO */
 
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 10px;
+  background-color: #181a17;
+  padding: 20px;
+
+  width: 80%;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+}
+label{
+ color: #fff;
+}
+
+.input-field {
+  background-color: #181a17;
+  color: #fff;
+  border-radius: 10px;
+  border: 2px solid #82FD02;
+  padding: 10px;
+  margin: 10px 0;
+
+  width: 80%;
+}
+
+.green-button {
+  border-radius: 25px;
+  background-color: #82FD02;
+  color:  #181a17;
+  padding: 10px 20px;
+  margin-top: 10px;
+  
+  display: block;
+  margin: 0 auto;
+}
+
+/* Media queries to adjust the button size on different screen sizes */
+@media screen and (max-width: 768px) {
+  .green-button {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .green-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  form {
+    width: 80%;
+  }
+}

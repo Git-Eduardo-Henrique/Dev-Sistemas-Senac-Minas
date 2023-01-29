@@ -1,3 +1,5 @@
+// parte do MATHEUS
+
 // Nav Bar Burguer Menu
 const burguer = document.querySelector(".burguer")
 const navMenu = document.querySelector(".nav-menu")
@@ -32,4 +34,8 @@ function showSlides() {
 showSlides();
 // fim do sleider carousel
 
-  
+// parte do EDUARDO
+$(document).ready(function(){
+  $("#whatsapp").mask("(00) 00000-0000");
+});
+
