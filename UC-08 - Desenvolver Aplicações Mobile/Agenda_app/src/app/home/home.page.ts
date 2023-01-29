@@ -8,7 +8,7 @@ import { DadosContatosServiceService } from 'src/app/dadosContatos/dados-contato
 })
 export class HomePage{
 
-  public mostrar: any []
+  public mostrar: any 
 
   constructor( private TodosContatos : DadosContatosServiceService) {
     this.TodosContatos.retorno().then(arraycontato => {this.mostrar = arraycontato})
