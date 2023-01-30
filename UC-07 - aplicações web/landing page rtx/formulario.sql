@@ -10,5 +10,5 @@ create table formu(
 );
 
 select * from formu;
-describe formu;
+#describe formu;
 # drop database Formulario;

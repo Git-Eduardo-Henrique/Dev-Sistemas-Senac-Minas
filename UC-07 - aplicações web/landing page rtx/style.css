@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bebas Neue', cursive;
+    
 }
 /* Fim do Reset CSS */
 
@@ -310,7 +310,6 @@ label{
   border: 2px solid #82FD02;
   padding: 10px;
   margin: 10px 0;
-
   width: 80%;
 }
 

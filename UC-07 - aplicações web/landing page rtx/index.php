@@ -1,3 +1,19 @@
+<?php
+
+if(isset($_POST['submit'])){
+
+  include_once('db_submit.php');
+  
+      $nome = $_POST['nome'];
+      $email = $_POST['email'];
+      $telefone = $_POST['telefone'];
+  
+      $result = mysqli_query($conexao, "INSERT INTO formu (nome, email, whatsapp) VALUES ('$nome', '$email', '$telefone')");
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,30 +94,32 @@
                 </h1>
 
 
-                <!-- Formulário -->
+                
 
-                <!-- Fim do Formulário -->
+                
     </main>
 
     <!-- parte do Eduardo -->
+    <!-- Formulário -->
     <section class="form-container" id="form-container">
 
-        <form action="submit-form.php" method="post">
+        <form action="index.php" method="post">
           <h1>FORMULÁRIO PARA O SORTEIO</h1>
 
           <label for="name">Nome:</label>
-          <input type="text" id="name" class="input-field" required>
+          <input type="text" id="name" name="nome" class="input-field" required>
 
           <label for="email">Email:</label>
-          <input type="email" id="email" class="input-field" required>
+          <input type="email" id="email" name="email" class="input-field" required>
 
           <label for="whatsapp">WhatsApp:</label>
-          <input type="text" id="whatsapp" class="input-field" required>
+          <input type="text" id="whatsapp" name="telefone" class="input-field" required>
   
-          <button class="green-button">CONFIRMAR</button>
+          <input class="green-button" type="submit" name="submit">
         </form>
 
     </section>
+    <!-- Fim do Formulário -->
 
     <footer>
         <div class="contact" id="contact">
