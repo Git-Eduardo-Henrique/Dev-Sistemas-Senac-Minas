@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    font-family: sans-serif;
 }
 /* Fim do Reset CSS */
 
@@ -29,12 +29,14 @@ a{
     justify-content: space-between;
     padding: 0 34px;
     font-size: 20px;
+
 }
 
 .logo{
     font-size: 2rem;
     font-weight: bold;
     transition: 0.5s ease;
+    
 }
 
 .logo:hover{
@@ -46,6 +48,7 @@ a{
     display: flex;
     align-items: center;
     gap: 60px;
+    z-index: 1;
 }
 
 .nav-link{
@@ -59,6 +62,7 @@ a{
 .burguer{
     display: none;
     cursor: pointer;
+    
 }
 
 .bar{
@@ -72,7 +76,7 @@ a{
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 800px){
     .burguer{
         display: block;
     }
@@ -90,7 +94,7 @@ a{
     }
 
     .nav-menu{
-        position: fixed;
+        position: absolute;
         left: -100%;
         top: 70px;
         gap: 0;
@@ -137,7 +141,7 @@ body{
   .slides {
     display: flex;
     width: 100%;
-    transition: transform 0.5s;
+    transition: transform 1s;
   }
   
   .slide {
@@ -149,6 +153,7 @@ body{
     margin-top: 60px;
     width: 30%;
     object-fit: cover;
+    transition: .5s ease;
   }
   
   .prev, .next {
@@ -194,13 +199,74 @@ body{
 .line{
     margin: auto;
     margin-top: 30px;
-    width: 80%;
+    width: 90%;
     height: 0px;
     border: 1px solid #82FD02;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: row;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: calc(33.33% - 20px);
+  background-color: #181a17;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  color: #fff;
+  margin-top: 5rem;
+  width: 30vw;
+  height: 40vh;
+  margin-left: 50px;
+  
+}
+
+.card:hover{
+  box-shadow: 0 2px 5px 8px #82FD02;
+  transition: 0.5s ease;
+}
+
+.card h1{
+  color: #82FD02;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+}
+
+.card p {
+  padding: 0 20px 20px;
+  font-size: 14px;
+  text-align: justify;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+  }
+}
+
 
 .paragrafo{
     display: flex;
@@ -217,12 +283,13 @@ body{
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 30vw;
+    width: 20vw;
     height: 15vh;
     background-color: #82FD02;
     border-radius: 50px;
     margin-top: 80px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .bt a{
@@ -265,11 +332,23 @@ footer {
     text-decoration: none;
   }
 
+ .social-media img{
+    margin-top: 2rem;
+    height: 35px;
+    width: 35px;
+    transition: 1s;
+  }
+
+  .social-media img:hover{
+    transform: scale(1.3);
+    transition: 1s;
+  }
   @media (max-width: 600px) {
     footer {
       font-size: 0.8em;
     }
   }
+
   /* fim do footer */
 
 /* ========================================================= */
@@ -277,10 +356,16 @@ footer {
 
 .form-container {
   display: flex;
-  justify-content: center;
+
+  flex-direction: row;
   align-items: center;
+  
   padding-top: 100px;
   padding-bottom: 100px;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  gap: 20px;
 }
 
 form {
@@ -290,9 +375,12 @@ form {
 
   border-radius: 10px;
   background-color: #181a17;
-  padding: 20px;
 
-  width: 80%;
+  width: 50%;
+  height: 25em;
+
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 h1 {
@@ -317,17 +405,49 @@ label{
   border-radius: 25px;
   background-color: #82FD02;
   color:  #181a17;
-  padding: 10px 20px;
+  padding: 10px 150px;
   margin-top: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 20px;
   
   display: block;
   margin: 0 auto;
+  animation: pulse 1s infinite;
+}
+
+.img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #181a17;
+  border-radius: 0.5em;
+  width: 50%;
+  height: 25em;
+}
+.img img{
+  height: 95%;
+  width: 95%;
+  border-radius: 0.5em;
 }
 
 /* Media queries to adjust the button size on different screen sizes */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
+  .form{
+    width: 100%;
+  }
+  .form-container{
+    flex-direction: column;
+  }
   .green-button {
     width: 80%;
+    text-align: center;
+  }
+  .img{
+    width: 100%;
+    height: 50%;
   }
 }
 
@@ -335,10 +455,62 @@ label{
   .green-button {
     width: 100%;
   }
+  .green-button {
+    padding-left: 85px;
+  }
 }
 
 @media (max-width: 600px) {
   form {
     width: 80%;
+  }
+  .green-button {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width:460px) {
+  .title{
+    font-size: 15px;
+  }
+
+  .carousel{
+    height: 15rem;
+  }
+  
+
+  .slide{
+    transform: scale(2);
+  }
+  
+  .bt{
+    font-size: 10px;
+    width: 55vw;
+    height: 10vh;
+  }
+
+  .card{
+    margin-right: 50px;
+    height: 50vh;  
+  }
+  .card h1{
+    font-size: 20px;
+  }
+  .card h3{
+    font-size: 15px;
+    line-height: 15px;
   }
 }
