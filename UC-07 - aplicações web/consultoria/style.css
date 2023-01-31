@@ -1,0 +1,240 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    background: #C5C5C5;
+
+    margin: 0;
+    
+
+    /*========== vars ========*/
+    --blue: #0C2345;
+    --white1: #fff;
+    --white2: #d6d6d6;
+}
+
+
+
+/* =========================== nav =========================== */
+.nav{
+    display: flex;
+    justify-content: space-around;
+
+    background-color: var(--blue);
+}
+
+.nav_options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    margin-top: .5rem;
+
+    gap: 2rem;
+
+}
+
+.nav_options a{
+    color: var(--white1);
+
+    text-decoration: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+    margin-top: .5rem;
+
+    gap: 1rem;
+}
+.icons img{
+    height: 70%;
+}
+/* =========================== principal =========================== */
+.principal{
+    display: flex;
+    flex-direction: column;
+    background-size: cover; 
+    
+    
+}
+
+/* =========================== info ============================== */
+.info {
+    display: flex;
+    justify-content: center;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.info2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
+    gap: 1rem;
+
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 2rem;
+}
+.info_img img{
+    height: 100%;
+    width: 100%;
+}
+
+.info_text{
+    width: 50%;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+
+    text-align: center;
+}
+/* =========================== cards 1 =========================== */
+.mvv{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.missao_visao_valor{
+    background: var(--white2);
+    padding-left: .5rem;
+    padding-right: .5rem;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+
+    width: 16.5rem;
+    height: 16.5rem;
+}
+
+.missao_visao_valor:hover{
+    background: var(--white1);
+    transition: .5s ease-in-out;
+
+    width: 17rem;
+    height: 17rem;
+    text-align: center;
+}
+/* =========================== como trabalhamos ============================== */
+.trabalho {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: 2rem;
+}
+
+.trabalho_s1 {
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.card img{
+    height: 50%;
+    width: 100%;
+}
+/* =================== cards2 =======================================*/
+.cards2{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+    margin-bottom: 2.5rem;
+    
+}
+.cards2_1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+
+    background: #d6d6d6;
+    width: 16.5rem;
+    height: 16.5rem;
+    text-align: center;
+
+    margin-bottom: 2rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-top: .5rem;
+}
+.cards2_1:hover{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+
+    background: var(--white1);
+    transition: .5s ease-in-out;
+
+    width: 17rem;
+    height: 17rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-top: .5rem;
+}
+
+/* =========================== footer ============================== */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: var(--blue);
+
+}
+.footer_contacts_icon {
+    color: #fff;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 15px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: .5rem;
+}
+
+.footer_contacts_icon img{
+    width: 15%;
+    height: 15%;
+}
+.img_enxu{
+    width: 35%;
+    height: 35%;
+}
