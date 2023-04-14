@@ -1,3 +1,4 @@
+# drop database Banco_Pack_Py;
 create database Banco_Pack_Py;
 use Banco_Pack_Py;
 

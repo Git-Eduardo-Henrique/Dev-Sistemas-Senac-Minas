@@ -1,5 +1,8 @@
 from tkinter import *
 from packback import *
+from os import getcwd
+
+diretorio = getcwd() 
 
 Back = Backend()
 Form = Format()
@@ -26,23 +29,28 @@ class Frontend:
         self.frame_trans = Frame(self.janela)
         self.frame_ex = Frame(self.janela)
         # imgs / background
-        self.seta_voltar = PhotoImage(file='Foto/seta voltar.png')
-        self.inicio = PhotoImage(file='Foto/inicio.png')
-        self.entrar = PhotoImage(file='Foto/entrar.png')
-        self.func = PhotoImage(file='Foto/func.png')
-        self.cadastro = PhotoImage(file='Foto/cadastro.png')
-        self.user = PhotoImage(file='Foto/conta cliente.png')
-        self.on_image = PhotoImage(file='Foto/olho aberto.png')
-        self.off_image = PhotoImage(file='Foto/olho fechado.png')
-        self.cliente = PhotoImage(file='Foto/user.png')
-        self.depo = PhotoImage(file='Foto/Bt_Depósito.png')
-        self.extra = PhotoImage(file='Foto/Bt_Extrato.png')
-        self.sq = PhotoImage(file='Foto/bt_saque.png')
-        self.tranfer = PhotoImage(file='Foto/bt_transferencia.png')
-        self.deposito = PhotoImage(file='Foto/Depósito.png')
-        self.saque = PhotoImage(file='Foto/Saque.png')
-        self.transferencia = PhotoImage(file='Foto/Transferencia.png')
-        self.extrato = PhotoImage(file='Foto/Extrato.png')
+        # essentials
+        self.seta_voltar = PhotoImage(file= f'{diretorio}\\images\\essentials\\seta-voltar.png')
+        self.on_image = PhotoImage(file= f'{diretorio}\\images\\essentials\\olho-aberto.png')
+        self.off_image = PhotoImage(file= f'{diretorio}\\images\\essentials\\olho-fechado.png')
+
+        # pages
+        self.inicio = PhotoImage(file= f'{diretorio}\\images\\pages\\page-start.png')
+        self.entrar = PhotoImage(file= f'{diretorio}\\images\\pages\\page-home.png')
+        self.func = PhotoImage(file= f'{diretorio}\\images\\pages\\page-login-funcionario.png')
+        self.cadastro = PhotoImage(file= f'{diretorio}\\images\\pages\\page-cadastro.png')
+        self.user = PhotoImage(file= f'{diretorio}\\images\\pages\\page-user-accont.png')
+        self.cliente = PhotoImage(file= f'{diretorio}\\images\\pages\\page-user-login.png')
+        self.deposito = PhotoImage(file= f'{diretorio}\\images\\pages\\page-deposito.png')
+        self.saque = PhotoImage(file= f'{diretorio}\\images\\pages\\page-saque.png')
+        self.transferencia = PhotoImage(file= f'{diretorio}\\images\\pages\\page-transferencia.png')
+        self.extrato = PhotoImage(file= f'{diretorio}\\images\\pages\\page-extrato.png')
+        
+        # button
+        self.depo = PhotoImage(file= f'{diretorio}\\images\\buttons\\bt-deposito.png')
+        self.extra = PhotoImage(file= f'{diretorio}\\images\\buttons\\bt-extrato.png')
+        self.sq = PhotoImage(file= f'{diretorio}\\images\\buttons\\bt-saque.png')
+        self.tranfer = PhotoImage(file= f'{diretorio}\\images\\buttons\\bt-transferencia.png')
 
     def Conteiner(self):
         # carrega os primeiros frames
