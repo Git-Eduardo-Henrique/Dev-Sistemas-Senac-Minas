@@ -6,6 +6,14 @@ Repositorio para meus exercicios e projetos (solos e em equipe).
 
 Neste Readme irei mostrar os maiores projetos das UC'S principais.
 
+## Topicos
+
+- [UC-05 - Desenvolver Aplicações Desktop](#uc-05---desenvolver-aplicações-desktop)
+- [UC-06 - Criar e Manter Banco de Dados](#uc-06---criar-e-manter-banco-de-dados)
+- [UC-07 - Desenvolver Aplicações Web](#uc-07---desenvolver-aplicações-web)
+- [UC-08 - Desenvolver Aplicações Mobile](#uc-08---desenvolver-aplicações-mobile)
+
+
 # UC-05 - Desenvolver Aplicações Desktop 
 
 <h1 align="center"> Pack Py <h1>
@@ -21,13 +29,7 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
   PackPy é um aplicativo desktop feito com Python e Tkinter, que simula um aplicativo bancário. Nele, é possível realizar saques e depósitos (sem utilizar dinheiro real), além de cadastrar e visualizar as informações dos usuários utilizando o banco de dados local SQL.
 </p>
 
-## Criado por:
-
-- [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
-- [`Breno Alves`](https://github.com/Balves129)
-- [`Matheus Santos`](https://github.com/MatheusP0104)
-- [`Gustavo Henrique`](https://github.com/Gustavohb05)
-- [`José Airton`](https://github.com/JoseAirtonRibeiro)
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Breno Alves`](https://github.com/Balves129) | [`Gustavo Henrique`](https://github.com/Gustavohb05) | [`Matheus Santos`](https://github.com/MatheusP0104) | [`José Airton`](https://github.com/JoseAirtonRibeiro)
 
 # UC-06 - Criar e Manter Banco de Dados
 # UC-07 - Desenvolver Aplicações Web
