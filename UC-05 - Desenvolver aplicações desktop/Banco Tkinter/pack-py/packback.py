@@ -27,6 +27,11 @@ class Backend:
         self.Data = DataVerificar()  # objeto para acessar a classe do banco de dados
         self.conta = Conta()  #
 
+    def info_user(self, entry_cpf, lb_nome, lb_saldo):
+        lista = self.conta.info_user(entry_cpf)
+        lb_nome['text'] = f'{lista[1]}'
+        lb_saldo['text'] = f'{lista[2]}'
+
     def Mostrar_senha(self, senha):
         if senha.cget('show') == '*':
             senha.config(show='')

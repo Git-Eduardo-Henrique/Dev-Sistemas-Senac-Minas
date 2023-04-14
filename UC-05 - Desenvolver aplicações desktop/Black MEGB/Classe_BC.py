@@ -3,8 +3,6 @@ from Classe_DB import *
 from tkinter import Button, Label, messagebox, ttk
 from urllib.request import urlretrieve
 import time
-from shutil import move
-
 
 class Back:
     def __init__(self):  # objeto com as classes do banco de dados

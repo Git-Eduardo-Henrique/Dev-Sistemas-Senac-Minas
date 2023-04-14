@@ -170,8 +170,8 @@ class Frontend:
         bt_deposito.place(width=155, height=68, x=183, y=204)
         bt_extrato.place(width=144, height=37, x=297, y=93)
         check_saldo.place(width=30, height=22, x=175, y=130)
-        lb_nome_user.place(width=60, height=18, x=111, y=65)
-        lb_saldo.place(width=25, height=11, x=74, y=129)
+        lb_nome_user.place(width=150, height=18, x=111, y=65)
+        lb_saldo.place(width=80, height=11, x=74, y=129)
         bt_saque.place(width=148, height=66, x=18, y=206)
         bt_transfer.place(width=316, height=49, x=19, y=287)
         # ==============================================================================================================
@@ -190,7 +190,8 @@ class Frontend:
                                    fg=self.branco,
                                    command=lambda: [
                                        Back.Entrar_cli(en_cliente_user.get(), en_cliente_senha.get(), self.frame_conta,
-                                                       self.frame_menu, self.frame_lo_cli)])
+                                                       self.frame_menu, self.frame_lo_cli), 
+                                       Back.info_user(en_cliente_user.get(), lb_nome_user, lb_saldo)])
         # checks
         check_senha_us = Checkbutton(self.frame_lo_cli, bg=self.branco, image=self.off_image, selectimage=self.on_image,
                                      indicatoron=False, bd=0, command=lambda: Back.Mostrar_senha(en_cliente_senha))
@@ -208,8 +209,9 @@ class Frontend:
         en_valor_depo = Entry(self.frame_depo, font='arial 12 bold', bd=0, fg=self.azul_esc, bg=self.branco)
         bt_confirma = Button(self.frame_depo, text='confirmar', bd=0, bg=self.azul_esc, fg=self.branco,
                              font='arial 19 bold',
-                             command=lambda: Back.Depo(en_cliente_user.get(), en_valor_depo.get(), self.frame_conta,
-                                                       self.frame_depo, en_valor_depo))
+                             command=lambda: [Back.Depo(en_cliente_user.get(), en_valor_depo.get(), self.frame_conta,
+                                                       self.frame_depo, en_valor_depo),
+                                              Back.info_user(en_cliente_user.get(), lb_nome_user, lb_saldo)])
         bt_voltar_deposito = Button(self.frame_depo, image=self.seta_voltar, bg=self.azul_esc, bd=0,
                                     activebackground=self.azul_esc,
                                     command=lambda: [self.frame_conta.pack(), self.frame_depo.forget()])
@@ -227,8 +229,9 @@ class Frontend:
 
         bt_confirma_saque = Button(self.frame_saque, text='confirmar', bd=0, bg=self.azul_esc, fg=self.branco,
                                    font='arial 19 bold',
-                                   command=lambda: Back.Saque(en_cliente_user.get(), en_saque.get(), self.frame_conta,
-                                                              self.frame_saque, en_saque))
+                                   command=lambda: [Back.Saque(en_cliente_user.get(), en_saque.get(), self.frame_conta,
+                                                              self.frame_saque, en_saque),
+                                                    Back.info_user(en_cliente_user.get(), lb_nome_user, lb_saldo)])
         bt_voltar_saque.place(width=38, height=36, x=2, y=9)
         en_saque.place(width=217, height=16, x=138, y=160)
         bt_confirma_saque.place(width=212, height=43, x=141, y=277)
@@ -256,105 +259,105 @@ class Frontend:
         # ==============================================================================================================
         self.janela.after(3000, self.frame_ini.forget)
 
-    def Formatar_func(event=None):
-        # frame funcionario
-        func_senha = en_senha.get().replace('.', '').replace('-', '')[:11]
-        func_id = en_func.get()[:6]
-        nova_senha = ''
-        novo_id = ''
-        # frame usuario
-        usu_senha = en_cliente_senha.get()[:8]
-        cliente_cpf = en_cliente_user.get().replace('.', '').replace('-', '')[:11]
-        cpf_novo = ''
-        # frame cadastro
-        cpf_cnpj = en_cpf_cadas.get().replace('.', '').replace('-', '')[:11]
-        data = en_datanasc_cadas.get().replace('/', '')[:8]
-        senha = en_senha_cadas.get()[:8]
-        co_senha = en_confirma_cadas.get()[:8]
-        nova_data = ''
-        novo_cpf = ''
-        # frame deposito
-        quant = en_valor_depo.get()
-        quant_novo = ''
-        # frame saque
-        quant_saque = en_saque.get()
-        quant_novo_saque = ''
+    # def Formatar_func(event=None):
+    #     # frame funcionario
+    #     func_senha = en_senha.get().replace('.', '').replace('-', '')[:11]
+    #     func_id = en_func.get()[:6]
+    #     nova_senha = ''
+    #     novo_id = ''
+    #     # frame usuario
+    #     usu_senha = en_cliente_senha.get()[:8]
+    #     cliente_cpf = en_cliente_user.get().replace('.', '').replace('-', '')[:11]
+    #     cpf_novo = ''
+    #     # frame cadastro
+    #     cpf_cnpj = en_cpf_cadas.get().replace('.', '').replace('-', '')[:11]
+    #     data = en_datanasc_cadas.get().replace('/', '')[:8]
+    #     senha = en_senha_cadas.get()[:8]
+    #     co_senha = en_confirma_cadas.get()[:8]
+    #     nova_data = ''
+    #     novo_cpf = ''
+    #     # frame deposito
+    #     quant = en_valor_depo.get()
+    #     quant_novo = ''
+    #     # frame saque
+    #     quant_saque = en_saque.get()
+    #     quant_novo_saque = ''
 
-        if event.keysym.lower() == 'backspace':
-            return
-        for numero in range(len(func_senha)):
-            if not func_senha[numero].isnumeric():
-                continue
-            if numero in [2, 5]:
-                nova_senha += func_senha[numero] + '.'
-            elif numero == 8:
-                nova_senha += func_senha[numero] + '-'
-            else:
-                nova_senha += func_senha[numero]
+    #     if event.keysym.lower() == 'backspace':
+    #         return
+    #     for numero in range(len(func_senha)):
+    #         if not func_senha[numero].isnumeric():
+    #             continue
+    #         if numero in [2, 5]:
+    #             nova_senha += func_senha[numero] + '.'
+    #         elif numero == 8:
+    #             nova_senha += func_senha[numero] + '-'
+    #         else:
+    #             nova_senha += func_senha[numero]
 
-            for id in range(len(func_id)):
-                if not func_id[id].isnumeric():
-                    continue
-                else:
-                    novo_id += func_id[id]
+    #         for id in range(len(func_id)):
+    #             if not func_id[id].isnumeric():
+    #                 continue
+    #             else:
+    #                 novo_id += func_id[id]
 
-            for numero_c in range(len(cliente_cpf)):
-                if not cliente_cpf[numero_c].isnumeric():
-                    continue
-                if numero_c in [2, 5]:
-                    cpf_novo += cliente_cpf[numero_c] + '.'
-                elif numero_c == 8:
-                    cpf_novo += cliente_cpf[numero_c] + '-'
-                else:
-                    cpf_novo += cliente_cpf[numero_c]
+    #         for numero_c in range(len(cliente_cpf)):
+    #             if not cliente_cpf[numero_c].isnumeric():
+    #                 continue
+    #             if numero_c in [2, 5]:
+    #                 cpf_novo += cliente_cpf[numero_c] + '.'
+    #             elif numero_c == 8:
+    #                 cpf_novo += cliente_cpf[numero_c] + '-'
+    #             else:
+    #                 cpf_novo += cliente_cpf[numero_c]
 
-            for num in range(len(data)):
-                if not data[num].isnumeric():
-                    continue
-                if num in [1, 3]:
-                    nova_data += data[num] + '/'
-                else:
-                    nova_data += data[num]
+    #         for num in range(len(data)):
+    #             if not data[num].isnumeric():
+    #                 continue
+    #             if num in [1, 3]:
+    #                 nova_data += data[num] + '/'
+    #             else:
+    #                 nova_data += data[num]
 
-            for cpf_num in range(len(cpf_cnpj)):
-                if not cpf_cnpj[cpf_num].isnumeric():
-                    continue
-                if cpf_num in [2, 5]:
-                    novo_cpf += cpf_cnpj[cpf_num] + '.'
-                elif cpf_num == 8:
-                    novo_cpf += cpf_cnpj[cpf_num] + '-'
-                else:
-                    novo_cpf += cpf_cnpj[cpf_num]
+    #         for cpf_num in range(len(cpf_cnpj)):
+    #             if not cpf_cnpj[cpf_num].isnumeric():
+    #                 continue
+    #             if cpf_num in [2, 5]:
+    #                 novo_cpf += cpf_cnpj[cpf_num] + '.'
+    #             elif cpf_num == 8:
+    #                 novo_cpf += cpf_cnpj[cpf_num] + '-'
+    #             else:
+    #                 novo_cpf += cpf_cnpj[cpf_num]
 
-            if not quant.isnumeric():
-                pass
-            else:
-                quant_novo += quant
+    #         if not quant.isnumeric():
+    #             pass
+    #         else:
+    #             quant_novo += quant
 
-            if not quant_saque.isnumeric():
-                pass
-            else:
-                quant_novo_saque += quant_saque
+    #         if not quant_saque.isnumeric():
+    #             pass
+    #         else:
+    #             quant_novo_saque += quant_saque
 
-            # deletes
-            en_senha.delete(0, 'end')
-            en_func.delete(0, 'end')
-            en_cliente_user.delete(0, 'end')
-            en_cliente_senha.delete(0, 'end')
-            en_datanasc_cadas.delete(0, 'end')
-            en_cpf_cadas.delete(0, 'end')
-            en_senha_cadas.delete(0, 'end')
-            en_confirma_cadas.delete(0, 'end')
-            en_valor_depo.delete(0, 'end')
-            en_saque.delete(0, 'end')
-            # inserts
-            en_senha.insert(0, nova_senha)
-            en_func.insert(0, func_id)
-            en_cliente_user.insert(0, cpf_novo)
-            en_cliente_senha.insert(0, usu_senha)
-            en_datanasc_cadas.insert(0, nova_data)
-            en_cpf_cadas.insert(0, novo_cpf)
-            en_senha_cadas.insert(0, senha)
-            en_confirma_cadas.insert(0, co_senha)
-            en_valor_depo.insert(0, quant_novo)
-            en_saque.insert(0, quant_novo_saque)
+    #         # deletes
+    #         en_senha.delete(0, 'end')
+    #         en_func.delete(0, 'end')
+    #         en_cliente_user.delete(0, 'end')
+    #         en_cliente_senha.delete(0, 'end')
+    #         en_datanasc_cadas.delete(0, 'end')
+    #         en_cpf_cadas.delete(0, 'end')
+    #         en_senha_cadas.delete(0, 'end')
+    #         en_confirma_cadas.delete(0, 'end')
+    #         en_valor_depo.delete(0, 'end')
+    #         en_saque.delete(0, 'end')
+    #         # inserts
+    #         en_senha.insert(0, nova_senha)
+    #         en_func.insert(0, func_id)
+    #         en_cliente_user.insert(0, cpf_novo)
+    #         en_cliente_senha.insert(0, usu_senha)
+    #         en_datanasc_cadas.insert(0, nova_data)
+    #         en_cpf_cadas.insert(0, novo_cpf)
+    #         en_senha_cadas.insert(0, senha)
+    #         en_confirma_cadas.insert(0, co_senha)
+    #         en_valor_depo.insert(0, quant_novo)
+    #         en_saque.insert(0, quant_novo_saque)

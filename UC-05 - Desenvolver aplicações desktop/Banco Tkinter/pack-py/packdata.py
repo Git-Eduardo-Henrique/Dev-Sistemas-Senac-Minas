@@ -50,6 +50,16 @@ class Conta:
         self.cursor = self.conectar.cursor()
         self.saq = ''
 
+    def info_user(self, cpf):  # cria uma lista com as principais informações
+        self.cursor.execute(f'select cpf, nome, saldo from cliente where cpf = "{cpf}";')
+        infos = self.cursor.fetchall()
+        lista = []
+        for info in infos:
+            lista.append(info[0])
+            lista.append(info[1])
+            lista.append(info[2])
+        return lista
+
     def deposito(self, cpf, saldo):
         self.cursor.execute(f'UPDATE cliente SET saldo = saldo + {float(saldo)} WHERE cpf = "{cpf}" ')
         self.conectar.commit()
