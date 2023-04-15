@@ -88,6 +88,25 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 ## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/blob/main/UC-06%20-%20Banco%20de%20Dados/Sql%20-%20codigos/livraria.sql)
 
 # UC-07 - Desenvolver Aplicações Web
+
+<!------------------------------------------------------------- Sorteio Rtx --------------------------------------------------------------------->
+<h1 align="center"> Sorteio RTX <h1>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/96957574/232254406-42e053fe-b907-46c5-b750-2ab4c5edd404.PNG" width="500">
+  <img src="https://user-images.githubusercontent.com/96957574/232254405-59de0f94-64f4-41d1-ad86-a68ea3ec9540.PNG" width="500">
+</div>
+
+## Sobre
+
+<p align="center">
+  Projeto de Landing Page para sorteio de uma RTX 4090 Ti. O site está hospedado, parcialmente responsivo e está enviando os dados do formulário para um banco de dados SQL.
+</p>
+
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Matheus Santos`](https://github.com/MatheusP0104)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-07%20-%20aplica%C3%A7%C3%B5es%20web/landing%20page%20rtx) | [site hospedado](https://little-baseball-silver-greece.bohr.io/index.php#)
+
+
 # UC-08 - Desenvolver Aplicações Mobile
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=FF9300&height=90&section=footer"/>
