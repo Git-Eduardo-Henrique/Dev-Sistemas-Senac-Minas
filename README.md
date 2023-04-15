@@ -32,6 +32,7 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 </p>
 
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-05%20-%20Desenvolver%20aplica%C3%A7%C3%B5es%20desktop/Gerenciador%20de%20Estoque%20-%20Full)
 
 <!------------------------------------------------------------- Pack Py --------------------------------------------------------------------->
 <h1 align="center"> Pack Py <h1>
@@ -48,7 +49,7 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 </p>
 
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Breno Alves`](https://github.com/Balves129) | [`Gustavo Henrique`](https://github.com/Gustavohb05) | [`Matheus Santos`](https://github.com/MatheusP0104) | [`José Airton`](https://github.com/JoseAirtonRibeiro)
- 
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-05%20-%20Desenvolver%20aplica%C3%A7%C3%B5es%20desktop/Banco%20Tkinter/pack-py)
 <!------------------------------------------------------------- Black MEGB --------------------------------------------------------------------->
 <h1 align="center"> Black MEGB <h1>
 
@@ -66,6 +67,7 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 </p>
 
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Breno Alves`](https://github.com/Balves129) | [`Gustavo Henrique`](https://github.com/Gustavohb05) | [`Matheus Santos`](https://github.com/MatheusP0104)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-05%20-%20Desenvolver%20aplica%C3%A7%C3%B5es%20desktop/Black%20MEGB)
   
 # UC-06 - Criar e Manter Banco de Dados
 # UC-07 - Desenvolver Aplicações Web
