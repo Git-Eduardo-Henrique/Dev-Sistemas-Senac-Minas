@@ -63,13 +63,30 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 ## Sobre
 
 <p align="center">
-  Black MEGB é um programa desktop que simula lojas de jogos como a Steam e a Epic Games, porém com jogos retrô. Com ele, é possível adicionar jogos à biblioteca e baixá-los (por enquanto, apenas Super Mario World). Além disso, o programa permite visualizar informações do usuário, que são salvas em um banco de dados SQL.
+  Black MEGB é um programa desktop feito em python e tkinter que simula lojas de jogos como a Steam e a Epic Games, porém com jogos retrô. Com ele, é possível adicionar jogos à biblioteca e baixá-los (por enquanto, apenas Super Mario World). Além disso, o programa permite visualizar informações do usuário, que são salvas em um banco de dados SQL.
 </p>
 
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Breno Alves`](https://github.com/Balves129) | [`Gustavo Henrique`](https://github.com/Gustavohb05) | [`Matheus Santos`](https://github.com/MatheusP0104)
 ## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-05%20-%20Desenvolver%20aplica%C3%A7%C3%B5es%20desktop/Black%20MEGB)
   
 # UC-06 - Criar e Manter Banco de Dados
+
+<!------------------------------------------------------------- livraria db --------------------------------------------------------------------->
+<h1 align="center"> Livraria Database <h1>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/96957574/232181054-5a7133f5-ce29-41b5-838d-765b839063f8.PNG" width="400" height="600">
+</div>
+
+## Sobre
+
+<p align="center">
+  Este é um banco de dados em SQL sobre uma livraria. Nele, são realizados uma série de exercícios para revisar todos os conceitos aprendidos sobre o SQL.
+</p>
+
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/blob/main/UC-06%20-%20Banco%20de%20Dados/Sql%20-%20codigos/livraria.sql)
+
 # UC-07 - Desenvolver Aplicações Web
 # UC-08 - Desenvolver Aplicações Mobile
 
