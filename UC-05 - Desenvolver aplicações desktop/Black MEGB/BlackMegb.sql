@@ -4,7 +4,7 @@ use blackmegb;
 create table jogos (
 id int auto_increment primary key,
 nome varchar(45),
-id_jogos int key);
+id_jogos int );
 
 create table Usuarios(
 id int auto_increment primary key,

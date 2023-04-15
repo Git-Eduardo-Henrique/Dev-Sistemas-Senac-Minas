@@ -12,7 +12,7 @@ class Back:
         # cadastra um usuario no banco de dados
         if messagebox.askyesno('confirmar', 'salvar dados?'):
             self.db.cadas_user(nome=nome.get(), sobrenome=sobrenome.get(), nome_exibicao=nome_exibicao.get(),
-                               email=email.get(), senha=senha.get(), jogos=0)
+                               email=email.get(), senha=senha.get())
             frame1.forget()
             frame2.pack()
             nome.delete(0, 'end')
@@ -23,10 +23,10 @@ class Back:
         else:
             pass
 
-    def logar(self, entry_email, lb_exi, lb_nome, lb_email, lb_jogos, entry_senha, frame1, frame2):
+    def logar(self, entry_email, lb_exi, lb_nome, lb_email, entry_senha, frame1, frame2):
         # faz a verificação da conta com o login
         if self.db.check_user(entry_email.get(), entry_senha.get()):
-            self.Lista(entry_email=entry_email, lb_exi=lb_exi, lb_nome=lb_nome, lb_email=lb_email, lb_jogos=lb_jogos)
+            self.Lista(entry_email=entry_email, lb_exi=lb_exi, lb_nome=lb_nome, lb_email=lb_email)
             frame1.pack()
             frame2.forget()
         else:
@@ -46,26 +46,25 @@ class Back:
         else:
             bt.place_forget()
 
-    def Lista(self, entry_email, lb_exi, lb_nome, lb_email, lb_jogos):
+    def Lista(self, entry_email, lb_exi, lb_nome, lb_email):
         # mostra as informações do usuario nas label's
         lista = self.db.info_user(entry_email.get())
         lb_exi['text'] = f'{lista[0]}'
         lb_nome['text'] = f'{lista[1]} {lista[2]}'
         lb_email['text'] = f'{lista[3]}'
-        lb_jogos['text'] = f'{lista[4]}'
 
     def add_biblioteca(self, bt, jogo, x, y, email):  # muda o botão de adicionar e remover jogo
         if bt['fg'] == '#191919':
             jogo.place(width=195, height=21, x=x, y=y)
             bt['text'] = 'Remover da Biblioteca'
             bt['fg'] = '#F01F15'
-            self.db.jogos_add(mn='+', email_lb=email)
+            # self.db.jogos_add(mn='+', email_lb=email)
 
         elif bt['fg'] == '#F01F15':
             jogo.place_forget()
             bt['fg'] = '#191919'
             bt['text'] = 'Adicionar a Biblioteca'
-            self.db.jogos_add(mn='-', email_lb=email)
+            # self.db.jogos_add(mn='-', email_lb=email)
 
     def download(self):  # efetua o download de um jogo
         janela2 = Toplevel()

@@ -16,3 +16,5 @@ saldo float);
 insert into func (id_func, cpf) values ('080910','111.222.333-44');
 select * from cliente;
 select * from func;
+
+select cpf, nome, saldo from cliente where cpf = "111.222.333-44";

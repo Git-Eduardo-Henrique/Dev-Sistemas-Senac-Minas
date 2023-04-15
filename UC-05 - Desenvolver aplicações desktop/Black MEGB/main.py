@@ -2,24 +2,20 @@
 # import posiciona
 from Classe_BC import *
 from Classe_DB import *
+from os import getcwd
 
 # =======================================================================================================================
 # objetos
 back = Back()
 data = BlackDB()
+diretorio = getcwd() 
 # =======================================================================================================================
 # Criação e Modificações da Janela
 janela = Tk()
 janela.geometry('960x540')
 janela.title('Black MEGB')
 janela.resizable(False, False)
-janela.iconbitmap('Fotos/black megb.ico')
-# =======================================================================================================================
-# Comando para copiar as coordenadas que sai no terminal
-'''
-janela.bind('<Button-1>', posiciona.inicio_place)
-janela.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg, janela))
-janela.bind('<Button-2>', lambda arg: posiciona.para_geometry(janela))'''
+janela.iconbitmap(f'{diretorio}\\images\\black-megb.ico')
 # =======================================================================================================================
 # Cores
 dark_gray = '#242323'
@@ -46,32 +42,35 @@ frame_biblioteca = Frame(janela)
 frame_perfil = Frame(janela)
 # =======================================================================================================================
 # Fotos
-img_entrada = PhotoImage(file='Fotos/Tela_entrada.png')
-img_login = PhotoImage(file='Fotos/tela_login.png')
-img_cadastro = PhotoImage(file='Fotos/Tela_cadastro.png')
-img_principal = PhotoImage(file='Fotos/Tela_principal.png')
-img_jogar = PhotoImage(file='Fotos/tela_jogar.png')
-img_mario = PhotoImage(file='Fotos/tela_mario.png')
-img_sonic = PhotoImage(file='Fotos/tela sonic.png')
-img_mk = PhotoImage(file='Fotos/tela_mk.png')
-img_donkeykong = PhotoImage(file='Fotos/tela kong.png')
-img_bomberman = PhotoImage(file='Fotos/bomberman.png')
-img_bt_mario = PhotoImage(file='Fotos/ver mario.png')
-img_bt_jogo = PhotoImage(file='Fotos/ver jogo.png')
-img_menu_bt = PhotoImage(file='Fotos/menu_bt.png')
-img_bt_biblioteca = PhotoImage(file='Fotos/bt_biblioteca.png')
-img_biblioteca = PhotoImage(file='Fotos/Tela_biblioteca.png')
-img_perfil = PhotoImage(file='Fotos/tela_perfil.png')
-img_bt_perfil = PhotoImage(file='Fotos/perfil.png')
-img_supermario = PhotoImage(file='Fotos/super-mario.png')
-img_sonic_ico = PhotoImage(file='Fotos/sonic_icone.png')
-img_donkey_ico = PhotoImage(file='Fotos/donkey.png')
-img_mk3 = PhotoImage(file='Fotos/mk3.png')
-img_sbomber = PhotoImage(file='Fotos/sbomberman.png')
-img_bt_jogar = PhotoImage(file='Fotos/bt_jogar.PNG')
-img_bt_remover = PhotoImage(file='Fotos/bt_desistalar.PNG')
-img_fav_on = PhotoImage(file='Fotos/estrela_comcor.png')
-img_fav_off = PhotoImage(file='Fotos/estrela_semcor.png')
+img_entrada = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-inicial.png')
+img_login = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-login.png')
+img_cadastro = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-cadastro.png')
+img_principal = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-home.png')
+img_jogar = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-jogar.png')
+img_mario = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-mario.png')
+img_sonic = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-sonic.png')
+img_mk = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-mk.png')
+img_donkeykong = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-kong.png')
+img_bomberman = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-bomberman.png')
+img_biblioteca = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-biblioteca.png')
+img_perfil = PhotoImage(file= f'{diretorio}\\images\\pages\\tela-perfil.png')
+
+img_bt_mario = PhotoImage(file= f'{diretorio}\\images\\buttons\\ver-jogo-mario.png')
+img_bt_jogo = PhotoImage(file= f'{diretorio}\\images\\buttons\\ver-jogos.png')
+img_menu_bt = PhotoImage(file= f'{diretorio}\\images\\buttons\\menu-bt.png')
+img_bt_biblioteca = PhotoImage(file= f'{diretorio}\\images\\buttons\\biblioteca-bt.png')
+img_bt_perfil = PhotoImage(file= f'{diretorio}\\images\\buttons\\perfil-bt.png')
+img_bt_jogar = PhotoImage(file= f'{diretorio}\\images\\buttons\\jogar-bt.png')
+img_bt_remover = PhotoImage(file= f'{diretorio}\\images\\buttons\\desistalar-bt.png')
+
+img_supermario = PhotoImage(file= f'{diretorio}\\images\\icons-games\\super-mario.png')
+img_sonic_ico = PhotoImage(file= f'{diretorio}\\images\\icons-games\\sonic-icone.png')
+img_donkey_ico = PhotoImage(file= f'{diretorio}\\images\\icons-games\\donkey.png')
+img_mk3 = PhotoImage(file= f'{diretorio}\\images\\icons-games\\mk3.png')
+img_sbomber = PhotoImage(file= f'{diretorio}\\images\\icons-games\\sbomberman.png')
+
+img_fav_on = PhotoImage(file= f'{diretorio}\\images\\essentials\\estrela-comcor.png')
+img_fav_off = PhotoImage(file= f'{diretorio}\\images\\essentials\\estrela-semcor.png')
 # =======================================================================================================================
 # Frames principais
 frame_entrada.pack()
@@ -90,7 +89,7 @@ en_senha = Entry(frame_login, font='palatino 15 bold', bd=0, bg=dark_gray, fg=wh
 # Buttons
 bt_entrar = Button(frame_login, text='Entrar', font='palatino 20 bold', bg=blue, bd=0, fg=white, activebackground=blue,
                    activeforeground=white, command=lambda: [back.logar(en_email, La_N_exibicao, La_Nome, La_email,
-                                                                       La_jogos, en_senha, frame_principal, frame_login)
+                                                                       en_senha, frame_principal, frame_login)
                                                             ])
 
 bt_cadas = Button(frame_login, text='Cadastrar', font='Cardo 12 underline', bg=dark_gray, fg=blue,
