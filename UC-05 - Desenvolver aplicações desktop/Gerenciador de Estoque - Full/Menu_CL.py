@@ -1,7 +1,6 @@
 from Back_CL import *
 from tkinter import *
 from tkinter import ttk
-import posiciona
 import webbrowser as web
 
 
@@ -14,9 +13,6 @@ class Menu:  # classe que cria todo o front end
         self.window.resizable(False, False)
         self.window.title('PagMenos')
         self.window.iconbitmap('Imagens/Frames/Pagmenos.ico')
-        self.window.bind('<Button-1>', posiciona.inicio_place)
-        self.window.bind('<ButtonRelease-1>', lambda arg: posiciona.fim_place(arg, self.window))
-        self.window.bind('<Button-2>', lambda arg: posiciona.para_geometry(self.window))
         # =======================================================================================
         # objetos e outras variaveis uteis
         style = ttk.Style()
