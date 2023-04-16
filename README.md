@@ -106,6 +106,22 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Matheus Santos`](https://github.com/MatheusP0104)
 ## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-07%20-%20aplica%C3%A7%C3%B5es%20web/landing%20page%20rtx) | [site hospedado](https://little-baseball-silver-greece.bohr.io/index.php#)
 
+<!------------------------------------------------------------- Enxuta Consultoria --------------------------------------------------------------------->
+<h1 align="center"> Enxuta Consultoria <h1>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/96957574/232258738-49b56933-4532-4ffd-a026-ce71ce1e72a0.PNG" width="500">
+  <img src="https://user-images.githubusercontent.com/96957574/232258740-35306e65-d5a6-4c46-9d2d-9ac2a0113da8.PNG" width="500">
+</div>
+
+## Sobre
+
+<p align="center">
+  Projeto de landing page para a Enxuta Consultoria desenvolvido em HTML e CSS.
+</p>
+
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique) | [`Matheus Santos`](https://github.com/MatheusP0104) | [`Isabelli Luiza`](https://github.com/httpsisalutakii)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-07%20-%20aplica%C3%A7%C3%B5es%20web/consultoria)
 
 # UC-08 - Desenvolver Aplicações Mobile
 
