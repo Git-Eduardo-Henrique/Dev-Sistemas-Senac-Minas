@@ -7,10 +7,9 @@ import { ImcDbService } from 'src/app/services/imc-db.service';
   styleUrls: ['./historico.page.scss'],
 })
 export class HistoricoPage implements OnInit {
-  private service: ImcDbService
   public arrayImc: any 
 
-  constructor() { }
+  constructor(private service: ImcDbService) { }
 
   ngOnInit() {
     this.service.lista().then(arrayall => {this.arrayImc = arrayall})

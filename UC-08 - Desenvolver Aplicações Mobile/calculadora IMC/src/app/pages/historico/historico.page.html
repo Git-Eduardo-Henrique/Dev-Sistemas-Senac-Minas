@@ -12,9 +12,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let arrayImc of arrayImc" lines="none">
-    <ion-label>
-      {{arrayImc.sexo}} | {{arrayImc.altura}} | {{arrayImc.peso}} | {{arrayImc.imc}}
-    </ion-label>
+  <ion-item *ngFor="let arrayImc of arrayImc" lines="full">
+    <div class="list">
+      <h3>
+        id: {{arrayImc.id.value}}
+      </h3>
+      <ion-label>
+        sexo: {{arrayImc.sexo}}
+      </ion-label>
+      <ion-label>
+        altura: {{arrayImc.altura}}
+      </ion-label>
+      <ion-label>
+        peso: {{arrayImc.peso}}
+      </ion-label>
+      <ion-label>
+        imc: {{arrayImc.imc}}
+      </ion-label>
+    </div>
   </ion-item>
 </ion-content>
