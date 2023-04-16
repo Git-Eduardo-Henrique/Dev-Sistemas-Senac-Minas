@@ -158,5 +158,23 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
 ## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-08%20-%20Desenvolver%20Aplica%C3%A7%C3%B5es%20Mobile/app_oficina)
+  <!------------------------------------------------------------- Agenda --------------------------------------------------------------------->
+<h1 align="center"> Agenda App <h1>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/96957574/232262995-2debb430-84a9-4cd3-a0b6-8b33bdf31e07.PNG" height="400">
+  <img src="https://user-images.githubusercontent.com/96957574/232262994-9fd7923e-7100-4d99-94ba-fc7fdc5c1baa.PNG" height="400">
+  <img src="https://user-images.githubusercontent.com/96957574/232262996-59969360-4437-4921-83e1-db8595aef93f.PNG" height="400">
+  <img src="https://user-images.githubusercontent.com/96957574/232262993-4fe1da8e-844d-4b28-9814-d81644842b70.PNG" height="400">
+</div>
+
+## Sobre
+
+<p align="center">
+  Projeto de aplicativo para imitar uma agenda de contatos desenvolvida em Ionic. Nele, é possível criar, editar e pesquisar por contatos.
+</p>
+
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-08%20-%20Desenvolver%20Aplica%C3%A7%C3%B5es%20Mobile/Agenda_app)
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=FF9300&height=90&section=footer"/>
