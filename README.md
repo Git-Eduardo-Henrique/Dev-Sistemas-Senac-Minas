@@ -75,7 +75,7 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 <h1 align="center"> Livraria Database <h1>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/96957574/232181054-5a7133f5-ce29-41b5-838d-765b839063f8.PNG" width="400" height="600">
+  <img src="https://user-images.githubusercontent.com/96957574/232181054-5a7133f5-ce29-41b5-838d-765b839063f8.PNG" height="500">
 </div>
 
 ## Sobre
@@ -124,5 +124,22 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 ## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-07%20-%20aplica%C3%A7%C3%B5es%20web/consultoria)
 
 # UC-08 - Desenvolver Aplicações Mobile
+  <!------------------------------------------------------------- Calcular IMC --------------------------------------------------------------------->
+<h1 align="center"> Calculadora de IMC <h1>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/96957574/232262025-5c0a0412-7311-4fc8-8740-53cf83921513.PNG" height="500">
+  <img src="https://user-images.githubusercontent.com/96957574/232262027-0f28fb19-c125-44aa-9b76-e6548d2f3aca.PNG" height="500">
+  <img src="https://user-images.githubusercontent.com/96957574/232262026-8afcf086-9cb4-4536-9f20-ccf1a8a6aaee.PNG" height="500">
+</div>
+
+## Sobre
+
+<p align="center">
+  Projeto de aplicativo desenvolvido em Ionic para calcular o Índice de Massa Corporal (IMC) de uma pessoa. Nele, é possível realizar o cálculo do IMC a partir do peso, altura e sexo, além de visualizar o histórico por meio de um banco de dados local.
+</p>
+
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-08%20-%20Desenvolver%20Aplica%C3%A7%C3%B5es%20Mobile/calculadora%20IMC)
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=FF9300&height=90&section=footer"/>
