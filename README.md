@@ -141,5 +141,22 @@ Neste Readme irei mostrar os maiores projetos das UC'S principais.
 
 ## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
 ## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-08%20-%20Desenvolver%20Aplica%C3%A7%C3%B5es%20Mobile/calculadora%20IMC)
+  <!------------------------------------------------------------- Oficina --------------------------------------------------------------------->
+<h1 align="center"> APP Oficina <h1>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/96957574/232262496-0d7cb369-f29c-48a8-9c33-4bd74109722b.PNG" height="500">
+  <img src="https://user-images.githubusercontent.com/96957574/232262497-e57ea426-c3e4-4f85-aa9c-31696c83cfc1.PNG" height="500">
+  <img src="https://user-images.githubusercontent.com/96957574/232262495-98caf25c-4822-49e9-984a-7026ddd453be.PNG" height="500">
+</div>
+
+## Sobre
+
+<p align="center">
+  Projeto de aplicativo para gerenciamento de estoque. Nele, é possível visualizar serviços, além de criar, salvar e editar produtos. Tudo utilizando um banco de dados local.
+</p>
+
+## Criado por: [`Eduardo Henrique`](https://github.com/Git-Eduardo-Henrique)
+## [link projeto](https://github.com/Git-Eduardo-Henrique/Senac-Atv-s/tree/main/UC-08%20-%20Desenvolver%20Aplica%C3%A7%C3%B5es%20Mobile/app_oficina)
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=FF9300&height=90&section=footer"/>
